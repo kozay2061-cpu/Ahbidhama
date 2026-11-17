@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>အဘိဓမ္မ - Analysi</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#F5F3FA;--sf:#FFFFFF;--ink:#26244A;--mu:#6B6890;--ln:#DAD6EA;--gold:#E0A100;--gt:#3A2A00;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17163A;--sf:#23214D;--ink:#EEEBFA;--mu:#A9A5D0;--ln:#3A376E;--gold:#F2B90F;--gt:#2A1E00}}
+:root[data-theme="dark"]{--bg:#17163A;--sf:#23214D;--ink:#EEEBFA;--mu:#A9A5D0;--ln:#3A376E;--gold:#F2B90F;--gt:#2A1E00}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Myanmar","Padauk","Myanmar Text",sans-serif;line-height:1.9}
+body{max-width:600px;margin:0 auto;padding:12px 14px 40px}
+h1{font-size:19px;margin:4px 0 8px}
+button{font:inherit;color:inherit;cursor:pointer}
+.seg{display:flex;border:1.5px solid var(--ln);border-radius:10px;overflow:hidden;margin-bottom:12px}
+.seg button{flex:1;border:0;background:var(--sf);padding:3px 0;font-size:15px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);font-weight:700}
+.it{display:block;width:100%;text-align:left;border:1.5px solid var(--ln);border-left:6px solid var(--gold);background:var(--sf);border-radius:10px;padding:4px 12px;margin:6px 0}
+.it small{display:block;color:var(--mu);font-size:13px;line-height:1.6}
+details{margin-bottom:8px}
+summary{font-weight:700;padding:6px 2px;cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1.5px solid var(--ln);background:var(--sf);border-radius:999px;padding:0 12px;font-size:14px;line-height:1.9}
+.chip.on{background:var(--gold);border-color:var(--gold);color:var(--gt);font-weight:700}
+.chip i{font-style:normal;color:var(--mu);font-size:12px;margin-left:4px}
+.back{border:0;background:none;color:var(--mu);font-size:15px;padding:0;margin-bottom:6px}
+.box{background:var(--sf);border:1.5px solid var(--ln);border-radius:12px;padding:10px 14px;margin:10px 0}
+.box h3{margin:0 0 4px;font-size:15px;color:var(--mu);font-weight:600}
+.nm{font-size:20px;font-weight:700;margin:2px 0}
+.sub{color:var(--mu);font-size:14px}
+.note{font-size:13px;color:var(--mu);margin-top:6px}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+</style>
+</head>
+<body>
+<h1>အဘိဓမ္မာ - စိတ်နှင့် ရုပ်</h1>
+<div id="app"></div>
+<script>
+const O=["ပထမ","ဒုတိယ","တတိယ","စတုတ္ထ","ပဉ္စမ","ဆဋ္ဌ","သတ္တမ","အဋ္ဌမ"];
+const C7=["ဖဿ","ဝေဒနာ","သညာ","စေတနာ","ဧကဂ္ဂတာ","ဇီဝိတိန္ဒြေ","မနသိကာရ"];
+const PN=["ဝိတက်","ဝိစာရ","အဓိမောက္ခ","ဝီရိယ","ပီတိ","ဆန္ဒ"];
+const MOHA=["မောဟ","အဟိရိက","အနောတ္တပ္ပ","ဥဒ္ဓစ္စ"];
+const SOB=["သဒ္ဓါ","သတိ","ဟိရိ","ဩတ္တပ္ပ","အလောဘ","အဒေါသ","တတြမဇ္ဈတ္တတာ","ကာယပဿဒ္ဓိ","စိတ္တပဿဒ္ဓိ","ကာယလဟုတာ","စိတ္တလဟုတာ","ကာယမုဒုတာ","စိတ္တမုဒုတာ","ကာယကမ္မညတာ","စိတ္တကမ္မညတာ","ကာယပါဂုညတာ","စိတ္တပါဂုညတာ","ကာယုဇုကတာ","စိတ္တုဇုကတာ"];
+const VIR=["သမ္မာဝါစာ*","သမ္မာကမ္မန္တ*","သမ္မာအာဇီဝ*"],APP=["ကရုဏာ*","မုဒိတာ*"];
+const D6=["စက္ခုဒွါရ","သောတဒွါရ","ဃာနဒွါရ","ဇိဝှါဒွါရ","ကာယဒွါရ","မနောဒွါရ"];
+const A6=["ရူပါရုံ","သဒ္ဒါရုံ","ဂန္ဓာရုံ","ရသာရုံ","ဖောဋ္ဌဗ္ဗာရုံ","ဓမ္မာရုံ"];
+const S5=D6.slice(0,5),A5=A6.slice(0,5),VM="ဒွါရဝိမုတ်";
+const pk=f=>PN.filter((_,i)=>f[i]=="1");
+const base=f=>[["သဗ္ဗစိတ္တသာဓာရဏ",C7],["ပကိဏ္ဏက",pk(f)]];
+const T=[];
+const add=o=>{o.ce=o.ce.filter(g=>g[1].length);T.push(o)};
+const NOLOK="လောကုတ္တရာမှ လွဲ၍ အာရုံ ၆ ပါး",ALL="အာရုံ ၆ ပါးလုံး",KAMA="ကာမာရုံ ၆ ပါး";
+const TM=[["ထိနမိဒ္ဓ",["ထိန*","မိဒ္ဓ*"]]];
+const PS=["ပညိန္ဒြေ"];
+for(let i=0;i<8;i++){
+  const so=i<4,di=[0,1,4,5].includes(i),sa=i%2;
+  add({g:"လောဘမူ ၈",n:`လောဘမူ ${O[i]}စိတ်`,s:`${so?"သောမနဿ":"ဥပေက္ခာ"}၊ ဒိဋ္ဌိဂတ${di?"သမ္ပယုတ်":"ဝိပ္ပယုတ်"}၊ ${sa?"သသင်္ခါရိက":"အသင်္ခါရိက"}`,pl:"ကာမ",j:"အကုသိုလ်",ve:so?"သောမနဿ":"ဥပေက္ခာ",hetu:["လောဘ","မောဟ"],
+  ce:[...base(so?"111111":"111101"),["မောဟစတုက်",MOHA],["လောဘ",di?["လောဘ","ဒိဋ္ဌိ"]:["လောဘ","မာန*"]],...(sa?TM:[])],dv:D6,kc:["ဇော"],ar:A6,an:NOLOK,jv:1});
+}
+for(let i=0;i<2;i++)add({g:"ဒေါသမူ ၂",n:`ဒေါသမူ ${O[i]}စိတ်`,s:`ဒေါမနဿ၊ ပဋိဃသမ္ပယုတ်၊ ${i?"သသင်္ခါရိက":"အသင်္ခါရိက"}`,pl:"ကာမ",j:"အကုသိုလ်",ve:"ဒေါမနဿ",hetu:["ဒေါသ","မောဟ"],
+  ce:[...base("111101"),["မောဟစတုက်",MOHA],["ဒေါသစတုက်",["ဒေါသ","ဣဿာ*","မစ္ဆရိယ*","ကုက္ကုစ္စ*"]],...(i?TM:[])],dv:D6,kc:["ဇော"],ar:A6,an:NOLOK,jv:1});
+add({g:"မောဟမူ ၂",n:"မောဟမူ ပထမစိတ်",s:"ဥပေက္ခာ၊ ဝိစိကိစ္ဆာသမ္ပယုတ်",pl:"ကာမ",j:"အကုသိုလ်",ve:"ဥပေက္ခာ",hetu:["မောဟ"],ce:[...base("110100"),["မောဟစတုက်",MOHA],["ဝိစိကိစ္ဆာ",["ဝိစိကိစ္ဆာ"]]],dv:D6,kc:["ဇော"],ar:A6,an:NOLOK,jv:1});
+add({g:"မောဟမူ ၂",n:"မောဟမူ ဒုတိယစိတ်",s:"ဥပေက္ခာ၊ ဥဒ္ဓစ္စသမ္ပယုတ်",pl:"ကာမ",j:"အကုသိုလ်",ve:"ဥပေက္ခာ",hetu:["မောဟ"],ce:[...base("111100"),["မောဟစတုက်",MOHA]],dv:D6,kc:["ဇော"],ar:A6,an:NOLOK,jv:1});
+const V5=["စက္ခု","သောတ","ဃာန","ဇိဝှါ","ကာယ"],K5=["ဒဿန","သဝန","ဃာယန","သာယန","ဖုသန"];
+for(const [g,j,sv] of [["အကုသိုလ်ဝိပါက် ၇","အကုသိုလ်","ဒုက္ခ"],["အဟေတုက ကုသိုလ်ဝိပါက် ၈","ကုသိုလ်","သုခ"]])
+ for(let k=0;k<5;k++){const ve=k==4?sv:"ဥပေက္ခာ";add({g,n:`${V5[k]}ဝိညာဏ် (${j}ဝိပါက်)`,s:ve,pl:"ကာမ",j:"ဝိပါက်",ve,hetu:[],ce:base("000000"),dv:[D6[k]],kc:[K5[k]],ar:[A6[k]],an:`${A6[k]} တစ်မျိုးသာ`,jv:0})}
+const AH=(g,j,n,ve,f,dv,kc,ar,an,jv)=>add({g,n,s:ve,pl:"ကာမ",j,ve,hetu:[],ce:base(f),dv,kc,ar,an,jv});
+AH("အကုသိုလ်ဝိပါက် ၇","ဝိပါက်","သမ္ပဋိစ္ဆိန် (အကုသိုလ်ဝိပါက်)","ဥပေက္ခာ","111000",S5,["သမ္ပဋိစ္ဆိန်"],A5,"ပဉ္စာရုံ ၅ ပါး",0);
+AH("အကုသိုလ်ဝိပါက် ၇","ဝိပါက်","သန္တီရဏ (အကုသိုလ်ဝိပါက်)","ဥပေက္ခာ","111000",[...S5,D6[5],VM],["ပဋိသန္ဓေ","ဘဝင်","စုတိ","သန္တီရဏ","တဒါရုံ"],A6,KAMA,0);
+AH("အဟေတုက ကုသိုလ်ဝိပါက် ၈","ဝိပါက်","သမ္ပဋိစ္ဆိန် (ကုသိုလ်ဝိပါက်)","ဥပေက္ခာ","111000",S5,["သမ္ပဋိစ္ဆိန်"],A5,"ပဉ္စာရုံ ၅ ပါး",0);
+AH("အဟေတုက ကုသိုလ်ဝိပါက် ၈","ဝိပါက်","သန္တီရဏ (သောမနဿ)","သောမနဿ","111010",[...S5,D6[5]],["သန္တီရဏ","တဒါရုံ"],A6,KAMA,0);
+AH("အဟေတုက ကုသိုလ်ဝိပါက် ၈","ဝိပါက်","သန္တီရဏ (ဥပေက္ခာ)","ဥပေက္ခာ","111000",[...S5,D6[5],VM],["ပဋိသန္ဓေ","ဘဝင်","စုတိ","သန္တီရဏ","တဒါရုံ"],A6,KAMA,0);
+AH("အဟေတုက ကြိယာ ၃","ကြိယာ","ပဉ္စဒွါရာဝဇ္ဇန်း","ဥပေက္ခာ","111000",S5,["အာဝဇ္ဇန်း"],A5,"ပဉ္စာရုံ ၅ ပါး",0);
+AH("အဟေတုက ကြိယာ ၃","ကြိယာ","မနောဒွါရာဝဇ္ဇန်း","ဥပေက္ခာ","111100",[D6[5]],["အာဝဇ္ဇန်း","ဝုဋ္ဌော"],A6,ALL,0);
+AH("အဟေတုက ကြိယာ ၃","ကြိယာ","ဟသိတုပ္ပါဒ်","သောမနဿ","111110",[...S5,D6[5]],["ဇော"],A6,"ရဟန္တာ၏ ပြုံးခြင်း - ဤအာရုံကို ကျမ်းနှင့် တိုက်စစ်ပါ",1);
+for(const j of ["ကုသိုလ်","ဝိပါက်","ကြိယာ"])for(let i=0;i<8;i++){
+  const so=i<4,na=[0,1,4,5].includes(i),sa=i%2;
+  const an=j=="ဝိပါက်"?KAMA:j=="ကုသိုလ်"?(na?"အရဟတ္တမဂ်၊ ဖိုလ်မှ လွဲ၍ အာရုံ ၆ ပါး":NOLOK):(na?ALL:NOLOK);
+  add({g:`မဟာ${j} ၈`,n:`မဟာ${j} ${O[i]}စိတ်`,s:`${so?"သောမနဿ":"ဥပေက္ခာ"}၊ ဉာဏ${na?"သမ္ပယုတ်":"ဝိပ္ပယုတ်"}၊ ${sa?"သသင်္ခါရိက":"အသင်္ခါရိက"}`,pl:"ကာမ",j,ve:so?"သောမနဿ":"ဥပေက္ခာ",
+  hetu:na?["အလောဘ","အဒေါသ","အမောဟ"]:["အလောဘ","အဒေါသ"],
+  ce:[...base(so?"111111":"111101"),["သောဘနသာဓာရဏ",SOB],...(j=="ကုသိုလ်"?[["ဝိရတီ",VIR]]:[]),...(j!="ဝိပါက်"?[["အပ္ပမညာ",APP]]:[]),...(na?[["ပညိန္ဒြေ",PS]]:[])],
+  dv:j=="ဝိပါက်"?[...D6,VM]:D6,kc:j=="ဝိပါက်"?["ပဋိသန္ဓေ","ဘဝင်","စုတိ","တဒါရုံ"]:["ဇော"],ar:A6,an,jv:j=="ဝိပါက်"?0:1});
+}
+const jf=n=>[n==0,n<=1,1,1,n<=2,1].map(x=>x?1:0).join("");
+for(const j of ["ကုသိုလ်","ဝိပါက်","ကြိယာ"])for(let n=0;n<5;n++)
+  add({g:`ရူပါဝစရ ${j} ၅`,n:`ရူပါဝစရ ${j} ${O[n]}ဈာန်`,s:n<4?"သောမနဿ (သုခ)":"ဥပေက္ခာ",pl:"ရူပ",j,ve:n<4?"သောမနဿ":"ဥပေက္ခာ",hetu:["အလောဘ","အဒေါသ","အမောဟ"],
+  ce:[...base(jf(n)),["သောဘနသာဓာရဏ",SOB],...(j!="ဝိပါက်"&&n<4?[["အပ္ပမညာ",APP]]:[]),["ပညိန္ဒြေ",PS]],
+  dv:j=="ဝိပါက်"?[VM]:[D6[5]],kc:j=="ဝိပါက်"?["ပဋိသန္ဓေ","ဘဝင်","စုတိ"]:["ဇော"],ar:[A6[5]],an:"ပညတ်အာရုံ (ကသိုဏ်း စသည်)",jv:j=="ဝိပါက်"?0:1});
+const AR=["အာကာသာနဉ္စာယတန","ဝိညာဏဉ္စာယတန","အာကိဉ္စညာယတန","နေဝသညာနာသညာယတန"];
+const ARN=["အာကာသ ပညတ်","ပထမအရူပစိတ် (မဟဂ္ဂုတ်)","နတ္ထိဘာဝ ပညတ်","တတိယအရူပစိတ် (မဟဂ္ဂုတ်)"];
+for(const j of ["ကုသိုလ်","ဝိပါက်","ကြိယာ"])for(let n=0;n<4;n++)add({g:`အရူပ ${j} ၄`,n:`${AR[n]} ${j}`,s:"ဥပေက္ခာ",pl:"အရူပ",j,ve:"ဥပေက္ခာ",hetu:["အလောဘ","အဒေါသ","အမောဟ"],
+  ce:[...base("001101"),["သောဘနသာဓာရဏ",SOB],["ပညိန္ဒြေ",PS]],dv:j=="ဝိပါက်"?[VM]:[D6[5]],kc:j=="ဝိပါက်"?["ပဋိသန္ဓေ","ဘဝင်","စုတိ"]:["ဇော"],ar:[A6[5]],an:ARN[n],jv:j=="ဝိပါက်"?0:1});
+const MG=["သောတာပတ္တိ","သကဒါဂါမိ","အနာဂါမိ","အရဟတ္တ"];
+for(const [t,j] of [["မဂ်","ကုသိုလ်"],["ဖိုလ်","ဝိပါက်"]])for(let m=0;m<4;m++)for(let n=0;n<5;n++)
+  add({g:`${MG[m]}${t}`,n:`${MG[m]}${t} ${O[n]}ဈာန်`,s:n<4?"သောမနဿ":"ဥပေက္ခာ",pl:"လောကုတ္တရာ",j,ve:n<4?"သောမနဿ":"ဥပေက္ခာ",hetu:["အလောဘ","အဒေါသ","အမောဟ"],
+  ce:[...base(jf(n)),["သောဘနသာဓာရဏ",SOB],["ဝိရတီ",VIR.map(x=>x.replace("*",""))],["ပညိန္ဒြေ",PS]],dv:[D6[5]],kc:["ဇော"],ar:[A6[5]],an:"နိဗ္ဗာန်",jv:1});
+
+const K4=["ကံ","စိတ္တ","ဥတု","အာဟာရ"],R=[];
+const ar=(n,g,m,sm)=>R.push({n,g,m,sm});
+ar("ပထဝီ","မဟာဘုတ် ၄","ခက်ခြင်း၊ ပျော့ခြင်း ဖြစ်စေသော မြေဓာတ် (ဖောဋ္ဌဗ္ဗာရုံ ၃ ပါးအနက် တစ်ပါး)",K4);
+ar("အာပေါ","မဟာဘုတ် ၄","ဆက်စပ်စေ၊ စီးဆင်းစေသော ရေဓာတ် (ထိ၍ မသိနိုင်)",K4);
+ar("တေဇော","မဟာဘုတ် ၄","ပူခြင်း၊ အေးခြင်း ဖြစ်စေသော မီးဓာတ် (ဖောဋ္ဌဗ္ဗာရုံ)",K4);
+ar("ဝါယော","မဟာဘုတ် ၄","ထောက်ကန်ခြင်း၊ လှုပ်ရှားခြင်း ဖြစ်စေသော လေဓာတ် (ဖောဋ္ဌဗ္ဗာရုံ)",K4);
+ar("စက္ခုပသာဒ","ပသာဒရုပ် ၅","ရူပါရုံ ထင်ရှားစေသော မျက်စိ၏ ကြည်လင်သည့်ရုပ်",["ကံ"]);
+ar("သောတပသာဒ","ပသာဒရုပ် ၅","သဒ္ဒါရုံ ထင်ရှားစေသော နား၏ ကြည်လင်သည့်ရုပ်",["ကံ"]);
+ar("ဃာနပသာဒ","ပသာဒရုပ် ၅","ဂန္ဓာရုံ ထင်ရှားစေသော နှာခေါင်း၏ ကြည်လင်သည့်ရုပ်",["ကံ"]);
+ar("ဇိဝှါပသာဒ","ပသာဒရုပ် ၅","ရသာရုံ ထင်ရှားစေသော လျှာ၏ ကြည်လင်သည့်ရုပ်",["ကံ"]);
+ar("ကာယပသာဒ","ပသာဒရုပ် ၅","ဖောဋ္ဌဗ္ဗာရုံ ထင်ရှားစေသော ကိုယ်၏ ကြည်လင်သည့်ရုပ်",["ကံ"]);
+ar("ရူပါရုံ (ဝဏ္ဏ)","ဂေါစရရုပ်","မျက်စိနှင့် ထိခိုက်သော အဆင်းအရောင်",K4);
+ar("သဒ္ဒါရုံ","ဂေါစရရုပ်","နားနှင့် ထိခိုက်သော အသံ",["စိတ္တ","ဥတု"]);
+ar("ဂန္ဓာရုံ","ဂေါစရရုပ်","နှာခေါင်းနှင့် ထိခိုက်သော အနံ့",K4);
+ar("ရသာရုံ","ဂေါစရရုပ်","လျှာနှင့် ထိခိုက်သော အရသာ",K4);
+ar("ဣတ္ထိဘာဝ","ဘာဝရုပ် ၂","မိန်းမဖြစ်ကြောင်း အမှတ်အသား ထင်စေသောရုပ်",["ကံ"]);
+ar("ပုရိသဘာဝ","ဘာဝရုပ် ၂","ယောက်ျားဖြစ်ကြောင်း အမှတ်အသား ထင်စေသောရုပ်",["ကံ"]);
+ar("ဟဒယဝတ္ထု","ဟဒယရုပ်","မနောဓာတ်၊ မနောဝိညာဏ်ဓာတ် စသည် စိတ်တို့၏ မှီရာရုပ်",["ကံ"]);
+ar("ဇီဝိတရုပ်","ဇီဝိတရုပ်","ကံဇရုပ်တို့ကို စောင့်ရှောက်၍ အသက်ရှင်စေသောရုပ်",["ကံ"]);
+ar("အာဟာရရုပ် (ဩဇာ)","အာဟာရရုပ်","ရုပ်တို့ကို ပြုစုပျိုးထောင်ပေးသော အာဟာရဩဇာ",K4);
+ar("အာကာသဓာတ် (ပရိစ္ဆေဒ)","ပရိစ္ဆေဒရုပ်","ရုပ်ကလာပ်တို့ကို ပိုင်းခြားပေးသော အာကာသ",K4);
+ar("ကာယဝိညတ်","ဝိညတ်ရုပ် ၂","ကိုယ်လှုပ်ရှားမှုဖြင့် အလိုကို သိစေသောရုပ်",["စိတ္တ"]);
+ar("ဝစီဝိညတ်","ဝိညတ်ရုပ် ၂","စကားသံဖြင့် အလိုကို သိစေသောရုပ်",["စိတ္တ"]);
+ar("ရုပ်လဟုတာ","ဝိကာရရုပ် ၃","ရုပ်၏ ပေါ့ပါးခြင်း",["စိတ္တ","ဥတု","အာဟာရ"]);
+ar("ရုပ်မုဒုတာ","ဝိကာရရုပ် ၃","ရုပ်၏ ပျော့ပျောင်းခြင်း",["စိတ္တ","ဥတု","အာဟာရ"]);
+ar("ရုပ်ကမ္မညတာ","ဝိကာရရုပ် ၃","ရုပ်၏ ကိုင်တွယ်ရလွယ်ကူခြင်း",["စိတ္တ","ဥတု","အာဟာရ"]);
+ar("ဥပစယ","လက္ခဏရုပ် ၄","ရုပ်၏ စတင်ဖြစ်ပေါ်ခြင်း",K4);
+ar("သန္တတိ","လက္ခဏရုပ် ၄","ရုပ်၏ ဆက်လက်ဖြစ်ပေါ်ခြင်း",K4);
+ar("ဇရတာ","လက္ခဏရုပ် ၄","ရုပ်၏ ရင့်ရော်ခြင်း",[]);
+ar("အနိစ္စတာ","လက္ခဏရုပ် ၄","ရုပ်၏ ပျက်စီးခြင်း",[]);
+const RA=["ဖြစ်ကြောင်း","နိပ္ဖန်","ဩဠာရိက","အကွာအဝေး","အခန်းကဏ္ဍ"];
+const rI=(...a)=>a.flat();
+const rO=i=>[0,2,3].includes(i)||(i>=4&&i<=12);
+const rattr=(i,a)=>({"အုပ်စု":[R[i].g],"ဖြစ်ကြောင်း":R[i].sm.length?R[i].sm:["ဖြစ်ကြောင်း မရှိ"],"နိပ္ဖန်":[i<=17?"နိပ္ဖန်ရုပ်":"အနိပ္ဖန်ရုပ်"],"ဩဠာရိက":[rO(i)?"ဩဠာရိက":"သုခုမ"],"အကွာအဝေး":[rO(i)?"သန္တိကေ":"ဒူရေ"],"အခန်းကဏ္ဍ":[(i<4?"ဘူတရုပ်":"ဥပါဒါရုပ်"),...(i>=4&&i<=8||[13,14,16].includes(i)?["ဣန္ဒြေရုပ်"]:[]),...(i>=4&&i<=8||i==15?["ဝတ္ထုရုပ်"]:[]),...(i>=4&&i<=8||i==19||i==20?["ဒွါရရုပ်"]:[]),...(i>=4&&i<=8?["ဂေါစရဂ္ဂါဟိက"]:[])]})[a];
+const rchip=(a,v)=>`<button class="chip" data-rf="${a}" data-v="${v}">${v}</button>`;
+const ritm=i=>`<button class="it" data-ri="${i}"><b>${R[i].n}</b><small>${R[i].m}</small></button>`;
+function rupaHome(){
+  const gs=[];R.forEach(r=>{if(!gs.includes(r.g))gs.push(r.g)});
+  let h=`<div class="note">ဖောဋ္ဌဗ္ဗာရုံ = ပထဝီ၊ တေဇော၊ ဝါယော (သီးသန့်ရုပ် မရေတွက်) ဖြစ်၍ ရုပ် ၂၈ ပါးတွင် ရူပါရုံ၊ သဒ္ဒါရုံ၊ ဂန္ဓာရုံ၊ ရသာရုံသာ ဂေါစရရုပ်အဖြစ် ပါသည်။</div><div class="box"><h3>အချက်ဖြင့် ကြည့်ရန်</h3>`;
+  RA.forEach(a=>{const m={};R.forEach((_,i)=>rattr(i,a).forEach(v=>m[v]=(m[v]||0)+1));h+=`<div class="note">${a}</div><div class="chips">${Object.keys(m).map(v=>`<button class="chip" data-rf="${a}" data-v="${v}">${v}<i>${m[v]}</i></button>`).join("")}</div>`});
+  h+=`</div>`+gs.map(g=>`<details open><summary>${g}</summary>${R.map((r,i)=>r.g==g?ritm(i):"").join("")}</details>`).join("");
+  return h;
+}
+function rupaDetail(i){
+  const r=R[i];
+  return `<button class="back" data-b>‹ နောက်သို့</button><div class="nm">${r.n}</div><div class="sub">${r.g}</div><div class="box">${r.m}</div>`+
+  ["ဖြစ်ကြောင်း","နိပ္ဖန်","ဩဠာရိက","အကွာအဝေး","အခန်းကဏ္ဍ"].map(a=>`<div class="box"><h3>${a}</h3><div class="chips">${rattr(i,a).map(v=>rchip(a,v)).join("")}</div></div>`).join("")+
+  `<div class="note">ဥပစယ၊ သန္တတိ၏ ဖြစ်ကြောင်းကို ကိုယ့်သင်ရိုးနှင့် တိုက်စစ်ပါ။</div>`;
+}
+function rupaList(a,v){
+  const L=R.map((_,i)=>i).filter(i=>rattr(i,a).includes(v));
+  return `<button class="back" data-b>‹ နောက်သို့</button><div class="nm">${a} - ${v}</div><div class="sub">ရုပ် ${L.length} ပါး</div>`+L.map(ritm).join("");
+}
+const VPRE=[["အတီတဘဝင်",1,"ဘဝင်"],["ဘဝင်စလှုပ်",1,"ဘဝင်"],["ဘဝင်ဥပစ္ဆေဒ",1,"ဘဝင်"]];
+const VFIVE=[["ပဉ္စဒွါရာဝဇ္ဇန်း",1,"အာဝဇ္ဇန်း"],["ပဉ္စဝိညာဏ် (ဒဿန စသည်)",1,"ဒဿန"],["သမ္ပဋိစ္ဆိန်",1,"သမ္ပဋိစ္ဆိန်"],["သန္တီရဏ",1,"သန္တီရဏ"],["ဝုဋ္ဌော",1,"ဝုဋ္ဌော"]];
+const VMA=[["ဘဝင်စလှုပ်",1,"ဘဝင်"],["ဘဝင်ဥပစ္ဆေဒ",1,"ဘဝင်"],["မနောဒွါရာဝဇ္ဇန်း (ဝုဋ္ဌော)",1,"ဝုဋ္ဌော"]];
+const VJ=["ဇော",7,"ဇော"],VT=["တဒါရုံ",2,"တဒါရုံ"],VB=["ဘဝင်",0,"ဘဝင်"];
+const VPRP=[["ဥပစာရ",1,"ဇော"],["အနုလုံ",1,"ဇော"],["ဂေါတြဘူ",1,"ဇော"]];
+const VV=[
+{n:"ပဉ္စဒွါရဝီထိ - အတိမဟန္တာရုံ",s:[...VPRE,...VFIVE,VJ,VT,VB],m:"အာရုံ အလွန်ထင်ရှား။ ဝီထိအပြည့်အစုံ ဖြစ်ပြီး တဒါရုံ ၂ ကြိမ်ပါသည်။"},
+{n:"ပဉ္စဒွါရဝီထိ - မဟန္တာရုံ",s:[...VPRE,...VFIVE,VJ,VB],m:"ဇောအထိ ဖြစ်ပြီး တဒါရုံ မဖြစ်ဘဲ ဘဝင်ကျသည်။"},
+{n:"ပဉ္စဒွါရဝီထိ - ပရိတ္တာရုံ",s:[...VPRE,...VFIVE.slice(0,4),["ဝုဋ္ဌော",2,"ဝုဋ္ဌော"],VB],m:"ဝုဋ္ဌော ၂-၃ ကြိမ်ဖြစ်ပြီး ဘဝင်ကျသည်။ ဇော မဖြစ်။"},
+{n:"ပဉ္စဒွါရဝီထိ - အတိပရိတ္တာရုံ",s:[["ဘဝင်စလှုပ်",1,"ဘဝင်"],["ဘဝင်ဥပစ္ဆေဒ",1,"ဘဝင်"],VB],m:"ဝီထိ မပေါ်ဘဲ ဘဝင်သာ စလှုပ်ပြီး ပြန်ကျသည် (မောဃဝါရ)။"},
+{n:"မနောဒွါရဝီထိ - ဝိဘူတာရုံ",s:[...VMA,VJ,VT,VB],m:"အာရုံ ထင်ရှားလျှင် တဒါရုံ ၂ ကြိမ်ပါသည်။"},
+{n:"မနောဒွါရဝီထိ - အဝိဘူတာရုံ",s:[...VMA,VJ,VB],m:"အာရုံ မထင်ရှားလျှင် ဇောပြီး ဘဝင်ကျသည်။"},
+{n:"အပ္ပနာဝီထိ (ဈာန်) - ဉာဏ်ထက်သူ",s:[...VMA,...VPRP,["အပ္ပနာ (ဈာန်)",1,"ဇော"],VB],m:"ထုံသူ၌ ဥပစာရရှေ့တွင် ပရိကံ ထပ်ပါသည်။ အပ္ပနာသည် တစ်ကြိမ်သာ ဖြစ်သည်။"},
+{n:"မဂ္ဂဝီထိ - ဉာဏ်ထက်သူ",s:[...VMA,...VPRP,["မဂ်",1,"ဇော"],["ဖိုလ်",3,"ဇော"],VB],m:"ထုံသူ၌ ပရိကံ ထပ်ပါပြီး ဖိုလ် ၂ ကြိမ်သာ ဖြစ်သည် (ဇော ၇ ကြိမ်ပြည့်ရန်)။ ဤအချက်ကို ကိုယ့်သင်ရိုးနှင့် တိုက်စစ်ပါ။"}
+];
+function vithiHome(){
+  let h=`<div class="note">ရုပ်တစ်ခုသည် စိတ်ခဏ ၁၇ ခု ကြာတည်သည်။ အဆင့်တစ်ခုကို နှိပ်လျှင် ထိုကိစ္စ ဆောင်နိုင်သော စိတ်များ ပေါ်မည်။</div>`;
+  h+=`<div class="box"><h3>ဝီထိစိတ်၏ ကိစ္စများ</h3><div class="chips">`+["အာဝဇ္ဇန်း","သမ္ပဋိစ္ဆိန်","သန္တီရဏ","ဝုဋ္ဌော","ဇော","တဒါရုံ","ဘဝင်"].map(k=>chip("ကိစ္စ",k)).join("")+`</div><div class="note">ဇော ၅၅ ပါး (၈၉ စနစ်)၊ ၁၂၁ စနစ်တွင် ၈၇ ပါး။ တဒါရုံ ၁၁ ပါး၊ ဘဝင် ၁၉ ပါး။</div></div>`;
+  VV.forEach(v=>{h+=`<div class="box"><div class="nm" style="font-size:16px">${v.n}</div><div class="chips" style="margin-top:6px">`+v.s.map((x,i)=>(i?`<span style="color:var(--mu)">›</span>`:"")+`<button class="chip" data-f="ကိစ္စ" data-v="${x[2]}">${x[0]}${x[1]>1?" ×"+x[1]:""}</button>`).join("")+`</div><div class="note">${v.m}</div></div>`});
+  return h;
+}
+const $=id=>document.getElementById(id);
+const AT=["ဝေဒနာ","ဟေတု","ဒွါရ","ကိစ္စ","ဇော","အာရုံ","စေတသိက်","ဇာတိ","ဘူမိ"];
+const flat=c=>c.ce.flatMap(g=>g[1].map(x=>x.replace("*","")));
+const attr=(c,a)=>({"ဝေဒနာ":[c.ve],"ဟေတု":c.hetu.length?c.hetu:["အဟေတုက"],"ဒွါရ":c.dv,"ကိစ္စ":c.kc,"ဇော":[c.jv?"ဇောစိတ်":"ဇောမဟုတ်"],"အာရုံ":c.ar,"စေတသိက်":flat(c),"ဇာတိ":[c.j],"ဘူမိ":[c.pl]})[a];
+const cnt=c=>c.ce.reduce((s,g)=>s+g[1].length,0);
+let tab="list",fa="ဝေဒနာ",st=[];
+const itm=i=>`<button class="it" data-i="${i}"><b>${T[i].n}</b><small>${T[i].s} · စေတသိက် ${cnt(T[i])}</small></button>`;
+const chip=(f,v)=>`<button class="chip" data-f="${f}" data-v="${v}">${v}</button>`;
+function render(){
+  const s=st[st.length-1];let h="";
+  if(!s){
+    h=`<div class="seg"><button data-t="list" aria-pressed="${tab=="list"}">စိတ်စာရင်း</button><button data-t="flt" aria-pressed="${tab=="flt"}">အချက်ဖြင့် ရှာရန်</button><button data-t="vithi" aria-pressed="${tab=="vithi"}">ဝီထိ</button><button data-t="rupa" aria-pressed="${tab=="rupa"}">ရုပ် ၂၈</button></div>`;
+    if(tab=="vithi"){h+=vithiHome()}else if(tab=="rupa"){h+=rupaHome()}else if(tab=="list"){const seen=[];T.forEach(c=>{if(!seen.includes(c.g))seen.push(c.g)});
+      h+=seen.map(g=>`<details><summary>${g}</summary>${T.map((c,i)=>c.g==g?itm(i):"").join("")}</details>`).join("")}
+    else{
+      h+=`<div class="chips">${AT.map(a=>`<button class="chip ${a==fa?"on":""}" data-a="${a}">${a}</button>`).join("")}</div><div class="box"><div class="chips">`;
+      const m={};T.forEach(c=>attr(c,fa).forEach(v=>m[v]=(m[v]||0)+1));
+      h+=Object.keys(m).map(v=>`<button class="chip" data-f="${fa}" data-v="${v}">${v}<i>${m[v]}</i></button>`).join("")+`</div></div>`;
+    }
+  }else if(s.r!==undefined){h=rupaDetail(s.r)}else if(s.rf){h=rupaList(s.rf,s.v)}else if(s.f){
+    const L=T.map((c,i)=>i).filter(i=>attr(T[i],s.f).includes(s.v));
+    h=`<button class="back" data-b>‹ နောက်သို့</button><div class="nm">${s.f} - ${s.v}</div><div class="sub">စိတ် ${L.length} ပါး</div>`+L.map(itm).join("");
+  }else{
+    const c=T[s.i];
+    const row=(l,t)=>`<div class="box"><h3>${t||l}</h3><div class="chips">${attr(c,l).map(v=>chip(l,v)).join("")}</div></div>`;
+    h=`<button class="back" data-b>‹ နောက်သို့</button><div class="nm">${c.n}</div><div class="sub">${c.s}</div>
+    <div class="chips" style="margin-top:6px">${chip("ဘူမိ",c.pl)}${chip("ဇာတိ",c.j)}${chip("ဇော",c.jv?"ဇောစိတ်":"ဇောမဟုတ်")}</div>
+    ${row("ဝေဒနာ")}${row("ဟေတု","ဟေတု "+c.hetu.length+" ပါး")}${row("ဒွါရ")}${row("ကိစ္စ")}
+    <div class="box"><h3>အာရုံ</h3><div class="chips">${c.ar.map(v=>chip("အာရုံ",v)).join("")}</div><div class="note">${c.an}</div></div>
+    <div class="box"><h3>ယှဉ်သော စေတသိက် ${cnt(c)} ပါး</h3>
+    ${c.ce.map(g=>`<div class="note" style="margin-top:8px">${g[0]} ${g[1].length}</div><div class="chips">${g[1].map(v=>chip("စေတသိက်",v.replace("*","")).replace(">"+v.replace("*","")+"<",">"+v+"<")).join("")}</div>`).join("")}
+    ${JSON.stringify(c.ce).includes("*")?`<div class="note">* ပါသော စေတသိက်သည် တစ်ခါတစ်ရံသာ ယှဉ်သော်လည်း အရေအတွက်ထဲ ပါဝင်သည်။</div>`:""}</div>`;
+  }
+  $("app").innerHTML=h;scrollTo(0,0);
+}
+$("app").onclick=e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.t){tab=b.dataset.t;render()}
+  else if(b.dataset.a){fa=b.dataset.a;render()}
+  else if(b.dataset.i!==undefined){st.push({i:+b.dataset.i});render()}
+  else if(b.dataset.ri!==undefined){st.push({r:+b.dataset.ri});render()}
+  else if(b.dataset.rf){st.push({rf:b.dataset.rf,v:b.dataset.v});render()}
+  else if(b.dataset.f){st.push({f:b.dataset.f,v:b.dataset.v});render()}
+  else if(b.dataset.b!==undefined){st.pop();render()}
+};
+render();
+</script>
+</body>
+</html>
