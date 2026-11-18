@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>အဘိဓမ္မာ ခွဲခြမ်းစိတ်ဖြာခြင်း</title>
+<title>အဘိဓမ္မာ လေ့ကျင့်ခန်း</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;600;700&display=swap">
 <style>
 :root{
@@ -38,8 +38,8 @@ button:active{transform:scale(.98)}
 .seg{display:flex;gap:6px;background:var(--tint);border-radius:14px;padding:5px;margin-bottom:16px;overflow-x:auto;scrollbar-width:none}.seg::-webkit-scrollbar{display:none}
 .seg button{flex:1 0 auto;white-space:nowrap;border:0;background:transparent;padding:7px 12px;font-size:13px;line-height:1.5;border-radius:10px;color:var(--mu)}
 .seg button[aria-pressed="true"]{background:var(--ac);color:var(--act);font-weight:700;box-shadow:var(--sh)}
-.it{display:block;width:100%;text-align:left;border:1px solid var(--ln);border-left:5px solid var(--gold);background:var(--sf);border-radius:14px;padding:10px 14px;margin:8px 0;box-shadow:var(--sh)}
-.it:hover{border-color:var(--ac)}
+.it { display: block; width: 100%; text-align: left; border: 2px solid var(--gold); background: var(--sf); border-radius: 14px; padding: 10px 14px; margin: 8px 0; box-shadow: var(--sh); transition: all .15s ease; } 
+.it:hover { border-color: var(--gold); box-shadow: 0 0 10px rgba(245, 190, 29, 0.4); }
 .it b{font-weight:600}
 .it small{display:block;color:var(--mu);font-size:13px;line-height:1.65;margin-top:2px}
 details{margin-bottom:10px}
@@ -56,8 +56,8 @@ details[open]>summary::before{transform:rotate(90deg)}
 .back{border:0;background:var(--tint);color:var(--ac);font-size:14px;font-weight:600;padding:4px 16px;border-radius:999px;margin-bottom:12px;line-height:2}
 .back:hover{background:var(--ac);color:var(--act)}
 .box{background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:14px 16px;margin:12px 0;box-shadow:var(--sh)}
-.box h3{margin:0 0 8px;font-size:14px;color:var(--mu);font-weight:600;display:flex;align-items:center}
-.box h3::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);margin-right:8px;flex:none}
+.box h3{margin:0 0 8px;font-size:14px;color:var(--gold);font-weight:700;display:flex;align-items:center}
+.box h3::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);margin-right:8px;flex:none;box-shadow:0 0 6px var(--gold)}
 .nm{font-size:22px;font-weight:700;margin:4px 0 2px;line-height:1.6}
 .sub{color:var(--mu);font-size:14px}
 .note{font-size:13px;color:var(--mu);margin-top:6px;line-height:1.7}
@@ -73,7 +73,7 @@ button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 </style>
 </head>
 <body>
-<header><h1>🪷 အဘိဓမ္မာ ခွဲခြမ်းစိတ်ဖြာခြင်း</h1><p>စိတ် · စေတသိက် · ရုပ် · ဝီထိ · ကျက်ရန် · ကိုယ်ပိုင်မှတ်စု</p></header>
+<header><h1>🪷 အဘိဓမ္မာ လေ့ကျင့်ခန်း</h1><p>စိတ် · စေတသိက် · ရုပ် · ဝီထိ · ကျက်ရန် · ကိုယ်ပိုင်မှတ်စု</p></header>
 <div id="app"></div>
 <script>
 const O=["ပထမ","ဒုတိယ","တတိယ","စတုတ္ထ","ပဉ္စမ","ဆဋ္ဌ","သတ္တမ","အဋ္ဌမ"];
@@ -116,7 +116,7 @@ AH("အဟေတုက ကြိယာ ၃","ကြိယာ","ဟသိတု�
 for(const j of ["ကုသိုလ်","ဝိပါက်","ကြိယာ"])for(let i=0;i<8;i++){
   const so=i<4,na=[0,1,4,5].includes(i),sa=i%2;
   const an=j=="ဝိပါက်"?KAMA:j=="ကုသိုလ်"?(na?"အရဟတ္တမဂ်၊ ဖိုလ်မှ လွဲ၍ အာရုံ ၆ ပါး":NOLOK):(na?ALL:NOLOK);
-  add({g:`မဟာ${j} ၈`,n:`မဟာ${j} ${O[i]}စိတ်`,s:`${so?"သောမနဿ":"ဥပေက္ခာ"}၊ ဉာဏ${na?"သမ္ပယုတ်":"ဝိပ္ပယုတ်"}၊ ${sa?"သသင်္ခါရိက":"အသင်္ခါရိက"}`,pl:"ကာမ",j,ve:so?"သောမနဿ":"ဥပေက္ခာ",
+  add({g:`မဟာ${j} ၈`,n:`မဟာ${j} ${O[i]}စိတ်`,s:`${so?"သောမနဿ":"ဥပေက္ခာ"}၊ ဉာဏ${na?"သမ္ပယုတ်":"ဝိပ္ပယုတ်"}၊ ${sa?"သသခွဲခြမ်းစိတ်ဖြာခြင်းရိက":"အသင်္ခါရိက"}`,pl:"ကာမ",j,ve:so?"သောမနဿ":"ဥပေက္ခာ",
   hetu:na?["အလောဘ","အဒေါသ","အမောဟ"]:["အလောဘ","အဒေါသ"],
   ce:[...base(so?"111111":"111101"),["သောဘနသာဓာရဏ",SOB],...(j=="ကုသိုလ်"?[["ဝိရတီ",VIR]]:[]),...(j!="ဝိပါက်"?[["အပ္ပမညာ",APP]]:[]),...(na?[["ပညိန္ဒြေ",PS]]:[])],
   dv:j=="ဝိပါက်"?[...D6,VM]:D6,kc:j=="ဝိပါက်"?["ပဋိသန္ဓေ","ဘဝင်","စုတိ","တဒါရုံ"]:["ဇော"],ar:A6,an,jv:j=="ဝိပါက်"?0:1});
@@ -547,7 +547,7 @@ function examHome(){
 function render(){
   const s=st[st.length-1];let h="";
   if(!s){
-    h=sysBar()+`<div class="seg"><button data-t="list" aria-pressed="${tab=="list"}">စိတ်စာရင်း</button><button data-t="flt" aria-pressed="${tab=="flt"}">အချက်ဖြင့် ရှာရန်</button><button data-t="study" aria-pressed="${tab=="study"}">ကျက်ရန်</button><button data-t="exam" aria-pressed="${tab=="exam"}">မေးခွန်း</button><button data-t="vithi" aria-pressed="${tab=="vithi"}">ဝီထိ</button><button data-t="rupa" aria-pressed="${tab=="rupa"}">ရုပ် ၂၈</button><button data-t="gl" aria-pressed="${tab=="gl"}">အဓိပ္ပာယ်</button><button data-t="mine" aria-pressed="${tab=="mine"}">ကိုယ်ပိုင်</button></div>`;
+    h=sysBar()+`<div class="seg"><button data-t="list" aria-pressed="${tab=="list"}">စိတ်စာရင်း</button><button data-t="flt" aria-pressed="${tab=="flt"}">အချက်ဖြင့် ရှာရန်</button><button data-t="vithi" aria-pressed="${tab=="vithi"}">ဝီထိ</button><button data-t="rupa" aria-pressed="${tab=="rupa"}">ရုပ် ၂၈</button><button data-t="gl" aria-pressed="${tab=="gl"}">အဓိပ္ပါယ်</button><button data-t="study" aria-pressed="${tab=="study"}">ကျက်ရန်</button><button data-t="exam" aria-pressed="${tab=="exam"}">မေးခွန်း</button><button data-t="mine" aria-pressed="${tab=="mine"}">ကိုယ်ပိုင်</button></div>`;
     if(tab=="gl"){h+=glHome()}else if(tab=="mine"){h+=mineHome()}else if(tab=="study"){h+=studyHome()}else if(tab=="exam"){h+=examHome()}else if(tab=="vithi"){h+=vithiHome()}else if(tab=="rupa"){h+=rupaHome()}else if(tab=="list"){const seen=[];T.forEach(c=>{if(vis(c)&&!seen.includes(c.g))seen.push(c.g)});
       h+=seen.map(g=>`<details><summary>${g}</summary>${T.map((c,i)=>c.g==g&&vis(c)?itm(i):"").join("")}</details>`).join("")}
     else{
