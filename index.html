@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>အဘိဓမ္မာ-Analysi</title>
+<title>အဘိဓမ္မာ ခွဲခြမ်းစိတ်ဖြာခြင်း</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;600;700&display=swap">
 <style>
 :root{--bg:#F3F0FA;--sf:#FFFFFF;--ink:#1F1D3F;--mu:#5E5B84;--ln:#E1DDF1;--gold:#D99A00;--gt:#2B1F00;--ac:#3B3A8C;--act:#FFFFFF;--tint:#EAE6F8;--sh:0 1px 2px rgba(40,30,110,.06),0 4px 14px rgba(40,30,110,.07);--hd1:#2B2A6B;--hd2:#5043B0;
@@ -11,15 +11,15 @@ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:en
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11102A;--sf:#1C1A41;--ink:#EFECFB;--mu:#ADA9D6;--ln:#322F66;--gold:#F5BE1D;--gt:#241900;--ac:#9391F2;--act:#13123A;--tint:#262350;--sh:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25);--hd1:#1A194D;--hd2:#2E2A78}}
 :root[data-theme="dark"]{--bg:#11102A;--sf:#1C1A41;--ink:#EFECFB;--mu:#ADA9D6;--ln:#322F66;--gold:#F5BE1D;--gt:#241900;--ac:#9391F2;--act:#13123A;--tint:#262350;--sh:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25);--hd1:#1A194D;--hd2:#2E2A78}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Myanmar","Padauk","Myanmar Text",sans-serif;line-height:1.85;font-size:16px}
+html,body{margin:0;background:var(--b--inklor:var(--ink);font-family:"Noto Sans Myanmar","Padauk","Myanmar Text",sans-serif;line-height:1.85;font-size:16px}
 body{max-width:600px;margin:0 auto;padding:12px 14px 48px}
 header{margin:-12px -14px 14px;padding:20px 20px 18px;background:linear-gradient(135deg,var(--hd1),var(--hd2));color:#fff;border-radius:0 0 24px 24px;box-shadow:var(--sh)}
 header h1{font-size:21px;margin:0;font-weight:700;line-height:1.5;color:#fff}
 header p{margin:2px 0 0;font-size:13px;color:#D8D4F7;line-height:1.6}
 button{font:inherit;color:inherit;cursor:pointer;transition:transform .12s,background .15s,border-color .15s}
 button:active{transform:scale(.98)}
-.seg{display:flex;gap:4px;background:var(--tint);border-radius:14px;padding:4px;margin-bottom:14px}
-.seg button{flex:1;border:0;background:transparent;padding:5px 2px;font-size:13px;line-height:1.5;border-radius:10px;color:var(--mu)}
+.seg{display:flex;gap:4px;background:var(--tint);border-radius:14px;padding:4px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}.seg::-webkit-scrollbar{display:none}
+.seg button{flex:1 0 auto;white-space:nowrap;border:0;background:transparent;padding:5px 11px;font-size:13px;line-height:1.5;border-radius:10px;color:var(--mu)}
 .seg button[aria-pressed="true"]{background:var(--ac);color:var(--act);font-weight:700;box-shadow:var(--sh)}
 .it{display:block;width:100%;text-align:left;border:1px solid var(--ln);border-left:5px solid var(--gold);background:var(--sf);border-radius:14px;padding:7px 14px;margin:8px 0;box-shadow:var(--sh)}
 .it b{font-weight:600}
@@ -40,11 +40,18 @@ details[open]>summary::before{transform:rotate(90deg)}
 .nm{font-size:22px;font-weight:700;margin:4px 0 0;line-height:1.6}
 .sub{color:var(--mu);font-size:14px}
 .note{font-size:13px;color:var(--mu);margin-top:6px;line-height:1.7}
+.fm{display:block;width:100%;border:1px solid var(--ln);background:var(--bg);color:var(--ink);border-radius:12px;padding:6px 12px;font:inherit;margin:6px 0}
+.th{display:block;width:100%;border:0;padding:0;background:none;border-radius:12px;overflow:hidden;margin-bottom:6px}
+.th img{display:block;width:100%;max-height:320px;object-fit:cover}
+.lk{display:block;color:var(--ac);font-weight:600;text-decoration:none;word-break:break-all}
+.lk small{display:block;color:var(--mu);font-weight:400;font-size:13px}
+.row2{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:4px}
+textarea.fm{min-height:120px;resize:vertical;line-height:1.7}
 button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 </style>
 </head>
 <body>
-<header><h1>🪷 အဘိဓမ္မာ</h1><p>စိတ် · စေတသိက် · ရုပ် · ဝီထိ · ကျက်ရန်</p></header>
+<header><h1>🪷 အဘိဓမ္မာ ခွဲခြမ်းစိတ်ဖြာခြင်း</h1><p>စိတ် · စေတသိက် · ရုပ် · ဝီထိ · ကျက်ရန် · ကိုယ်ပိုင်မှတ်စု</p></header>
 <div id="app"></div>
 <script>
 const O=["ပထမ","ဒုတိယ","တတိယ","စတုတ္ထ","ပဉ္စမ","ဆဋ္ဌ","သတ္တမ","အဋ္ဌမ"];
@@ -233,6 +240,105 @@ const pSave=()=>{try{localStorage.setItem(PK,JSON.stringify(PG))}catch(e){}};
 const rec=(q,ok)=>{const k=ST.d+"|"+q.q,o=PG[k]||{c:0,w:0};ok?o.c++:o.w++;o.l=ok?1:0;PG[k]=o;pSave()};
 const nextQ=d=>{if(Math.random()<.5)for(let i=0;i<40;i++){const q=mkQ(d),o=PG[d+"|"+q.q];if(o&&o.l==0)return q}return mkQ(d)};
 const progLine=()=>{const ks=Object.keys(PG).filter(k=>k.startsWith(ST.d+"|")),m=ks.filter(k=>PG[k].l==1).length,w=ks.length-m;return `<div class="note">မှတ်ထားချက် - မှန်ပြီး ${m} · ပြန်ကျက်ရန် ${w} <button class="chip" data-rs="1" style="margin-left:6px">ရှင်းမည်</button></div>`};
+const GL=[
+["ပရမတ္ထ","အခြေခံ","ပညတ်မဟုတ်ဘဲ မိမိ၏ သဘာဝလက္ခဏာကို အမှန်ကိုင်ထားသော တရား။ စိတ်၊ စေတသိက်၊ ရုပ်၊ နိဗ္ဗာန် ဟူ၍ ၄ ပါး ရှိသည်။"],
+["စိတ်","အခြေခံ","အာရုံကို သိခြင်း သဘော (အာရုံကို သိတတ်သော တရား)။ စိတ်သည် အာရုံကို သိရုံသာ သိပြီး ခံစားခြင်း၊ မှတ်ခြင်း၊ စေ့ဆော်ခြင်း စသည်တို့ကို စေတသိက်များက လုပ်ဆောင်သည်။"],
+["စေတသိက်","အခြေခံ","စိတ်နှင့် အတူဖြစ်၊ အတူချုပ်၊ အာရုံတူ၊ ဝတ္ထုတူ ဖြစ်သော စိတ်နှင့်ယှဉ်သည့် တရား။ စိတ်အားလုံးတွင် ၅၂ ပါး ရှိသည် (အညသမာန ၁၃၊ အကုသိုလ် ၁၄၊ သောဘန ၂၅)။"],
+["ရုပ်","အခြေခံ","အေးခြင်း၊ ပူခြင်း စသော ဆန့်ကျင်ဘက် အခြေအနေများနှင့် တွေ့လျှင် ပြောင်းလဲပျက်စီးတတ်သော သဘော။ ရုပ်တရား ၂၈ ပါး ရှိသည်။"],
+["နိဗ္ဗာန်","အခြေခံ","ကိလေသာနှင့် ဒုက္ခအားလုံး ချုပ်ငြိမ်းရာ၊ အကြောင်းကြောင့် မဖြစ်သော (အသင်္ခတ) ပရမတ္ထတရား။ လောကုတ္တရာစိတ်၏ အာရုံ ဖြစ်သည်။"],
+["ဘူမိ","စိတ်ခွဲခြားပုံ","စိတ်တို့ ဖြစ်ပေါ်ရာ နယ်ပယ်၊ အဆင့်။ ကာမ၊ ရူပ၊ အရူပ၊ လောကုတ္တရာ ဟူ၍ ၄ ပါး။"],
+["ဇာတိ","စိတ်ခွဲခြားပုံ","စိတ်ကို ကံနှင့် ကံ၏ အကျိုး ဆက်စပ်ပုံအရ ခွဲခြားခြင်း။ ကုသိုလ်၊ အကုသိုလ်၊ ဝိပါက်၊ ကြိယာ ဟူ၍ ၄ ပါး။"],
+["ကုသိုလ်","စိတ်ခွဲခြားပုံ","ကောင်းသော၊ အပြစ်မရှိသော၊ ချမ်းသာအကျိုး ပေးတတ်သော စိတ်။ အလောဘ၊ အဒေါသ အမြစ်ရှိသည်။ စိတ်အားဖြင့် ၂၁ ပါး (၈၉ စနစ်)။"],
+["အကုသိုလ်","စိတ်ခွဲခြားပုံ","မကောင်းသော၊ အပြစ်ရှိသော၊ ဆင်းရဲအကျိုး ပေးတတ်သော စိတ်။ လောဘ၊ ဒေါသ၊ မောဟ အမြစ်ရှိသည်။ ၁၂ ပါး။"],
+["ဝိပါက်","စိတ်ခွဲခြားပုံ","ကုသိုလ်/အကုသိုလ်ကံ၏ အကျိုးအဖြစ် ဖြစ်သော စိတ်။ ကိုယ်တိုင် ကံအသစ် မဖြစ်စေ။ ၃၆ ပါး (၈၉ စနစ်)။"],
+["ကြိယာ","စိတ်ခွဲခြားပုံ","ကံလည်း မဖြစ်စေ၊ ကံ၏ အကျိုးလည်း မဟုတ်ဘဲ ပြုရုံမျှသာ ဖြစ်သော စိတ်။ ရဟန္တာတို့၏ စိတ်နှင့် အာဝဇ္ဇန်းစိတ်များ။ ၂၀ ပါး (၈၉ စနစ်)။"],
+["အဟေတုက","စိတ်ခွဲခြားပုံ","ဟေတု (အမြစ်) မပါသော စိတ်။ ၁၈ ပါး။"],
+["မဟဂ္ဂုတ်","စိတ်ခွဲခြားပုံ","ရူပါဝစရနှင့် အရူပါဝစရ ဈာန်စိတ်များ။ ကာမစိတ်ထက် ကြီးမြတ်သော စိတ်များ။"],
+["အသင်္ခါရိက / သသင်္ခါရိက","စိတ်ခွဲခြားပုံ","အသင်္ခါရိက = ကိုယ်တိုင် စေ့ဆော်မှု၊ သူတပါး တိုက်တွန်းမှု မလိုဘဲ သဘာဝအတိုင်း ဖြစ်သော။ သသင်္ခါရိက = ကိုယ်တိုင်ဖြစ်စေ သူတပါးကြောင့်ဖြစ်စေ စေ့ဆော်မှု၊ နှိုးဆော်မှုနှင့် ဖြစ်သော။"],
+["သမ္ပယုတ် / ဝိပ္ပယုတ်","စိတ်ခွဲခြားပုံ","စိတ်သည် ဒိဋ္ဌိ သို့မဟုတ် ဉာဏ်နှင့် ယှဉ်ခြင်းကို သမ္ပယုတ်၊ မယှဉ်ခြင်းကို ဝိပ္ပယုတ် ဟု ခေါ်သည်။"],
+["ဟေတု","ဟေတု ၆ ပါး","စိတ်၏ အမြစ်။ ဟေတု ၆ ပါး - လောဘ၊ ဒေါသ၊ မောဟ၊ အလောဘ၊ အဒေါသ၊ အမောဟ။ ဟေတုရှိသော စိတ်သည် ခိုင်မာစွာ တည်သည်။"],
+["လောဘ","ဟေတု ၆ ပါး","အာရုံကို တပ်မက်ခြင်း၊ ကပ်ငြိခြင်း သဘော။ အကုသိုလ်ဟေတု။"],
+["ဒေါသ","ဟေတု ၆ ပါး","အာရုံကို မနှစ်သက်ခြင်း၊ ဆိုးသွမ်းခြင်း၊ ပျက်စီးစေလိုခြင်း သဘော။ အကုသိုလ်ဟေတု။"],
+["မောဟ","ဟေတု ၆ ပါး","အမှန်ကို မသိခြင်း၊ မိုက်မဲခြင်း သဘော။ အကုသိုလ်စိတ် အားလုံးနှင့် ယှဉ်သည်။"],
+["အလောဘ","ဟေတု ၆ ပါး","မတပ်မက်ခြင်း၊ စွန့်လွှတ်ခြင်း သဘော။ ကုသိုလ်ဟေတု / အဗျာကတဟေတု။"],
+["အဒေါသ","ဟေတု ၆ ပါး","မဆိုးသွမ်းခြင်း၊ ချစ်ခင်မေတ္တာ ထားခြင်း သဘော။ ကုသိုလ်ဟေတု / အဗျာကတဟေတု။"],
+["အမောဟ","ဟေတု ၆ ပါး","အမှန်ကို သိခြင်း၊ ပညာ၊ ဉာဏ်။ ဉာဏသမ္ပယုတ်စိတ်များနှင့်သာ ယှဉ်သည်။"],
+["ဝေဒနာ","ဝေဒနာ ၅ ပါး","အာရုံ၏ အရသာကို ခံစားခြင်း သဘော။ သုခ၊ ဒုက္ခ၊ သောမနဿ၊ ဒေါမနဿ၊ ဥပေက္ခာ ဟူ၍ ၅ ပါး။"],
+["သုခ","ဝေဒနာ ၅ ပါး","ကိုယ်ကာယ၌ ချမ်းသာစွာ ခံစားခြင်း။ ကုသိုလ်ဝိပါက် ကာယဝိညာဏ်နှင့်သာ ယှဉ်သည်။"],
+["ဒုက္ခ","ဝေဒနာ ၅ ပါး","ကိုယ်ကာယ၌ ဆင်းရဲစွာ ခံစားခြင်း။ အကုသိုလ်ဝိပါက် ကာယဝိညာဏ်နှင့်သာ ယှဉ်သည်။"],
+["သောမနဿ","ဝေဒနာ ၅ ပါး","စိတ်၌ ဝမ်းမြောက်နှစ်သက်စွာ ခံစားခြင်း။"],
+["ဒေါမနဿ","ဝေဒနာ ၅ ပါး","စိတ်၌ ဆင်းရဲ မနှစ်သက်စွာ ခံစားခြင်း။ ဒေါသမူစိတ် ၂ ပါးနှင့်သာ ယှဉ်သည်။"],
+["ဥပေက္ခာ","ဝေဒနာ ၅ ပါး","သုခလည်း မဟုတ်၊ ဒုက္ခလည်း မဟုတ်သော အလယ်အလတ် ခံစားခြင်း။"],
+["ဒွါရ","စိတ်၏ အချက်များ","စိတ်စေတသိက်တို့ ဝင်ရောက်ဖြစ်ပေါ်ရာ တံခါး။ စက္ခု၊ သောတ၊ ဃာန၊ ဇိဝှါ၊ ကာယ၊ မနော ဒွါရ ၆ ပါး။ ဒွါရမပါဘဲ ဖြစ်သော စိတ်ကို ဒွါရဝိမုတ် ဟု ခေါ်သည်။"],
+["အာရုံ","စိတ်၏ အချက်များ","စိတ်စေတသိက်တို့ သိအပ်သော အရာ။ ရူပါရုံ၊ သဒ္ဒါရုံ၊ ဂန္ဓာရုံ၊ ရသာရုံ၊ ဖောဋ္ဌဗ္ဗာရုံ၊ ဓမ္မာရုံ ၆ ပါး။"],
+["ကိစ္စ","စိတ်၏ အချက်များ","စိတ်တစ်ခုချင်းစီ၏ လုပ်ငန်းဆောင်တာ။ ၁၄ ပါး (ပဋိသန္ဓေ၊ ဘဝင်၊ အာဝဇ္ဇန်း၊ ဒဿန၊ သဝန၊ ဃာယန၊ သာယန၊ ဖုသန၊ သမ္ပဋိစ္ဆိန်၊ သန္တီရဏ၊ ဝုဋ္ဌော၊ ဇော၊ တဒါရုံ၊ စုတိ)။"],
+["ဇော","စိတ်၏ အချက်များ","အာရုံကို အပြည့်အဝ ခံစားသုံးစွဲသော စိတ်၊ ကုသိုလ်/အကုသိုလ်ကံ ဖြစ်စေသော စိတ်။ ဇောစိတ် ၅၅ ပါး (၈၉ စနစ်)။ ကာမဝီထိတွင် ၇ ကြိမ်ဖြစ်လေ့ရှိသည်။"],
+["ဘဝင်","စိတ်၏ အချက်များ","ဘဝတစ်ခုကို အဆက်မပြတ် ထိန်းသိမ်းပေးသော စိတ်။ ဝီထိစိတ် မဖြစ်ချိန်၌ ဖြစ်နေသည်။"],
+["ပဋိသန္ဓေ","စိတ်၏ အချက်များ","ဘဝသစ်၏ အစ ပထမဆုံးစိတ်။ ပဋိသန္ဓေ၊ ဘဝင်၊ စုတိ ကိစ္စကို စိတ် ၁၉ ပါးက ဆောင်ရွက်သည်။"],
+["စုတိ","စိတ်၏ အချက်များ","ဘဝတစ်ခု၏ နောက်ဆုံးစိတ်။ ပဋိသန္ဓေနှင့် ဘဝင်ကဲ့သို့ စိတ် ၁၉ ပါးက ဆောင်ရွက်သည်။"],
+["တဒါရုံ","စိတ်၏ အချက်များ","ဇောပြီးနောက် ထိုအာရုံကိုပင် ဆက်ယူသော စိတ်။ ကာမဝီထိ၌သာ ဖြစ်နိုင်သည်။ ၁၁ ပါး။"],
+["ဝီထိ","ဝီထိ","အာရုံတစ်ခုကို သိစေသော စိတ်များ ဘဝင်မှ ထ၍ အစဉ်လိုက်ဖြစ်ပြီး ဘဝင်သို့ ပြန်ကျသည့် စိတ်အစဉ်။ ပဉ္စဒွါရဝီထိ၊ မနောဒွါရဝီထိ စသည်ဖြင့် ရှိသည်။"],
+["အညသမာန","စေတသိက် အုပ်စုများ","ကုသိုလ်၊ အကုသိုလ် နှစ်မျိုးလုံးနှင့် ယှဉ်နိုင်သော စေတသိက် ၁၃ ပါး။ သဗ္ဗစိတ္တသာဓာရဏ ၇ နှင့် ပကိဏ္ဏက ၆ တို့ ပါဝင်သည်။"],
+["သဗ္ဗစိတ္တသာဓာရဏ","စေတသိက် အုပ်စုများ","စိတ်အားလုံးနှင့် ယှဉ်သော စေတသိက် ၇ ပါး - ဖဿ၊ ဝေဒနာ၊ သညာ၊ စေတနာ၊ ဧကဂ္ဂတာ၊ ဇီဝိတိန္ဒြေ၊ မနသိကာရ။"],
+["ပကိဏ္ဏက","စေတသိက် အုပ်စုများ","စိတ်အချို့နှင့်သာ ယှဉ်သော စေတသိက် ၆ ပါး - ဝိတက်၊ ဝိစာရ၊ အဓိမောက္ခ၊ ဝီရိယ၊ ပီတိ၊ ဆန္ဒ။"],
+["အကုသိုလ်စေတသိက်","စေတသိက် အုပ်စုများ","အကုသိုလ်စိတ်နှင့်သာ ယှဉ်သော စေတသိက် ၁၄ ပါး - မောဟစတုက် ၄၊ လောဘတိက် ၃၊ ဒေါသစတုက် ၄၊ ထိနမိဒ္ဓဒုက် ၂၊ ဝိစိကိစ္ဆာ ၁။"],
+["သောဘနစေတသိက်","စေတသိက် အုပ်စုများ","လှသော (ကောင်းသော) စိတ်နှင့် ယှဉ်သော စေတသိက် ၂၅ ပါး - သောဘနသာဓာရဏ ၁၉၊ ဝိရတီ ၃၊ အပ္ပမညာ ၂၊ ပညိန္ဒြေ ၁။"],
+["ဝိရတီ","စေတသိက် အုပ်စုများ","မကောင်းမှုမှ ရှောင်ကြဉ်ခြင်း - သမ္မာဝါစာ၊ သမ္မာကမ္မန္တ၊ သမ္မာအာဇီဝ ၃ ပါး။"],
+["အပ္ပမညာ","စေတသိက် အုပ်စုများ","အကန့်အသတ်မရှိ သတ္တဝါများကို အာရုံပြုသော ကရုဏာ (သနားခြင်း)၊ မုဒိတာ (ဝမ်းမြောက်ခြင်း) ၂ ပါး။"],
+["ပညိန္ဒြေ","စေတသိက် အုပ်စုများ","အမောဟ၊ ပညာ၊ ဉာဏ်။ အမှန်အတိုင်း သိမြင်စေသော စေတသိက်။ ဉာဏသမ္ပယုတ်စိတ်နှင့်သာ ယှဉ်သည်။"]
+];
+let GN={};try{GN=JSON.parse(localStorage.getItem("abhi-gl-note")||"{}")}catch(e){}
+let GCUR=null;
+const glFind=v=>GL.find(g=>g[0]==v||g[0].split(" / ").includes(v));
+const glBox=v=>{const g=glFind(v);return g?`<div class="box"><h3>အဓိပ္ပာယ်</h3>${g[2]}${GN[g[0]]?`<div class="note">ကိုယ်ပိုင်မှတ်စု - ${esc(GN[g[0]])}</div>`:""}</div>`:""};
+function glHome(){
+  const gs=[];GL.forEach(g=>{if(!gs.includes(g[1]))gs.push(g[1])});
+  return `<div class="note" style="margin:0 0 6px">အဓိပ္ပာယ်ကို နှိပ်ကြည့်ပါ။ ကိုယ့်သင်ရိုးအတိုင်း မှတ်စုလည်း ရေးထားနိုင်သည်။</div>`+gs.map(k=>`<details open><summary>${k}</summary>${GL.map((g,i)=>g[1]==k?`<button class="it" data-gi="${i}"><b>${g[0]}</b>${GN[g[0]]?`<small>✎ ကိုယ်ပိုင်မှတ်စု ပါသည်</small>`:""}</button>`:"").join("")}</details>`).join("");
+}
+function glView(i){
+  const g=GL[i];GCUR=g[0];
+  return `<button class="back" data-b>‹ နောက်သို့</button><div class="nm">${g[0]}</div><div class="sub">${g[1]}</div><div class="box"><h3>အဓိပ္ပာယ်</h3>${g[2]}</div><div class="box"><h3>ကိုယ်ပိုင်မှတ်စု</h3><textarea id="gnote" class="fm" placeholder="သင်တန်းမှ သင်ထားတာ၊ ကိုယ်ပိုင်အဓိပ္ပာယ် ရေးထားရန်">${esc(GN[g[0]]||"")}</textarea><div class="note">ရေးသည်နှင့် ဤဖုန်းထဲတွင် အလိုအလျောက် သိမ်းသည်။</div></div>`;
+}
+const MC=["စိတ်","စေတသိက်","ရုပ်","ဝီထိ","အခြား"];
+let MI=[],DBX=null,MF="အားလုံး",MM="",MD=null,MZ=1;
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const dbOpen=()=>new Promise((res,rej)=>{try{const r=indexedDB.open("abhi-mine",1);r.onupgradeneeded=()=>r.result.createObjectStore("it",{keyPath:"id"});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}catch(e){rej(e)}});
+async function mLoad(){try{DBX=await dbOpen();await new Promise(res=>{const q=DBX.transaction("it").objectStore("it").getAll();q.onsuccess=()=>{MI=q.result.sort((a,b)=>b.t-a.t);res()};q.onerror=()=>res()})}catch(e){DBX=null}if(tab=="mine"&&!st.length)render()}
+const mPut=o=>{MI.unshift(o);if(DBX)try{DBX.transaction("it","readwrite").objectStore("it").put(o)}catch(e){}};
+const mDel=id=>{MI=MI.filter(x=>String(x.id)!=String(id));if(DBX)try{DBX.transaction("it","readwrite").objectStore("it").delete(Number(id))}catch(e){}};
+const readImg=f=>new Promise((res,rej)=>{const fr=new FileReader();fr.onerror=rej;fr.onload=()=>{const im=new Image();im.onerror=rej;im.onload=()=>{const k=Math.min(1,1600/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",.85))};im.src=fr.result};fr.readAsDataURL(f)});
+function mSaveLink(){
+  let u=($("mur").value||"").trim();
+  if(!u){MM="Link ထည့်ပါ";return render()}
+  if(!/^https?:\/\//i.test(u))u="https://"+u;
+  let host;try{host=new URL(u).hostname}catch(e){MM="Link မမှန်ပါ";return render()}
+  mPut({id:Date.now(),t:Date.now(),type:"link",cat:$("mcat").value,title:($("mti").value||"").trim()||host,url:u,host});
+  MM="သိမ်းပြီးပါပြီ";render();
+}
+function mineHome(){
+  const L=MI.filter(x=>MF=="အားလုံး"||x.cat==MF);
+  let h=MM?`<div class="note" style="margin:0 0 8px">${MM}</div>`:"";MM="";
+  h+=`<details class="box" ${MI.length?"":"open"}><summary>＋ ပုံ / ဇယား / video link ထည့်ရန်</summary>
+  <select id="mcat" class="fm">${MC.map(c=>`<option>${c}</option>`).join("")}</select>
+  <input id="mti" class="fm" placeholder="ခေါင်းစဉ် (မဖြည့်လည်း ရသည်)">
+  <input id="mur" class="fm" inputmode="url" placeholder="Video link (YouTube စသည်) - link သိမ်းမှသာ ဖြည့်ပါ">
+  <div class="chips"><button class="chip on" data-ml="1">Link သိမ်းမည်</button><button class="chip on" data-mi="1">ပုံ / ဇယား ရွေးမည်</button></div>
+  <input type="file" id="mfile" accept="image/*" hidden>
+  <div class="note">ပုံနှင့် link များကို ဤဖုန်း၏ browser ထဲတွင်သာ သိမ်းသည်။ browser data ဖျက်လျှင် ပျောက်နိုင်သည်။${DBX?"":" (လက်ရှိ သိမ်းဆည်း၍ မရသဖြင့် ဤအကြိမ်သာ ကျန်မည်)"}</div></details>
+  <div class="chips" style="margin:6px 0 10px">${["အားလုံး",...MC].map(c=>`<button class="chip ${MF==c?"on":""}" data-mc="${c}">${c}</button>`).join("")}</div>`;
+  if(!L.length)h+=`<div class="note">ထည့်ထားတာ မရှိသေးပါ။</div>`;
+  h+=L.map(x=>{
+    const del=`<button class="chip" data-md="${x.id}">${MD==String(x.id)?"ဧကန် ဖျက်မည်":"ဖျက်မည်"}</button>`;
+    return x.type=="img"
+      ?`<div class="box"><button class="th" data-mv="${x.id}"><img src="${x.data}" alt="${esc(x.title)}"></button><b>${esc(x.title)}</b><div class="row2"><span class="sub">${x.cat}</span>${del}</div></div>`
+      :`<div class="box"><a class="lk" href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">▶ ${esc(x.title)}<small>${esc(x.host)}</small></a><div class="row2"><span class="sub">${x.cat}</span>${del}</div></div>`;
+  }).join("");
+  return h;
+}
+function mineView(id){
+  const x=MI.find(y=>String(y.id)==String(id));if(!x)return "";
+  return `<button class="back" data-b>‹ နောက်သို့</button><div class="nm">${esc(x.title)}</div><div class="sub">${x.cat}</div><div class="chips" style="margin:8px 0"><button class="chip on" data-mz="1">ချဲ့/ချုံ့ ×${MZ}</button></div><div style="overflow:auto;border-radius:12px;border:1px solid var(--ln)"><img src="${x.data}" alt="${esc(x.title)}" style="display:block;width:${MZ*100}%;max-width:none"></div>`;
+}
 const $=id=>document.getElementById(id);
 const AT=["ဝေဒနာ","ဟေတု","ဒွါရ","ကိစ္စ","ဇော","အာရုံ","စေတသိက်","ဇာတိ","ဘူမိ"];
 const flat=c=>c.ce.flatMap(g=>g[1].map(x=>x.replace("*","")));
@@ -244,17 +350,17 @@ const chip=(f,v)=>`<button class="chip" data-f="${f}" data-v="${v}">${v}</button
 function render(){
   const s=st[st.length-1];let h="";
   if(!s){
-    h=sysBar()+`<div class="seg"><button data-t="list" aria-pressed="${tab=="list"}">စိတ်စာရင်း</button><button data-t="flt" aria-pressed="${tab=="flt"}">အချက်ဖြင့် ရှာရန်</button><button data-t="study" aria-pressed="${tab=="study"}">ကျက်ရန်</button><button data-t="vithi" aria-pressed="${tab=="vithi"}">ဝီထိ</button><button data-t="rupa" aria-pressed="${tab=="rupa"}">ရုပ် ၂၈</button></div>`;
-    if(tab=="study"){h+=studyHome()}else if(tab=="vithi"){h+=vithiHome()}else if(tab=="rupa"){h+=rupaHome()}else if(tab=="list"){const seen=[];T.forEach(c=>{if(vis(c)&&!seen.includes(c.g))seen.push(c.g)});
+    h=sysBar()+`<div class="seg"><button data-t="list" aria-pressed="${tab=="list"}">စိတ်စာရင်း</button><button data-t="flt" aria-pressed="${tab=="flt"}">အချက်ဖြင့် ရှာရန်</button><button data-t="study" aria-pressed="${tab=="study"}">ကျက်ရန်</button><button data-t="vithi" aria-pressed="${tab=="vithi"}">ဝီထိ</button><button data-t="rupa" aria-pressed="${tab=="rupa"}">ရုပ် ၂၈</button><button data-t="gl" aria-pressed="${tab=="gl"}">အဓိပ္ပာယ်</button><button data-t="mine" aria-pressed="${tab=="mine"}">ကိုယ်ပိုင်</button></div>`;
+    if(tab=="gl"){h+=glHome()}else if(tab=="mine"){h+=mineHome()}else if(tab=="study"){h+=studyHome()}else if(tab=="vithi"){h+=vithiHome()}else if(tab=="rupa"){h+=rupaHome()}else if(tab=="list"){const seen=[];T.forEach(c=>{if(vis(c)&&!seen.includes(c.g))seen.push(c.g)});
       h+=seen.map(g=>`<details><summary>${g}</summary>${T.map((c,i)=>c.g==g&&vis(c)?itm(i):"").join("")}</details>`).join("")}
     else{
       h+=`<div class="chips">${AT.map(a=>`<button class="chip ${a==fa?"on":""}" data-a="${a}">${a}</button>`).join("")}</div><div class="box"><div class="chips">`;
       const m={};T.filter(vis).forEach(c=>attr(c,fa).forEach(v=>m[v]=(m[v]||0)+1));
       h+=Object.keys(m).map(v=>`<button class="chip" data-f="${fa}" data-v="${v}">${v}<i>${m[v]}</i></button>`).join("")+`</div></div>`;
     }
-  }else if(s.r!==undefined){h=rupaDetail(s.r)}else if(s.rf){h=rupaList(s.rf,s.v)}else if(s.f){
+  }else if(s.g!==undefined){h=glView(s.g)}else if(s.mv!==undefined){h=mineView(s.mv)}else if(s.r!==undefined){h=rupaDetail(s.r)}else if(s.rf){h=rupaList(s.rf,s.v)}else if(s.f){
     const L=T.map((c,i)=>i).filter(i=>vis(T[i])&&attr(T[i],s.f).includes(s.v));
-    h=`<button class="back" data-b>‹ နောက်သို့</button><div class="nm">${s.f} - ${s.v}</div><div class="sub">စိတ် ${L.length} ပါး</div>`+L.map(itm).join("");
+    h=`<button class="back" data-b>‹ နောက်သို့</button><div class="nm">${s.f} - ${s.v}</div>${glBox(s.v)}<div class="sub">စိတ် ${L.length} ပါး</div>`+L.map(itm).join("");
   }else{
     const c=T[s.i];
     const row=(l,t)=>`<div class="box"><h3>${t||l}</h3><div class="chips">${attr(c,l).map(v=>chip(l,v)).join("")}</div></div>`;
@@ -273,6 +379,13 @@ $("app").onclick=e=>{
   if(b.dataset.t){tab=b.dataset.t;render()}
   else if(b.dataset.a){fa=b.dataset.a;render()}
   else if(b.dataset.i!==undefined){st.push({i:+b.dataset.i});render()}
+  else if(b.dataset.gi!==undefined){st.push({g:+b.dataset.gi});render()}
+  else if(b.dataset.mc){MF=b.dataset.mc;render()}
+  else if(b.dataset.mi!==undefined){$("mfile").click()}
+  else if(b.dataset.ml!==undefined){mSaveLink()}
+  else if(b.dataset.md){if(MD==b.dataset.md){mDel(b.dataset.md);MD=null}else MD=b.dataset.md;render()}
+  else if(b.dataset.mv){st.push({mv:b.dataset.mv});render()}
+  else if(b.dataset.mz!==undefined){MZ=MZ%3+1;render()}
   else if(b.dataset.sys!==undefined){S121=b.dataset.sys=="1";try{localStorage.setItem("sys121",S121?"1":"0")}catch(e){}ST.q=null;render()}
   else if(b.dataset.rs){Object.keys(PG).filter(k=>k.startsWith(ST.d+"|")).forEach(k=>delete PG[k]);pSave();render()}
   else if(b.dataset.sd){ST.d=b.dataset.sd;ST.q=null;ST.f=0;ST.s=0;ST.t=0;render()}
@@ -285,7 +398,13 @@ $("app").onclick=e=>{
   else if(b.dataset.f){st.push({f:b.dataset.f,v:b.dataset.v});render()}
   else if(b.dataset.b!==undefined){st.pop();render()}
 };
-render();
+render();mLoad();
+$("app").oninput=e=>{if(e.target.id=="gnote"&&GCUR!=null){GN[GCUR]=e.target.value;try{localStorage.setItem("abhi-gl-note",JSON.stringify(GN))}catch(x){}}};
+$("app").onchange=async e=>{
+  const t=e.target;if(t.id!="mfile"||!t.files[0])return;const f=t.files[0];
+  try{const d=await readImg(f);mPut({id:Date.now(),t:Date.now(),type:"img",cat:$("mcat").value,title:($("mti").value||"").trim()||f.name.replace(/\.[^.]+$/,""),data:d});MM="သိမ်းပြီးပါပြီ"}catch(err){MM="ပုံကို ဖတ်၍ မရပါ"}
+  render();
+};
 </script>
 </body>
 </html>
