@@ -70,6 +70,20 @@ details[open]>summary::before{transform:rotate(90deg)}
 .row2{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:8px}
 textarea.fm{min-height:120px;resize:vertical;line-height:1.7}
 button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+html { font-size: 18px; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Noto Sans Myanmar", "Padauk", "Myanmar Text", sans-serif; line-height: 1.85; }
+body { max-width: 600px; margin: 0 auto; padding: 12px 14px 48px; font-size: 1rem; }
+header h1 { font-size: 1.375rem; margin: 0; font-weight: 700; line-height: 1.5; color: #fff; }
+header p { margin: 4px 0 0; font-size: 0.8125rem; color: #D8D4F7; line-height: 1.6; }
+.seg button { font-size: 0.8125rem; }
+.it small { font-size: 0.8125rem; }
+.chip { font-size: 0.8125rem; }
+.chip i { font-size: 0.75rem; }
+.back { font-size: 0.875rem; }
+.box h3 { font-size: 0.875rem; }
+.nm { font-size: 1.375rem; font-weight: 700; margin: 4px 0 2px; line-height: 1.6; }
+.sub { color: var(--mu); font-size: 0.875rem; }
+.note { font-size: 0.8125rem; color: var(--mu); margin-top: 6px; line-height: 1.7; }
 </style>
 </head>
 <body>
@@ -205,7 +219,7 @@ const VV=[
 function vithiHome(){
   let h=`<div class="note">ရုပ်တစ်ခုသည် စိတ်ခဏ ၁၇ ခု ကြာတည်သည်။ အဆင့်တစ်ခုကို နှိပ်လျှင် ထိုကိစ္စ ဆောင်နိုင်သော စိတ်များ ပေါ်မည်။</div>`;
   h+=`<div class="box"><h3>ဝီထိစိတ်၏ ကိစ္စများ</h3><div class="chips">`+["အာဝဇ္ဇန်း","သမ္ပဋိစ္ဆိန်","သန္တီရဏ","ဝုဋ္ဌော","ဇော","တဒါရုံ","ဘဝင်"].map(k=>chip("ကိစ္စ",k)).join("")+`</div><div class="note">ဇော ၅၅ ပါး (၈၉ စနစ်)၊ ၁၂၁ စနစ်တွင် ၈၇ ပါး။ တဒါရုံ ၁၁ ပါး၊ ဘဝင် ၁၉ ပါး။</div></div>`;
-  VV.forEach(v=>{h+=`<div class="box"><div class="nm" style="font-size:16px">${v.n}</div><div class="chips" style="margin-top:6px">`+v.s.map((x,i)=>(i?`<span style="color:var(--mu)">›</span>`:"")+`<button class="chip" data-f="ကိစ္စ" data-v="${x[2]}">${x[0]}${x[1]>1?" ×"+x[1]:""}</button>`).join("")+`</div><div class="note">${v.m}</div></div>`});
+  VV.forEach(v=>{h+=`<div class="box"><div class="nm" style="font-size:1rem">${v.n}</div><div class="chips" style="margin-top:6px">`+v.s.map((x,i)=>(i?`<span style="color:var(--mu)">›</span>`:"")+`<button class="chip" data-f="ကိစ္စ" data-v="${x[2]}">${x[0]}${x[1]>1?" ×"+x[1]:""}</button>`).join("")+`</div><div class="note">${v.m}</div></div>`});
   return h;
 }
 const SB=[["စေတသိက် ၅၂ ကို ခွဲပါ","အညသမာန ၁၃၊ အကုသိုလ် ၁၄၊ သောဘန ၂၅"],["အညသမာန ၁၃ ကို ခွဲပါ","သဗ္ဗစိတ္တသာဓာရဏ ၇၊ ပကိဏ္ဏက ၆"],["အကုသိုလ်စေတသိက် ၁၄ ကို ခွဲပါ","မောဟစတုက် ၄၊ လောဘတိက် ၃၊ ဒေါသစတုက် ၄၊ ထိနမိဒ္ဓဒုက် ၂၊ ဝိစိကိစ္ဆာ ၁"],["သောဘနစေတသိက် ၂၅ ကို ခွဲပါ","သောဘနသာဓာရဏ ၁၉၊ ဝိရတီ ၃၊ အပ္ပမညာ ၂၊ ပညိန္ဒြေ ၁"],["စိတ် ၈၉ ကို ဘူမိအလိုက် ခွဲပါ","ကာမ ၅၄၊ ရူပ ၁၅၊ အရူပ ၁၂၊ လောကုတ္တရာ ၈"],["စိတ် ၈၉ ကို ဇာတိအလိုက် ခွဲပါ","ကုသိုလ် ၂၁၊ အကုသိုလ် ၁၂၊ ဝိပါက် ၃၆၊ ကြိယာ ၂၀"],["ရုပ် ၂၈ ကို ခွဲပါ","မဟာဘုတ် ၄၊ ဥပါဒါရုပ် ၂၄"],["ဥပါဒါရုပ် ၂၄ ကို အုပ်စုခွဲပါ","ပသာဒ ၅၊ ဂေါစရ ၄၊ ဘာဝ ၂၊ ဟဒယ ၁၊ ဇီဝိတ ၁၊ အာဟာရ ၁၊ ပရိစ္ဆေဒ ၁၊ ဝိညတ် ၂၊ ဝိကာရ ၃၊ လက္ခဏ ၄"]];
@@ -254,7 +268,20 @@ let S121=false;try{S121=localStorage.getItem("sys121")=="1"}catch(e){}
 const vis=c=>S121||c.pl!="လောကုတ္တရာ"||c.n.endsWith("ပထမဈာန်");
 const dn=c=>(!S121&&c.pl=="လောကုတ္တရာ")?c.n.replace(" ပထမဈာန်",""):c.n;
 const ds=c=>(!S121&&c.pl=="လောကုတ္တရာ")?"၈၉ စနစ် - ပထမဈာန်အလိုက် ပြထားသည် (အခြားဈာန်များတွင် စေတသိက် ၃၅၊ ၃၄၊ ၃၃၊ ၃၃)":c.s;
-const sysBar=()=>`<div class="chips" style="margin-bottom:10px"><button class="chip ${S121?"":"on"}" data-sys="0">စိတ် ၈၉ စနစ်</button><button class="chip ${S121?"on":""}" data-sys="1">၁၂၁ စနစ်</button></div>`;
+let FSize = parseInt(localStorage.getItem("abhi-fs") || "16");
+document.documentElement.style.fontSize = FSize + "px";
+
+const sysBar = () => `
+  <div class="chips" style="margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
+    <div>
+      <button class="chip ${!S121 ? "on" : ""}" data-sys="0">စိတ် ၈၉ စနစ်</button>
+      <button class="chip ${S121 ? "on" : ""}" data-sys="1">၁၂၁ စနစ်</button>
+    </div>
+    <div>
+      <button class="chip" data-fs="-">A-</button>
+      <button class="chip" data-fs="+">A+</button>
+    </div>
+  </div>`;
 const PK="abhi-prog-v1";
 let PG={};try{PG=JSON.parse(localStorage.getItem(PK)||"{}")}catch(e){}
 const pSave=()=>{try{localStorage.setItem(PK,JSON.stringify(PG))}catch(e){}};
@@ -530,7 +557,7 @@ function examHome(){
   const topicCount=t=>EXAM_BANK.filter(q=>q.t==t).length;
   let h=`<div class="box"><h3>မေးခွန်းများကို ဘာသာရပ်အလိုက် လေ့ကျင့်ရန်</h3><div class="chips">${EXAM_TOPICS.map(t=>`<button class="chip ${EXAM.topic==t?"on":""}" data-et="${t}">${t}<i>${topicCount(t)}</i></button>`).join("")}</div><div class="note">နှစ်အလိုက်မဟုတ်ဘဲ စိတ်၊ စေတသိက်၊ ရုပ်၊ ဝီထိ စသည့် ခေါင်းစဉ်အလိုက် စုထားပါသည်။</div></div>`;
   const wrongCount=EXAM_WRONG.filter(q=>q.t==EXAM.topic).length;
-  h+=`<div class="box"><div class="nm" style="font-size:18px">${EXAM.topic} မေးခွန်း</div><div class="sub">လေ့ကျင့်ရန် ${topicCount(EXAM.topic)} ပုဒ် · မှားထားသောမေးခွန်း ${wrongCount} ပုဒ်</div><div class="chips" style="margin-top:12px"><button class="chip on" data-estart="1">မေးခွန်း စတင်ဖြေမည်</button><button class="chip" data-ereview="1" ${wrongCount?"":"disabled"}>မှားထားတာ ပြန်ဖြေမည်</button></div></div>`;
+  h+=`<div class="box"><div class="nm" style="font-size:1.05rem">${EXAM.topic} မေးခွန်း</div><div class="sub">လေ့ကျင့်ရန် ${topicCount(EXAM.topic)} ပုဒ် · မှားထားသောမေးခွန်း ${wrongCount} ပုဒ်</div><div class="chips" style="margin-top:12px"><button class="chip on" data-estart="1">မေးခွန်း စတင်ဖြေမည်</button><button class="chip" data-ereview="1" ${wrongCount?"":"disabled"}>မှားထားတာ ပြန်ဖြေမည်</button></div></div>`;
   if(EXAM.pool.length && EXAM.pos<EXAM.pool.length){
     const q=EXAM.pool[EXAM.pos];
     h+=`<div class="box"><div class="row2"><span class="sub">${EXAM.review?"မှားခဲ့သော မေးခွန်းများ":"လေ့ကျင့်ခန်း"} · ${EXAM.pos+1}/${EXAM.pool.length}</span><b>အမှတ် ${EXAM.score}/${EXAM.answered}</b></div><div class="nm" style="font-size:17px;margin:12px 0">${q.q}</div>${q._opts.map(o=>`<button class="it" data-eopt="${encodeURIComponent(o)}" ${EXAM.show?"disabled":""} style="${EXAM.show&&o==q.a?"border-left-color:#1F7A5C":EXAM.show&&o==EXAM.chosen?"border-left-color:#B3342B":""}">${EXAM.show&&o==q.a?"✓ ":""}${EXAM.show&&o==EXAM.chosen&&o!=q.a?"✗ ":""}${o}</button>`).join("")}`;
@@ -608,6 +635,12 @@ $("app").onclick=e=>{
   else if(b.dataset.rf){st.push({rf:b.dataset.rf,v:b.dataset.v});render()}
   else if(b.dataset.f){st.push({f:b.dataset.f,v:b.dataset.v});render()}
   else if(b.dataset.b!==undefined){st.pop();render()}
+  else if(b.dataset.fs){
+    if(b.dataset.fs=="+" && FSize < 36) FSize += 2;
+    if(b.dataset.fs=="-" && FSize > 12) FSize -= 2;
+    document.body.style.fontSize = FSize + "px";
+    try{ localStorage.setItem("abhi-fs", FSize); }catch(e){}
+    render();}
 };
 render();mLoad();
 $("app").oninput=e=>{if(e.target.id=="gnote"&&GCUR!=null){GN[GCUR]=e.target.value;try{localStorage.setItem("abhi-gl-note",JSON.stringify(GN))}catch(x){}}};
