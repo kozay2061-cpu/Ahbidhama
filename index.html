@@ -3,40 +3,48 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>အဘိဓမ္မ - Analysi</title>
+<title>အဘိဓမ္မာ-Analysi</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;600;700&display=swap">
 <style>
-:root{--bg:#F5F3FA;--sf:#FFFFFF;--ink:#26244A;--mu:#6B6890;--ln:#DAD6EA;--gold:#E0A100;--gt:#3A2A00;
+:root{--bg:#F3F0FA;--sf:#FFFFFF;--ink:#1F1D3F;--mu:#5E5B84;--ln:#E1DDF1;--gold:#D99A00;--gt:#2B1F00;--ac:#3B3A8C;--act:#FFFFFF;--tint:#EAE6F8;--sh:0 1px 2px rgba(40,30,110,.06),0 4px 14px rgba(40,30,110,.07);--hd1:#2B2A6B;--hd2:#5043B0;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17163A;--sf:#23214D;--ink:#EEEBFA;--mu:#A9A5D0;--ln:#3A376E;--gold:#F2B90F;--gt:#2A1E00}}
-:root[data-theme="dark"]{--bg:#17163A;--sf:#23214D;--ink:#EEEBFA;--mu:#A9A5D0;--ln:#3A376E;--gold:#F2B90F;--gt:#2A1E00}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Myanmar","Padauk","Myanmar Text",sans-serif;line-height:1.9}
-body{max-width:600px;margin:0 auto;padding:12px 14px 40px}
-h1{font-size:19px;margin:4px 0 8px}
-button{font:inherit;color:inherit;cursor:pointer}
-.seg{display:flex;border:1.5px solid var(--ln);border-radius:10px;overflow:hidden;margin-bottom:12px}
-.seg button{flex:1;border:0;background:var(--sf);padding:3px 0;font-size:15px}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);font-weight:700}
-.it{display:block;width:100%;text-align:left;border:1.5px solid var(--ln);border-left:6px solid var(--gold);background:var(--sf);border-radius:10px;padding:4px 12px;margin:6px 0}
-.it small{display:block;color:var(--mu);font-size:13px;line-height:1.6}
-details{margin-bottom:8px}
-summary{font-weight:700;padding:6px 2px;cursor:pointer}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{border:1.5px solid var(--ln);background:var(--sf);border-radius:999px;padding:0 12px;font-size:14px;line-height:1.9}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11102A;--sf:#1C1A41;--ink:#EFECFB;--mu:#ADA9D6;--ln:#322F66;--gold:#F5BE1D;--gt:#241900;--ac:#9391F2;--act:#13123A;--tint:#262350;--sh:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25);--hd1:#1A194D;--hd2:#2E2A78}}
+:root[data-theme="dark"]{--bg:#11102A;--sf:#1C1A41;--ink:#EFECFB;--mu:#ADA9D6;--ln:#322F66;--gold:#F5BE1D;--gt:#241900;--ac:#9391F2;--act:#13123A;--tint:#262350;--sh:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25);--hd1:#1A194D;--hd2:#2E2A78}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Myanmar","Padauk","Myanmar Text",sans-serif;line-height:1.85;font-size:16px}
+body{max-width:600px;margin:0 auto;padding:12px 14px 48px}
+header{margin:-12px -14px 14px;padding:20px 20px 18px;background:linear-gradient(135deg,var(--hd1),var(--hd2));color:#fff;border-radius:0 0 24px 24px;box-shadow:var(--sh)}
+header h1{font-size:21px;margin:0;font-weight:700;line-height:1.5;color:#fff}
+header p{margin:2px 0 0;font-size:13px;color:#D8D4F7;line-height:1.6}
+button{font:inherit;color:inherit;cursor:pointer;transition:transform .12s,background .15s,border-color .15s}
+button:active{transform:scale(.98)}
+.seg{display:flex;gap:4px;background:var(--tint);border-radius:14px;padding:4px;margin-bottom:14px}
+.seg button{flex:1;border:0;background:transparent;padding:5px 2px;font-size:13px;line-height:1.5;border-radius:10px;color:var(--mu)}
+.seg button[aria-pressed="true"]{background:var(--ac);color:var(--act);font-weight:700;box-shadow:var(--sh)}
+.it{display:block;width:100%;text-align:left;border:1px solid var(--ln);border-left:5px solid var(--gold);background:var(--sf);border-radius:14px;padding:7px 14px;margin:8px 0;box-shadow:var(--sh)}
+.it b{font-weight:600}
+.it small{display:block;color:var(--mu);font-size:13px;line-height:1.65}
+details{margin-bottom:10px}
+summary{list-style:none;display:flex;align-items:center;gap:8px;font-weight:700;padding:8px 4px;cursor:pointer;color:var(--ac)}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"\203A";display:inline-block;font-size:20px;line-height:1;transition:transform .15s}
+details[open]>summary::before{transform:rotate(90deg)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{border:1px solid var(--ln);background:var(--tint);border-radius:999px;padding:0 13px;font-size:14px;line-height:1.9}
 .chip.on{background:var(--gold);border-color:var(--gold);color:var(--gt);font-weight:700}
-.chip i{font-style:normal;color:var(--mu);font-size:12px;margin-left:4px}
-.back{border:0;background:none;color:var(--mu);font-size:15px;padding:0;margin-bottom:6px}
-.box{background:var(--sf);border:1.5px solid var(--ln);border-radius:12px;padding:10px 14px;margin:10px 0}
-.box h3{margin:0 0 4px;font-size:15px;color:var(--mu);font-weight:600}
-.nm{font-size:20px;font-weight:700;margin:2px 0}
+.chip i{font-style:normal;color:var(--mu);font-size:12px;margin-left:5px}
+.back{border:0;background:var(--tint);color:var(--ac);font-size:14px;font-weight:600;padding:0 14px;border-radius:999px;margin-bottom:10px;line-height:2}
+.box{background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:12px 15px;margin:12px 0;box-shadow:var(--sh)}
+.box h3{margin:0 0 6px;font-size:14px;color:var(--mu);font-weight:600;display:flex;align-items:center}
+.box h3::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);margin-right:8px;flex:none}
+.nm{font-size:22px;font-weight:700;margin:4px 0 0;line-height:1.6}
 .sub{color:var(--mu);font-size:14px}
-.note{font-size:13px;color:var(--mu);margin-top:6px}
+.note{font-size:13px;color:var(--mu);margin-top:6px;line-height:1.7}
 button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 </style>
 </head>
 <body>
-<h1>အဘိဓမ္မာ - စိတ်နှင့် ရုပ်</h1>
+<header><h1>🪷 အဘိဓမ္မာ</h1><p>စိတ် · စေတသိက် · ရုပ် · ဝီထိ · ကျက်ရန်</p></header>
 <div id="app"></div>
 <script>
 const O=["ပထမ","ဒုတိယ","တတိယ","စတုတ္ထ","ပဉ္စမ","ဆဋ္ဌ","သတ္တမ","အဋ္ဌမ"];
@@ -172,32 +180,85 @@ function vithiHome(){
   VV.forEach(v=>{h+=`<div class="box"><div class="nm" style="font-size:16px">${v.n}</div><div class="chips" style="margin-top:6px">`+v.s.map((x,i)=>(i?`<span style="color:var(--mu)">›</span>`:"")+`<button class="chip" data-f="ကိစ္စ" data-v="${x[2]}">${x[0]}${x[1]>1?" ×"+x[1]:""}</button>`).join("")+`</div><div class="note">${v.m}</div></div>`});
   return h;
 }
+const SB=[["စေတသိက် ၅၂ ကို ခွဲပါ","အညသမာန ၁၃၊ အကုသိုလ် ၁၄၊ သောဘန ၂၅"],["အညသမာန ၁၃ ကို ခွဲပါ","သဗ္ဗစိတ္တသာဓာရဏ ၇၊ ပကိဏ္ဏက ၆"],["အကုသိုလ်စေတသိက် ၁၄ ကို ခွဲပါ","မောဟစတုက် ၄၊ လောဘတိက် ၃၊ ဒေါသစတုက် ၄၊ ထိနမိဒ္ဓဒုက် ၂၊ ဝိစိကိစ္ဆာ ၁"],["သောဘနစေတသိက် ၂၅ ကို ခွဲပါ","သောဘနသာဓာရဏ ၁၉၊ ဝိရတီ ၃၊ အပ္ပမညာ ၂၊ ပညိန္ဒြေ ၁"],["စိတ် ၈၉ ကို ဘူမိအလိုက် ခွဲပါ","ကာမ ၅၄၊ ရူပ ၁၅၊ အရူပ ၁၂၊ လောကုတ္တရာ ၈"],["စိတ် ၈၉ ကို ဇာတိအလိုက် ခွဲပါ","ကုသိုလ် ၂၁၊ အကုသိုလ် ၁၂၊ ဝိပါက် ၃၆၊ ကြိယာ ၂၀"],["ရုပ် ၂၈ ကို ခွဲပါ","မဟာဘုတ် ၄၊ ဥပါဒါရုပ် ၂၄"],["ဥပါဒါရုပ် ၂၄ ကို အုပ်စုခွဲပါ","ပသာဒ ၅၊ ဂေါစရ ၄၊ ဘာဝ ၂၊ ဟဒယ ၁၊ ဇီဝိတ ၁၊ အာဟာရ ၁၊ ပရိစ္ဆေဒ ၁၊ ဝိညတ် ၂၊ ဝိကာရ ၃၊ လက္ခဏ ၄"]];
+const ST={d:"citta",m:"card",q:null,f:0,s:0,t:0};
+const rnd=n=>Math.floor(Math.random()*n),shf=a=>a.slice().sort(()=>Math.random()-.5),uq=a=>[...new Set(a)];
+function mkQ(d){
+  if(d=="basic"){const x=SB[rnd(SB.length)];return {q:x[0],a:x[1],p:SB.map(y=>y[1])}}
+  if(d=="vithi"){
+    const k=rnd(4),lb=x=>x[0]+(x[1]>1?" ×"+x[1]:""),pool=uq(VV.flatMap(w=>w.s.map(lb)));
+    if(k==0){
+      const v=VV[rnd(6)],S=v.s,j=S.find(x=>x[0]=="ဇော"),t=S.find(x=>x[0]=="တဒါရုံ"),vt=S.find(x=>x[0]=="ဝုဋ္ဌော"&&x[1]>1);
+      const A=["ဇော ၇ ကြိမ်၊ တဒါရုံ ၂ ကြိမ်","ဇော ၇ ကြိမ်၊ တဒါရုံ မဖြစ်","ဇော မဖြစ်၊ ဝုဋ္ဌော ၂-၃ ကြိမ်","ဝီထိ မပေါ် (ဘဝင်စလှုပ်သာ)"];
+      return {q:`${v.n} တွင် ဇောနှင့် တဒါရုံ ဖြစ်ပုံကား`,a:j?(t?A[0]:A[1]):(vt?A[2]:A[3]),p:A};
+    }
+    const v=VV[rnd(VV.length)],S=v.s;
+    if(k==1){const i=rnd(S.length-1);return {q:`${v.n} တွင် "${lb(S[i])}" ၏ နောက်စိတ်ကား`,a:lb(S[i+1]),p:pool}}
+    if(k==2)return {q:`${v.n} တွင် ဘဝင်ကျမည့်မတိုင်မီ နောက်ဆုံးစိတ်ကား`,a:lb(S[S.length-2]),p:pool};
+    return {q:`${v.n} ၏ စိတ်အစဉ်ကား`,a:S.map(lb).join(" › "),p:VV.map(w=>w.s.map(lb).join(" › "))};
+  }
+  let name,P;
+  if(d=="citta"){
+    const V=T.filter(vis),c=V[rnd(V.length)];name=dn(c);
+    P=[["ဝေဒနာ",c.ve,["သုခ","ဒုက္ခ","သောမနဿ","ဒေါမနဿ","ဥပေက္ခာ"]],["ဟေတု",c.hetu.join("၊")||"အဟေတုက",uq(T.map(x=>x.hetu.join("၊")||"အဟေတုက"))],["ကိစ္စ",c.kc.join("၊"),uq(T.map(x=>x.kc.join("၊")))],["ဇာတိ",c.j,["ကုသိုလ်","အကုသိုလ်","ဝိပါက်","ကြိယာ"]],["ယှဉ်သော စေတသိက် အရေအတွက်",cnt(c)+" ပါး",uq(T.map(x=>cnt(x)+" ပါး"))]];
+  }else{
+    const i=rnd(R.length);name=R[i].n;
+    P=[["ဖြစ်ကြောင်း",rattr(i,"ဖြစ်ကြောင်း").join("၊"),uq(R.map((_,j)=>rattr(j,"ဖြစ်ကြောင်း").join("၊")))],["အုပ်စု",R[i].g,uq(R.map(x=>x.g))],["နိပ္ဖန်/အနိပ္ဖန် အမျိုးအစား",rattr(i,"နိပ္ဖန်")[0],["နိပ္ဖန်ရုပ်","အနိပ္ဖန်ရုပ်"]]];
+  }
+  const p=P[rnd(P.length)];
+  return {q:`${name} ၏ ${p[0]} ကား`,a:p[1],p:p[2]};
+}
+function studyHome(){
+  const q=ST.q||(ST.q=nextQ(ST.d));
+  let h=`<div class="chips">${[["vithi","ဝီထိ"],["citta","စိတ်"],["rupa","ရုပ်"],["basic","အခြေခံ အုပ်စုများ"]].map(([k,n])=>`<button class="chip ${ST.d==k?"on":""}" data-sd="${k}">${n}</button>`).join("")}</div><div class="seg" style="margin:8px 0"><button data-sm="card" aria-pressed="${ST.m=="card"}">ကတ်</button><button data-sm="quiz" aria-pressed="${ST.m=="quiz"}">စမ်းသပ်</button></div><div class="note">မှန်ကန်/မှတ်မိ ${ST.s} / ${ST.t}</div>${progLine()}`;
+  if(ST.m=="card"){
+    h+=`<button class="it" style="min-height:150px;text-align:center" data-sf="1"><b>${q.q}</b>${ST.f?`<div class="note">အဖြေ</div><div style="font-weight:700">${q.a}</div>`:`<small>နှိပ်၍ အဖြေကြည့်ပါ</small>`}</button>`;
+    if(ST.f)h+=`<div class="chips" style="justify-content:center;margin-top:8px"><button class="chip" data-sn="0">ပြန်ကျက်ရန်</button><button class="chip on" data-sn="1">မှတ်မိပြီ</button></div>`;
+  }else{
+    if(!q.o)q.o=shf([q.a,...shf(q.p.filter(x=>x!=q.a)).slice(0,3)]);
+    const dn=q.g!==undefined;
+    h+=`<div class="box"><b>${q.q}</b></div>`+q.o.map((o,i)=>{const ok=o==q.a;return `<button class="it" data-so="${i}" ${dn?"disabled":""} style="${dn&&ok?"border-left-color:#1F7A5C;font-weight:700":dn&&i==q.g?"border-left-color:#B3342B":""}">${dn?(ok?"✓ ":i==q.g?"✗ ":""):""}${o}</button>`}).join("");
+    if(dn)h+=`<button class="it" data-sn="x" style="text-align:center;font-weight:700">ရှေ့ဆက်မည်</button>`;
+  }
+  return h;
+}
+let S121=false;try{S121=localStorage.getItem("sys121")=="1"}catch(e){}
+const vis=c=>S121||c.pl!="လောကုတ္တရာ"||c.n.endsWith("ပထမဈာန်");
+const dn=c=>(!S121&&c.pl=="လောကုတ္တရာ")?c.n.replace(" ပထမဈာန်",""):c.n;
+const ds=c=>(!S121&&c.pl=="လောကုတ္တရာ")?"၈၉ စနစ် - ပထမဈာန်အလိုက် ပြထားသည် (အခြားဈာန်များတွင် စေတသိက် ၃၅၊ ၃၄၊ ၃၃၊ ၃၃)":c.s;
+const sysBar=()=>`<div class="chips" style="margin-bottom:8px"><button class="chip ${S121?"":"on"}" data-sys="0">စိတ် ၈၉ စနစ်</button><button class="chip ${S121?"on":""}" data-sys="1">၁၂၁ စနစ်</button></div>`;
+const PK="abhi-prog-v1";
+let PG={};try{PG=JSON.parse(localStorage.getItem(PK)||"{}")}catch(e){}
+const pSave=()=>{try{localStorage.setItem(PK,JSON.stringify(PG))}catch(e){}};
+const rec=(q,ok)=>{const k=ST.d+"|"+q.q,o=PG[k]||{c:0,w:0};ok?o.c++:o.w++;o.l=ok?1:0;PG[k]=o;pSave()};
+const nextQ=d=>{if(Math.random()<.5)for(let i=0;i<40;i++){const q=mkQ(d),o=PG[d+"|"+q.q];if(o&&o.l==0)return q}return mkQ(d)};
+const progLine=()=>{const ks=Object.keys(PG).filter(k=>k.startsWith(ST.d+"|")),m=ks.filter(k=>PG[k].l==1).length,w=ks.length-m;return `<div class="note">မှတ်ထားချက် - မှန်ပြီး ${m} · ပြန်ကျက်ရန် ${w} <button class="chip" data-rs="1" style="margin-left:6px">ရှင်းမည်</button></div>`};
 const $=id=>document.getElementById(id);
 const AT=["ဝေဒနာ","ဟေတု","ဒွါရ","ကိစ္စ","ဇော","အာရုံ","စေတသိက်","ဇာတိ","ဘူမိ"];
 const flat=c=>c.ce.flatMap(g=>g[1].map(x=>x.replace("*","")));
 const attr=(c,a)=>({"ဝေဒနာ":[c.ve],"ဟေတု":c.hetu.length?c.hetu:["အဟေတုက"],"ဒွါရ":c.dv,"ကိစ္စ":c.kc,"ဇော":[c.jv?"ဇောစိတ်":"ဇောမဟုတ်"],"အာရုံ":c.ar,"စေတသိက်":flat(c),"ဇာတိ":[c.j],"ဘူမိ":[c.pl]})[a];
 const cnt=c=>c.ce.reduce((s,g)=>s+g[1].length,0);
 let tab="list",fa="ဝေဒနာ",st=[];
-const itm=i=>`<button class="it" data-i="${i}"><b>${T[i].n}</b><small>${T[i].s} · စေတသိက် ${cnt(T[i])}</small></button>`;
+const itm=i=>`<button class="it" data-i="${i}"><b>${dn(T[i])}</b><small>${ds(T[i])} · စေတသိက် ${cnt(T[i])}</small></button>`;
 const chip=(f,v)=>`<button class="chip" data-f="${f}" data-v="${v}">${v}</button>`;
 function render(){
   const s=st[st.length-1];let h="";
   if(!s){
-    h=`<div class="seg"><button data-t="list" aria-pressed="${tab=="list"}">စိတ်စာရင်း</button><button data-t="flt" aria-pressed="${tab=="flt"}">အချက်ဖြင့် ရှာရန်</button><button data-t="vithi" aria-pressed="${tab=="vithi"}">ဝီထိ</button><button data-t="rupa" aria-pressed="${tab=="rupa"}">ရုပ် ၂၈</button></div>`;
-    if(tab=="vithi"){h+=vithiHome()}else if(tab=="rupa"){h+=rupaHome()}else if(tab=="list"){const seen=[];T.forEach(c=>{if(!seen.includes(c.g))seen.push(c.g)});
-      h+=seen.map(g=>`<details><summary>${g}</summary>${T.map((c,i)=>c.g==g?itm(i):"").join("")}</details>`).join("")}
+    h=sysBar()+`<div class="seg"><button data-t="list" aria-pressed="${tab=="list"}">စိတ်စာရင်း</button><button data-t="flt" aria-pressed="${tab=="flt"}">အချက်ဖြင့် ရှာရန်</button><button data-t="study" aria-pressed="${tab=="study"}">ကျက်ရန်</button><button data-t="vithi" aria-pressed="${tab=="vithi"}">ဝီထိ</button><button data-t="rupa" aria-pressed="${tab=="rupa"}">ရုပ် ၂၈</button></div>`;
+    if(tab=="study"){h+=studyHome()}else if(tab=="vithi"){h+=vithiHome()}else if(tab=="rupa"){h+=rupaHome()}else if(tab=="list"){const seen=[];T.forEach(c=>{if(vis(c)&&!seen.includes(c.g))seen.push(c.g)});
+      h+=seen.map(g=>`<details><summary>${g}</summary>${T.map((c,i)=>c.g==g&&vis(c)?itm(i):"").join("")}</details>`).join("")}
     else{
       h+=`<div class="chips">${AT.map(a=>`<button class="chip ${a==fa?"on":""}" data-a="${a}">${a}</button>`).join("")}</div><div class="box"><div class="chips">`;
-      const m={};T.forEach(c=>attr(c,fa).forEach(v=>m[v]=(m[v]||0)+1));
+      const m={};T.filter(vis).forEach(c=>attr(c,fa).forEach(v=>m[v]=(m[v]||0)+1));
       h+=Object.keys(m).map(v=>`<button class="chip" data-f="${fa}" data-v="${v}">${v}<i>${m[v]}</i></button>`).join("")+`</div></div>`;
     }
   }else if(s.r!==undefined){h=rupaDetail(s.r)}else if(s.rf){h=rupaList(s.rf,s.v)}else if(s.f){
-    const L=T.map((c,i)=>i).filter(i=>attr(T[i],s.f).includes(s.v));
+    const L=T.map((c,i)=>i).filter(i=>vis(T[i])&&attr(T[i],s.f).includes(s.v));
     h=`<button class="back" data-b>‹ နောက်သို့</button><div class="nm">${s.f} - ${s.v}</div><div class="sub">စိတ် ${L.length} ပါး</div>`+L.map(itm).join("");
   }else{
     const c=T[s.i];
     const row=(l,t)=>`<div class="box"><h3>${t||l}</h3><div class="chips">${attr(c,l).map(v=>chip(l,v)).join("")}</div></div>`;
-    h=`<button class="back" data-b>‹ နောက်သို့</button><div class="nm">${c.n}</div><div class="sub">${c.s}</div>
+    h=`<button class="back" data-b>‹ နောက်သို့</button><div class="nm">${dn(c)}</div><div class="sub">${ds(c)}</div>
     <div class="chips" style="margin-top:6px">${chip("ဘူမိ",c.pl)}${chip("ဇာတိ",c.j)}${chip("ဇော",c.jv?"ဇောစိတ်":"ဇောမဟုတ်")}</div>
     ${row("ဝေဒနာ")}${row("ဟေတု","ဟေတု "+c.hetu.length+" ပါး")}${row("ဒွါရ")}${row("ကိစ္စ")}
     <div class="box"><h3>အာရုံ</h3><div class="chips">${c.ar.map(v=>chip("အာရုံ",v)).join("")}</div><div class="note">${c.an}</div></div>
@@ -212,6 +273,13 @@ $("app").onclick=e=>{
   if(b.dataset.t){tab=b.dataset.t;render()}
   else if(b.dataset.a){fa=b.dataset.a;render()}
   else if(b.dataset.i!==undefined){st.push({i:+b.dataset.i});render()}
+  else if(b.dataset.sys!==undefined){S121=b.dataset.sys=="1";try{localStorage.setItem("sys121",S121?"1":"0")}catch(e){}ST.q=null;render()}
+  else if(b.dataset.rs){Object.keys(PG).filter(k=>k.startsWith(ST.d+"|")).forEach(k=>delete PG[k]);pSave();render()}
+  else if(b.dataset.sd){ST.d=b.dataset.sd;ST.q=null;ST.f=0;ST.s=0;ST.t=0;render()}
+  else if(b.dataset.sm){ST.m=b.dataset.sm;ST.q=null;ST.f=0;render()}
+  else if(b.dataset.sf){ST.f=1;render()}
+  else if(b.dataset.sn){if(b.dataset.sn!="x"&&ST.q)rec(ST.q,b.dataset.sn=="1");if(b.dataset.sn=="1")ST.s++;if(b.dataset.sn!="x")ST.t++;ST.q=null;ST.f=0;render()}
+  else if(b.dataset.so!==undefined){const q=ST.q;if(q&&q.g===undefined){q.g=+b.dataset.so;ST.t++;rec(q,q.o[q.g]==q.a);if(q.o[q.g]==q.a)ST.s++;render()}}
   else if(b.dataset.ri!==undefined){st.push({r:+b.dataset.ri});render()}
   else if(b.dataset.rf){st.push({rf:b.dataset.rf,v:b.dataset.v});render()}
   else if(b.dataset.f){st.push({f:b.dataset.f,v:b.dataset.v});render()}
