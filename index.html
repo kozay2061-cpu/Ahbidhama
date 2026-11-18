@@ -6,46 +6,68 @@
 <title>အဘိဓမ္မာ ခွဲခြမ်းစိတ်ဖြာခြင်း</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;600;700&display=swap">
 <style>
-:root{--bg:#F3F0FA;--sf:#FFFFFF;--ink:#1F1D3F;--mu:#5E5B84;--ln:#E1DDF1;--gold:#D99A00;--gt:#2B1F00;--ac:#3B3A8C;--act:#FFFFFF;--tint:#EAE6F8;--sh:0 1px 2px rgba(40,30,110,.06),0 4px 14px rgba(40,30,110,.07);--hd1:#2B2A6B;--hd2:#5043B0;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11102A;--sf:#1C1A41;--ink:#EFECFB;--mu:#ADA9D6;--ln:#322F66;--gold:#F5BE1D;--gt:#241900;--ac:#9391F2;--act:#13123A;--tint:#262350;--sh:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25);--hd1:#1A194D;--hd2:#2E2A78}}
-:root[data-theme="dark"]{--bg:#11102A;--sf:#1C1A41;--ink:#EFECFB;--mu:#ADA9D6;--ln:#322F66;--gold:#F5BE1D;--gt:#241900;--ac:#9391F2;--act:#13123A;--tint:#262350;--sh:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25);--hd1:#1A194D;--hd2:#2E2A78}
+:root{
+  --bg:#F4F2FC; --sf:#FFFFFF; --ink:#1F1D3F; --mu:#64608E; --ln:#E4DFF5; 
+  --gold:#D99A00; --gt:#2B1F00; --ac:#4A48BE; --act:#FFFFFF; --tint:#EFEBFA; 
+  --sh:0 2px 4px rgba(40,30,110,.04),0 6px 16px rgba(40,30,110,.06); 
+  --hd1:#2B2A6B; --hd2:#5043B0;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#100F24; --sf:#1B1940; --ink:#EFECFB; --mu:#ADA9D6; --ln:#312E66; 
+    --gold:#F5BE1D; --gt:#241900; --ac:#9391F2; --act:#13123A; --tint:#25224D; 
+    --sh:0 2px 6px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.3); 
+    --hd1:#1A194D; --hd2:#2E2A78;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#100F24; --sf:#1B1940; --ink:#EFECFB; --mu:#ADA9D6; --ln:#312E66; 
+  --gold:#F5BE1D; --gt:#241900; --ac:#9391F2; --act:#13123A; --tint:#25224D; 
+  --sh:0 2px 6px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.3); 
+  --hd1:#1A194D; --hd2:#2E2A78;
+}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:var(--b--inklor:var(--ink);font-family:"Noto Sans Myanmar","Padauk","Myanmar Text",sans-serif;line-height:1.85;font-size:16px}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Myanmar","Padauk","Myanmar Text",sans-serif;line-height:1.85;font-size:16px}
 body{max-width:600px;margin:0 auto;padding:12px 14px 48px}
-header{margin:-12px -14px 14px;padding:20px 20px 18px;background:linear-gradient(135deg,var(--hd1),var(--hd2));color:#fff;border-radius:0 0 24px 24px;box-shadow:var(--sh)}
-header h1{font-size:21px;margin:0;font-weight:700;line-height:1.5;color:#fff}
-header p{margin:2px 0 0;font-size:13px;color:#D8D4F7;line-height:1.6}
-button{font:inherit;color:inherit;cursor:pointer;transition:transform .12s,background .15s,border-color .15s}
+header{margin:-12px -14px 16px;padding:22px 20px 20px;background:linear-gradient(135deg,var(--hd1),var(--hd2));color:#fff;border-radius:0 0 24px 24px;box-shadow:var(--sh)}
+header h1{font-size:22px;margin:0;font-weight:700;line-height:1.5;color:#fff}
+header p{margin:4px 0 0;font-size:13px;color:#D8D4F7;line-height:1.6}
+button{font:inherit;color:inherit;cursor:pointer;transition:transform .12s ease,background .15s ease,border-color .15s ease,box-shadow .15s ease}
 button:active{transform:scale(.98)}
-.seg{display:flex;gap:4px;background:var(--tint);border-radius:14px;padding:4px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}.seg::-webkit-scrollbar{display:none}
-.seg button{flex:1 0 auto;white-space:nowrap;border:0;background:transparent;padding:5px 11px;font-size:13px;line-height:1.5;border-radius:10px;color:var(--mu)}
+.seg{display:flex;gap:6px;background:var(--tint);border-radius:14px;padding:5px;margin-bottom:16px;overflow-x:auto;scrollbar-width:none}.seg::-webkit-scrollbar{display:none}
+.seg button{flex:1 0 auto;white-space:nowrap;border:0;background:transparent;padding:7px 12px;font-size:13px;line-height:1.5;border-radius:10px;color:var(--mu)}
 .seg button[aria-pressed="true"]{background:var(--ac);color:var(--act);font-weight:700;box-shadow:var(--sh)}
-.it{display:block;width:100%;text-align:left;border:1px solid var(--ln);border-left:5px solid var(--gold);background:var(--sf);border-radius:14px;padding:7px 14px;margin:8px 0;box-shadow:var(--sh)}
+.it{display:block;width:100%;text-align:left;border:1px solid var(--ln);border-left:5px solid var(--gold);background:var(--sf);border-radius:14px;padding:10px 14px;margin:8px 0;box-shadow:var(--sh)}
+.it:hover{border-color:var(--ac)}
 .it b{font-weight:600}
-.it small{display:block;color:var(--mu);font-size:13px;line-height:1.65}
+.it small{display:block;color:var(--mu);font-size:13px;line-height:1.65;margin-top:2px}
 details{margin-bottom:10px}
-summary{list-style:none;display:flex;align-items:center;gap:8px;font-weight:700;padding:8px 4px;cursor:pointer;color:var(--ac)}
+summary{list-style:none;display:flex;align-items:center;gap:8px;font-weight:700;padding:10px 8px;cursor:pointer;color:var(--ac);border-radius:10px;transition:background .15s}
+summary:hover{background:var(--tint)}
 summary::-webkit-details-marker{display:none}
-summary::before{content:"\203A";display:inline-block;font-size:20px;line-height:1;transition:transform .15s}
+summary::before{content:"\203A";display:inline-block;font-size:20px;line-height:1;transition:transform .2s ease}
 details[open]>summary::before{transform:rotate(90deg)}
 .chips{display:flex;flex-wrap:wrap;gap:7px}
-.chip{border:1px solid var(--ln);background:var(--tint);border-radius:999px;padding:0 13px;font-size:14px;line-height:1.9}
+.chip{border:1px solid var(--ln);background:var(--tint);border-radius:999px;padding:2px 14px;font-size:13px;line-height:1.8;color:var(--ink);transition:all .15s}
+.chip:hover{border-color:var(--ac)}
 .chip.on{background:var(--gold);border-color:var(--gold);color:var(--gt);font-weight:700}
 .chip i{font-style:normal;color:var(--mu);font-size:12px;margin-left:5px}
-.back{border:0;background:var(--tint);color:var(--ac);font-size:14px;font-weight:600;padding:0 14px;border-radius:999px;margin-bottom:10px;line-height:2}
-.box{background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:12px 15px;margin:12px 0;box-shadow:var(--sh)}
-.box h3{margin:0 0 6px;font-size:14px;color:var(--mu);font-weight:600;display:flex;align-items:center}
+.back{border:0;background:var(--tint);color:var(--ac);font-size:14px;font-weight:600;padding:4px 16px;border-radius:999px;margin-bottom:12px;line-height:2}
+.back:hover{background:var(--ac);color:var(--act)}
+.box{background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:14px 16px;margin:12px 0;box-shadow:var(--sh)}
+.box h3{margin:0 0 8px;font-size:14px;color:var(--mu);font-weight:600;display:flex;align-items:center}
 .box h3::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);margin-right:8px;flex:none}
-.nm{font-size:22px;font-weight:700;margin:4px 0 0;line-height:1.6}
+.nm{font-size:22px;font-weight:700;margin:4px 0 2px;line-height:1.6}
 .sub{color:var(--mu);font-size:14px}
 .note{font-size:13px;color:var(--mu);margin-top:6px;line-height:1.7}
-.fm{display:block;width:100%;border:1px solid var(--ln);background:var(--bg);color:var(--ink);border-radius:12px;padding:6px 12px;font:inherit;margin:6px 0}
-.th{display:block;width:100%;border:0;padding:0;background:none;border-radius:12px;overflow:hidden;margin-bottom:6px}
+.fm{display:block;width:100%;border:1px solid var(--ln);background:var(--bg);color:var(--ink);border-radius:12px;padding:8px 12px;font:inherit;margin:6px 0;outline:none;transition:border-color .15s}
+.fm:focus{border-color:var(--ac)}
+.th{display:block;width:100%;border:0;padding:0;background:none;border-radius:12px;overflow:hidden;margin-bottom:8px}
 .th img{display:block;width:100%;max-height:320px;object-fit:cover}
 .lk{display:block;color:var(--ac);font-weight:600;text-decoration:none;word-break:break-all}
 .lk small{display:block;color:var(--mu);font-weight:400;font-size:13px}
-.row2{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:4px}
+.row2{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:8px}
 textarea.fm{min-height:120px;resize:vertical;line-height:1.7}
 button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 </style>
@@ -144,7 +166,6 @@ ar("သန္တတိ","လက္ခဏရုပ် ၄","ရုပ်၏ ဆ�
 ar("ဇရတာ","လက္ခဏရုပ် ၄","ရုပ်၏ ရင့်ရော်ခြင်း",[]);
 ar("အနိစ္စတာ","လက္ခဏရုပ် ၄","ရုပ်၏ ပျက်စီးခြင်း",[]);
 const RA=["ဖြစ်ကြောင်း","နိပ္ဖန်","ဩဠာရိက","အကွာအဝေး","အခန်းကဏ္ဍ"];
-const rI=(...a)=>a.flat();
 const rO=i=>[0,2,3].includes(i)||(i>=4&&i<=12);
 const rattr=(i,a)=>({"အုပ်စု":[R[i].g],"ဖြစ်ကြောင်း":R[i].sm.length?R[i].sm:["ဖြစ်ကြောင်း မရှိ"],"နိပ္ဖန်":[i<=17?"နိပ္ဖန်ရုပ်":"အနိပ္ဖန်ရုပ်"],"ဩဠာရိက":[rO(i)?"ဩဠာရိက":"သုခုမ"],"အကွာအဝေး":[rO(i)?"သန္တိကေ":"ဒူရေ"],"အခန်းကဏ္ဍ":[(i<4?"ဘူတရုပ်":"ဥပါဒါရုပ်"),...(i>=4&&i<=8||[13,14,16].includes(i)?["ဣန္ဒြေရုပ်"]:[]),...(i>=4&&i<=8||i==15?["ဝတ္ထုရုပ်"]:[]),...(i>=4&&i<=8||i==19||i==20?["ဒွါရရုပ်"]:[]),...(i>=4&&i<=8?["ဂေါစရဂ္ဂါဟိက"]:[])]})[a];
 const rchip=(a,v)=>`<button class="chip" data-rf="${a}" data-v="${v}">${v}</button>`;
@@ -217,15 +238,15 @@ function mkQ(d){
 }
 function studyHome(){
   const q=ST.q||(ST.q=nextQ(ST.d));
-  let h=`<div class="chips">${[["vithi","ဝီထိ"],["citta","စိတ်"],["rupa","ရုပ်"],["basic","အခြေခံ အုပ်စုများ"]].map(([k,n])=>`<button class="chip ${ST.d==k?"on":""}" data-sd="${k}">${n}</button>`).join("")}</div><div class="seg" style="margin:8px 0"><button data-sm="card" aria-pressed="${ST.m=="card"}">ကတ်</button><button data-sm="quiz" aria-pressed="${ST.m=="quiz"}">စမ်းသပ်</button></div><div class="note">မှန်ကန်/မှတ်မိ ${ST.s} / ${ST.t}</div>${progLine()}`;
+  let h=`<div class="chips">${[["vithi","ဝီထိ"],["citta","စိတ်"],["rupa","ရုပ်"],["basic","အခြေခံ အုပ်စုများ"]].map(([k,n])=>`<button class="chip ${ST.d==k?"on":""}" data-sd="${k}">${n}</button>`).join("")}</div><div class="seg" style="margin:10px 0"><button data-sm="card" aria-pressed="${ST.m=="card"}">ကတ်</button><button data-sm="quiz" aria-pressed="${ST.m=="quiz"}">စမ်းသပ်</button></div><div class="note">မှန်ကန်/မှတ်မိ ${ST.s} / ${ST.t}</div>${progLine()}`;
   if(ST.m=="card"){
-    h+=`<button class="it" style="min-height:150px;text-align:center" data-sf="1"><b>${q.q}</b>${ST.f?`<div class="note">အဖြေ</div><div style="font-weight:700">${q.a}</div>`:`<small>နှိပ်၍ အဖြေကြည့်ပါ</small>`}</button>`;
-    if(ST.f)h+=`<div class="chips" style="justify-content:center;margin-top:8px"><button class="chip" data-sn="0">ပြန်ကျက်ရန်</button><button class="chip on" data-sn="1">မှတ်မိပြီ</button></div>`;
+    h+=`<button class="it" style="min-height:160px;text-align:center;padding:24px" data-sf="1"><b>${q.q}</b>${ST.f?`<div class="note" style="margin-top:12px">အဖြေ</div><div style="font-weight:700;margin-top:4px">${q.a}</div>`:`<small style="margin-top:12px;display:block">နှိပ်၍ အဖြေကြည့်ပါ</small>`}</button>`;
+    if(ST.f)h+=`<div class="chips" style="justify-content:center;margin-top:10px"><button class="chip" data-sn="0">ပြန်ကျက်ရန်</button><button class="chip on" data-sn="1">မှတ်မိပြီ</button></div>`;
   }else{
     if(!q.o)q.o=shf([q.a,...shf(q.p.filter(x=>x!=q.a)).slice(0,3)]);
     const dn=q.g!==undefined;
-    h+=`<div class="box"><b>${q.q}</b></div>`+q.o.map((o,i)=>{const ok=o==q.a;return `<button class="it" data-so="${i}" ${dn?"disabled":""} style="${dn&&ok?"border-left-color:#1F7A5C;font-weight:700":dn&&i==q.g?"border-left-color:#B3342B":""}">${dn?(ok?"✓ ":i==q.g?"✗ ":""):""}${o}</button>`}).join("");
-    if(dn)h+=`<button class="it" data-sn="x" style="text-align:center;font-weight:700">ရှေ့ဆက်မည်</button>`;
+    h+=`<div class="box"><b>${q.q}</b></div>`+q.o.map((o,i)=>{const ok=o==q.a;return `<button class="it" data-so="${i}" ${dn?"disabled":""} style="${dn&&ok?"border-left-color:#1F7A5C;font-weight:700;background:var(--tint)":dn&&i==q.g?"border-left-color:#B3342B":""}">${dn?(ok?"✓ ":i==q.g?"✗ ":""):""}${o}</button>`}).join("");
+    if(dn)h+=`<button class="it" data-sn="x" style="text-align:center;font-weight:700;margin-top:12px">ရှေ့ဆက်မည်</button>`;
   }
   return h;
 }
@@ -233,7 +254,7 @@ let S121=false;try{S121=localStorage.getItem("sys121")=="1"}catch(e){}
 const vis=c=>S121||c.pl!="လောကုတ္တရာ"||c.n.endsWith("ပထမဈာန်");
 const dn=c=>(!S121&&c.pl=="လောကုတ္တရာ")?c.n.replace(" ပထမဈာန်",""):c.n;
 const ds=c=>(!S121&&c.pl=="လောကုတ္တရာ")?"၈၉ စနစ် - ပထမဈာန်အလိုက် ပြထားသည် (အခြားဈာန်များတွင် စေတသိက် ၃၅၊ ၃၄၊ ၃၃၊ ၃၃)":c.s;
-const sysBar=()=>`<div class="chips" style="margin-bottom:8px"><button class="chip ${S121?"":"on"}" data-sys="0">စိတ် ၈၉ စနစ်</button><button class="chip ${S121?"on":""}" data-sys="1">၁၂၁ စနစ်</button></div>`;
+const sysBar=()=>`<div class="chips" style="margin-bottom:10px"><button class="chip ${S121?"":"on"}" data-sys="0">စိတ် ၈၉ စနစ်</button><button class="chip ${S121?"on":""}" data-sys="1">၁၂၁ စနစ်</button></div>`;
 const PK="abhi-prog-v1";
 let PG={};try{PG=JSON.parse(localStorage.getItem(PK)||"{}")}catch(e){}
 const pSave=()=>{try{localStorage.setItem(PK,JSON.stringify(PG))}catch(e){}};
@@ -293,7 +314,7 @@ const glFind=v=>GL.find(g=>g[0]==v||g[0].split(" / ").includes(v));
 const glBox=v=>{const g=glFind(v);return g?`<div class="box"><h3>အဓိပ္ပာယ်</h3>${g[2]}${GN[g[0]]?`<div class="note">ကိုယ်ပိုင်မှတ်စု - ${esc(GN[g[0]])}</div>`:""}</div>`:""};
 function glHome(){
   const gs=[];GL.forEach(g=>{if(!gs.includes(g[1]))gs.push(g[1])});
-  return `<div class="note" style="margin:0 0 6px">အဓိပ္ပာယ်ကို နှိပ်ကြည့်ပါ။ ကိုယ့်သင်ရိုးအတိုင်း မှတ်စုလည်း ရေးထားနိုင်သည်။</div>`+gs.map(k=>`<details open><summary>${k}</summary>${GL.map((g,i)=>g[1]==k?`<button class="it" data-gi="${i}"><b>${g[0]}</b>${GN[g[0]]?`<small>✎ ကိုယ်ပိုင်မှတ်စု ပါသည်</small>`:""}</button>`:"").join("")}</details>`).join("");
+  return `<div class="note" style="margin:0 0 8px">အဓိပ္ပာယ်ကို နှိပ်ကြည့်ပါ။ ကိုယ့်သင်ရိုးအတိုင်း မှတ်စုလည်း ရေးထားနိုင်သည်။</div>`+gs.map(k=>`<details open><summary>${k}</summary>${GL.map((g,i)=>g[1]==k?`<button class="it" data-gi="${i}"><b>${g[0]}</b>${GN[g[0]]?`<small>✎ ကိုယ်ပိုင်မှတ်စု ပါသည်</small>`:""}</button>`:"").join("")}</details>`).join("");
 }
 function glView(i){
   const g=GL[i];GCUR=g[0];
@@ -322,10 +343,10 @@ function mineHome(){
   <select id="mcat" class="fm">${MC.map(c=>`<option>${c}</option>`).join("")}</select>
   <input id="mti" class="fm" placeholder="ခေါင်းစဉ် (မဖြည့်လည်း ရသည်)">
   <input id="mur" class="fm" inputmode="url" placeholder="Video link (YouTube စသည်) - link သိမ်းမှသာ ဖြည့်ပါ">
-  <div class="chips"><button class="chip on" data-ml="1">Link သိမ်းမည်</button><button class="chip on" data-mi="1">ပုံ / ဇယား ရွေးမည်</button></div>
+  <div class="chips" style="margin-top:8px"><button class="chip on" data-ml="1">Link သိမ်းမည်</button><button class="chip on" data-mi="1">ပုံ / ဇယား ရွေးမည်</button></div>
   <input type="file" id="mfile" accept="image/*" hidden>
   <div class="note">ပုံနှင့် link များကို ဤဖုန်း၏ browser ထဲတွင်သာ သိမ်းသည်။ browser data ဖျက်လျှင် ပျောက်နိုင်သည်။${DBX?"":" (လက်ရှိ သိမ်းဆည်း၍ မရသဖြင့် ဤအကြိမ်သာ ကျန်မည်)"}</div></details>
-  <div class="chips" style="margin:6px 0 10px">${["အားလုံး",...MC].map(c=>`<button class="chip ${MF==c?"on":""}" data-mc="${c}">${c}</button>`).join("")}</div>`;
+  <div class="chips" style="margin:8px 0 12px">${["အားလုံး",...MC].map(c=>`<button class="chip ${MF==c?"on":""}" data-mc="${c}">${c}</button>`).join("")}</div>`;
   if(!L.length)h+=`<div class="note">ထည့်ထားတာ မရှိသေးပါ။</div>`;
   h+=L.map(x=>{
     const del=`<button class="chip" data-md="${x.id}">${MD==String(x.id)?"ဧကန် ဖျက်မည်":"ဖျက်မည်"}</button>`;
@@ -354,7 +375,7 @@ function render(){
     if(tab=="gl"){h+=glHome()}else if(tab=="mine"){h+=mineHome()}else if(tab=="study"){h+=studyHome()}else if(tab=="vithi"){h+=vithiHome()}else if(tab=="rupa"){h+=rupaHome()}else if(tab=="list"){const seen=[];T.forEach(c=>{if(vis(c)&&!seen.includes(c.g))seen.push(c.g)});
       h+=seen.map(g=>`<details><summary>${g}</summary>${T.map((c,i)=>c.g==g&&vis(c)?itm(i):"").join("")}</details>`).join("")}
     else{
-      h+=`<div class="chips">${AT.map(a=>`<button class="chip ${a==fa?"on":""}" data-a="${a}">${a}</button>`).join("")}</div><div class="box"><div class="chips">`;
+      h+=`<div class="chips">${AT.map(a=>`<button class="chip ${a==fa?"on":""}" data-a="${a}">${a}</button>`).join("")}</div><div class="box" style="margin-top:10px"><div class="chips">`;
       const m={};T.filter(vis).forEach(c=>attr(c,fa).forEach(v=>m[v]=(m[v]||0)+1));
       h+=Object.keys(m).map(v=>`<button class="chip" data-f="${fa}" data-v="${v}">${v}<i>${m[v]}</i></button>`).join("")+`</div></div>`;
     }
@@ -365,12 +386,12 @@ function render(){
     const c=T[s.i];
     const row=(l,t)=>`<div class="box"><h3>${t||l}</h3><div class="chips">${attr(c,l).map(v=>chip(l,v)).join("")}</div></div>`;
     h=`<button class="back" data-b>‹ နောက်သို့</button><div class="nm">${dn(c)}</div><div class="sub">${ds(c)}</div>
-    <div class="chips" style="margin-top:6px">${chip("ဘူမိ",c.pl)}${chip("ဇာတိ",c.j)}${chip("ဇော",c.jv?"ဇောစိတ်":"ဇောမဟုတ်")}</div>
+    <div class="chips" style="margin-top:8px">${chip("ဘူမိ",c.pl)}${chip("ဇာတိ",c.j)}${chip("ဇော",c.jv?"ဇောစိတ်":"ဇောမဟုတ်")}</div>
     ${row("ဝေဒနာ")}${row("ဟေတု","ဟေတု "+c.hetu.length+" ပါး")}${row("ဒွါရ")}${row("ကိစ္စ")}
     <div class="box"><h3>အာရုံ</h3><div class="chips">${c.ar.map(v=>chip("အာရုံ",v)).join("")}</div><div class="note">${c.an}</div></div>
     <div class="box"><h3>ယှဉ်သော စေတသိက် ${cnt(c)} ပါး</h3>
     ${c.ce.map(g=>`<div class="note" style="margin-top:8px">${g[0]} ${g[1].length}</div><div class="chips">${g[1].map(v=>chip("စေတသိက်",v.replace("*","")).replace(">"+v.replace("*","")+"<",">"+v+"<")).join("")}</div>`).join("")}
-    ${JSON.stringify(c.ce).includes("*")?`<div class="note">* ပါသော စေတသိက်သည် တစ်ခါတစ်ရံသာ ယှဉ်သော်လည်း အရေအတွက်ထဲ ပါဝင်သည်။</div>`:""}</div>`;
+    ${JSON.stringify(c.ce).includes("*")?`<div class="note" style="margin-top:8px">* ပါသော စေတသိက်သည် တစ်ခါတစ်ရံသာ ယှဉ်သော်လည်း အရေအတွက်ထဲ ပါဝင်သည်။</div>`:""}</div>`;
   }
   $("app").innerHTML=h;scrollTo(0,0);
 }
