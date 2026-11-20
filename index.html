@@ -316,6 +316,21 @@ textarea.fm{min-height:120px;resize:vertical;line-height:1.7}
   padding: 1px 8px;
   border-radius: 999px;
 }
+@media (max-width: 600px) {
+  body.quiz-active .subject-selector-box {
+    display: none;
+  }
+
+  body.quiz-active .quiz-header-compact {
+    padding: 6px 10px;
+    margin-bottom: 6px;
+  }
+
+  body.quiz-active .quiz-card {
+    padding: 12px 13px;
+    margin-top: 6px;
+  }
+}
 </style>
 </head>
 <body>
@@ -2256,24 +2271,32 @@ function examStart(review = false) {
 }
 function examHome() {
   const topicCount = t => EXAM_BANK.filter(q => q.t == t).length;
-  let h = `<div class="box"><h3>မေးခွန်းများကို ဘာသာရပ်အလိုက် လေ့ကျင့်ရန်</h3><div class="chips">${EXAM_TOPICS.map(t => `<button class="chip ${EXAM.topic == t ? "on" : ""}" data-et="${t}">${t}<i>${topicCount(t)}</i></button>`).join("")}</div><div class="note">နှစ်အလိုက်မဟုတ်ဘဲ စိတ်၊ စေတသိက်၊ ရုပ်၊ ဝီထိ စသည့် ခေါင်းစဉ်အလိုက် စုထားပါသည်။</div></div>`;
+  let h = `<div class="box subject-selector-box"><h3>မေးခွန်းများကို ဘာသာရပ်အလိုက် လေ့ကျင့်ရန်</h3><div class="chips">${EXAM_TOPICS.map(t => `<button class="chip ${EXAM.topic == t ? "on" : ""}" data-et="${t}">${t}<i>${topicCount(t)}</i></button>`).join("")}</div><div class="note">နှစ်အလိုက်မဟုတ်ဘဲ စိတ်၊ စေတသိက်၊ ရုပ်၊ ဝီထိ စသည့် ခေါင်းစဉ်အလိုက် စုထားပါသည်။</div></div>`;
   const wrongCount = EXAM_WRONG.filter(q => q.t == EXAM.topic).length;
-  h += `<div class="box"><div class="nm" style="font-size:1.05rem">${EXAM.topic} မေးခွန်း</div><div class="sub">လေ့ကျင့်ရန် ${topicCount(EXAM.topic)} ပုဒ် · မှားထားသောမေးခွန်း ${wrongCount} ပုဒ်</div><div class="chips" style="margin-top:12px"><button class="chip on" data-estart="1">မေးခွန်း စတင်ဖြေမည်</button><button class="chip" data-ereview="1" ${wrongCount ? "" : "disabled"}>မှားထားတာ ပြန်ဖြေမည်</button></div></div>`;
+  h += `<div class="box subject-selector-box"><div class="nm" style="font-size:1.05rem">${EXAM.topic} မေးခွန်း</div><div class="sub">လေ့ကျင့်ရန် ${topicCount(EXAM.topic)} ပုဒ် · မှားထားသောမေးခွန်း ${wrongCount} ပုဒ်</div><div class="chips" style="margin-top:12px"><button class="chip on" data-estart="1">မေးခွန်း စတင်ဖြေမည်</button><button class="chip" data-ereview="1" ${wrongCount ? "" : "disabled"}>မှားထားတာ ပြန်ဖြေမည်</button></div></div>`;
   if (EXAM.pool.length && EXAM.pos < EXAM.pool.length) {
     const q = EXAM.pool[EXAM.pos];
     const opts = Array.isArray(q._opts) ? q._opts : (Array.isArray(q.o) ? q.o : []);
-    h += `<div class="box"><div class="row2"><span class="sub">${EXAM.review ? "မှားခဲ့သော မေးခွန်းများ" : "လေ့ကျင့်ခန်း"} · ${EXAM.pos + 1}/${EXAM.pool.length}</span><b>အမှတ် ${EXAM.score}/${EXAM.answered}</b></div>` +
+    h += `<button class="back" data-b>‹ နောက်သို့</button>` +
+      `<div class="box quiz-card"><div class="row2 quiz-header-compact"><span class="sub">${EXAM.review ? "မှားခဲ့သော မေးခွန်းများ" : "လေ့ကျင့်ခန်း"} · ${EXAM.pos + 1}/${EXAM.pool.length}</span><b>အမှတ် ${EXAM.score}/${EXAM.answered}</b></div>` +
       `<div style="font-size:1rem;font-weight:700;line-height:1.8;margin:12px 0">${q.q}</div>` +
       opts.map(o => `<button class="it" data-eopt="${encodeURIComponent(o)}" ${EXAM.show ? "disabled" : ""} style="font-size:1rem;font-weight:400;line-height:1.75;${EXAM.show && o == q.a ? "border-left-color:#1F7A5C" : EXAM.show && o == EXAM.chosen ? "border-left-color:#B3342B" : ""}">${EXAM.show && o == q.a ? "✓ " : ""}${EXAM.show && o == EXAM.chosen && o != q.a ? "✗ " : ""}${o}</button>`).join("");
     if (EXAM.show) h += `<div class="note" style="font-size:0.9375rem;color:var(--ink);margin-top:10px">${EXAM.chosen == q.a ? "မှန်ကန်ပါတယ်။" : "အဖြေမှန် — " + q.a}</div><button class="chip on" data-enext="1" style="margin-top:10px">${EXAM.pos + 1 == EXAM.pool.length ? "ရလဒ်ကြည့်မည်" : "နောက်မေးခွန်း"}</button>`;
     h += `</div>`;
   } else if (EXAM.pool.length && EXAM.pos >= EXAM.pool.length) {
-    h += `<div class="box"><div class="nm" style="font-size:1.125rem">လေ့ကျင့်မှု ပြီးပါပြီ</div><div class="nm" style="font-size:1.375rem">${EXAM.score} / ${EXAM.answered} မှတ်</div><div class="sub">မှန်ကန်မှု ${EXAM.answered ? Math.round(EXAM.score / EXAM.answered * 100) : 0}%</div><button class="chip on" data-estart="1">ထပ်မံလေ့ကျင့်မည်</button></div>`;
+    h += `<button class="back" data-b>‹ နောက်သို့</button>` +
+      `<div class="box quiz-card">` +
+      `<div class="nm" style="font-size:1.125rem">လေ့ကျင့်မှု ပြီးပါပြီ</div>` +
+      `<div class="nm" style="font-size:1.375rem">${EXAM.score} / ${EXAM.answered} မှတ်</div>` +
+      `<div class="sub">မှန်ကန်မှု ${EXAM.answered ? Math.round(EXAM.score / EXAM.answered * 100) : 0}%</div>` +
+      `<div class="chips" style="margin-top:12px"><button class="chip on" data-estart="1">ထပ်မံလေ့ကျင့်မည်</button></div>` +
+      `</div>`;
   } else if (EXAM.review) {
-    h += `<div class="box">ဒီခေါင်းစဉ်မှာ ပြန်လေ့ကျင့်ရန် မှားထားသော မေးခွန်း မရှိသေးပါ။</div>`;
+    h += `<div class="box quiz-card">ဒီခေါင်းစဉ်မှာ ပြန်လေ့ကျင့်ရန် မှားထားသော မေးခွန်း မရှိသေးပါ။</div>`;
   }
   return h;
 }
+
 // ================= ကိုယ်ပိုင် (ပုံ/Link + Backup/Restore) =================
 const MC = ["စိတ်", "စေတသိက်", "ရုပ်", "ဝီထိ", "အခြား"];
 let MI = [], DBX = null, MF = "အားလုံး", MM = "", MD = null, MZ = 1;
@@ -2475,6 +2498,7 @@ function render() {
       `<button data-t="study" aria-pressed="${tab == "study"}">ကျက်ရန်</button>` +
       `<button data-t="exam" aria-pressed="${tab == "exam"}">မေးခွန်း</button>` +
       `<button data-t="mine" aria-pressed="${tab == "mine"}">ကိုယ်ပိုင်</button>` +
+      
       `</div>`;
     if (tab == "gl") h += glHome();
     else if (tab == "mine") h += mineHome();
@@ -2514,8 +2538,9 @@ function render() {
   c.ce.map(g => `<div class="ce-group"><div class="ce-group-title"><span>${g[0]}</span><span class="ce-group-count">${toMmNum(g[1].length)} ပါး</span></div><div class="chips">${g[1].map(v => chip("စေတသိက်", v.replace("*", "")).replace(">" + v.replace("*", "") + "<", ">" + v + "<")).join("")}</div></div>`).join("") +
   (JSON.stringify(c.ce).includes("*") ? `<div class="note" style="margin-top:8px">* ပါသော စေတသိက်သည် တစ်ခါတစ်ရံသာ ယှဉ်သော်လည်း အရေအတွက်ထဲ ပါဝင်သည်။</div>` : "") +
 `</div>`;
-
   }
+  const isQuizPlaying = (tab == "exam" && !s && EXAM.pool.length && EXAM.pos < EXAM.pool.length);
+document.body.classList.toggle("quiz-active", Boolean(isQuizPlaying));
   $("app").innerHTML = h;
   scrollTo(0, 0);
 }
@@ -2523,7 +2548,24 @@ function render() {
 $("app").onclick = e => {
   const b = e.target.closest("button");
   if (!b) return;
-  if (b.dataset.t) { tab = b.dataset.t; render(); }
+  if (b.dataset.fs) {
+    FSize = Math.min(26, Math.max(12, FSize + (b.dataset.fs === "+" ? 2 : -2)));
+    document.documentElement.style.fontSize = FSize + "px";
+    localStorage.setItem("abhi-fs", String(FSize));
+    return;
+  }
+  else if (b.dataset.equit) {
+    EXAM.pool = []; EXAM.pos = 0; EXAM.show = false; EXAM.review = false;
+    render();
+    return;
+  }
+  else if (b.dataset.t) {
+    if (b.dataset.t == "exam" && EXAM.pool.length) {
+      EXAM.pool = []; EXAM.pos = 0; EXAM.show = false; EXAM.review = false;
+    }
+    tab = b.dataset.t;
+    render();
+  }
   else if (b.dataset.et) { EXAM.topic = b.dataset.et; EXAM.pool = []; EXAM.pos = 0; EXAM.show = false; render(); }
   else if (b.dataset.estart) { examStart(false); render(); }
   else if (b.dataset.ereview) { examStart(true); render(); }
@@ -2583,7 +2625,16 @@ $("app").onclick = e => {
   else if (b.dataset.ri !== undefined) { st.push({ r: +b.dataset.ri }); render(); }
   else if (b.dataset.rf) { st.push({ rf: b.dataset.rf, v: b.dataset.v }); render(); }
   else if (b.dataset.f) { st.push({ f: b.dataset.f, v: b.dataset.v }); render(); }
-  else if (b.dataset.b !== undefined) { st.pop(); render(); }
+  // 👇 ဒီနေရာမှာ ပြင်ထားပါတယ်
+  else if (b.dataset.b !== undefined) {
+    if (tab == "exam" && EXAM.pool.length) {
+      EXAM.pool = []; EXAM.pos = 0; EXAM.show = false; EXAM.review = false;
+      render();
+      return;
+    }
+    st.pop();
+    render();
+  }
   else if (b.dataset.fs) {
     if (b.dataset.fs == "+" && FSize < 36) FSize += 2;
     if (b.dataset.fs == "-" && FSize > 12) FSize -= 2;
@@ -2592,6 +2643,7 @@ $("app").onclick = e => {
     render();
   }
 };
+
 
 $("app").oninput = e => {
   if (e.target.id == "gnote" && GCUR != null) {
