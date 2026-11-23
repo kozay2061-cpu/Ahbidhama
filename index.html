@@ -273,41 +273,27 @@ textarea.fm{min-height:120px;resize:vertical;line-height:1.7}
   line-height:1.7;
   vertical-align:middle;
 }
-.ce-group-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 12px;
-  margin-bottom: 6px;
-  padding: 3px 10px;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: #ffd54f;
-  background: rgba(255, 213, 79, 0.12);
-  border-left: 3px solid #ffc107;
-  border-radius: 0 6px 6px 0;
-  letter-spacing: 0.2px;
-}
 .ce-group {
   margin-top: 10px;
   padding: 8px 10px 10px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg);
+  border: 1px solid var(--ln);
 }
-
+.ce-group:first-child {
+  margin-top: 0;
+}
 .ce-group-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 0.9rem;
   font-weight: 700;
-  color: #90caf9;
+  color: var(--ac);
   margin-bottom: 8px;
   padding-bottom: 4px;
-  border-bottom: 1px dashed rgba(144, 202, 249, 0.25);
+  border-bottom: 1px dashed var(--ln);
 }
-
 .ce-group-count {
   font-size: 0.78rem;
   font-weight: 600;
@@ -315,6 +301,31 @@ textarea.fm{min-height:120px;resize:vertical;line-height:1.7}
   background: rgba(144, 202, 249, 0.16);
   padding: 1px 8px;
   border-radius: 999px;
+}
+  .citta-main-group {
+  margin-top: 14px;
+  padding: 10px 12px 12px;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 1px solid var(--ln);
+  border-left: 1px solid var(--ln);
+}
+.citta-main-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffd54f;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(255, 213, 79, 0.12);
+  border-bottom: 1px solid rgba(255, 213, 79, 0.28);
+  letter-spacing: 0.2px;
+}
+.citta-main-group details {
+  margin-top: 6px;
 }
 @media (max-width: 600px) {
   body.quiz-active .subject-selector-box {
@@ -336,7 +347,7 @@ textarea.fm{min-height:120px;resize:vertical;line-height:1.7}
 <body>
 <header>
   <h1>🪷 အဘိဓမ္မာ လေ့ကျင့်ခန်း</h1>
-  <p>စိတ် · စေတသိက် · ရုပ် · ဝီထိ · မေးခွန်း . အဓိပ္ပါယ် .  ကျက်ရန် · ကိုယ်ပိုင်</p>
+  <p> </p>
 </header>
 <div id="app"></div>
 
@@ -654,7 +665,7 @@ const GL = [
   ["ဥပေက္ခာ", "☸️ ဝေဒနာ ၅ ပါး", "သုခလည်း မဟုတ်၊ ဒုက္ခလည်း မဟုတ်သော အလယ်အလတ် ခံစားခြင်း။"],
 
   ["ဒွါရ", "☸️ စိတ်၏ အချက်များ", "စိတ်စေတသိက်တို့ ဝင်ရောက်ဖြစ်ပေါ်ရာ တံခါး။ စက္ခု၊ သောတ၊ ဃာန၊ ဇိဝှါ၊ ကာယ၊ မနော ဒွါရ ၆ ပါး။ ဒွါရမပါဘဲ ဖြစ်သော စိတ်ကို ဒွါရဝိမုတ် ဟု ခေါ်သည်။"],
-  ["ဝတ္ထု", "☸️ စိတ်၏ အချက်များ", "စိတ်စေတသိက်တို့ မှီ၍ ဖြစ်ပေါ်ရာ ရုပ်။ ဝတ္ထု ၆ ပါး - စက္ခုဝတ္ထု၊ သောတဝတ္ထု၊ ဃာနဝတ္ထု၊ ဇိဝှါဝတ္ထု၊ ကာယဝတ္ထု၊ ဟဒယဝတ္ထု။ ပဉ္စဝိညာဏ်တို့သည် ထိုထိုပသာဒကို မှီပြီး ကျန်စိတ်များသည် ဟဒယဝတ္ထုကို မှီသည်။ အရူပဝိပါက် ၄ ပါးသာ ဝတ္ထုကို မမှီပါ။ (စိတ် ၈၉ ပါးအရ ဟဒယဝတ္ထုကို မှီသောစိတ် ၇၅ ပါး၊ ဈာန်ခွဲ၍ ရေတွက်လျှင် ၁၀၇ ပါး)"],
+  ["ဝတ္ထု", "☸️ စိတ်၏ အချက်များ", "စိတ်စေတသိက်တို့ မှီ၍ ဖြစ်ပေါ်ရာ ရုပ်။ ဝတ္ထု ၆ ပါး - စက္ခုဝတ္ထု၊ သောတဝတ္ထု၊ ဃာနဝတ္ထု၊ ဇိဝှါဝတ္ထု၊ ကာယဝတ္ထု၊ ဟဒယဝတ္ထု။ ပဉ္စဝိညာဏ်တို့သည် ထိုထိုပသာဒကို မှီပြီး ကျန်စိတ်များသည် ဟဒယဝတ္ထုကို မှီသည်။ အရူပဝိပါက်စိတ် ၄ ပါးသည် ရုပ်ဝတ္ထုကို မမှီပါ။ (စိတ် ၈၉ ပါးအရ ဟဒယဝတ္ထုကို မှီသောစိတ် ၇၅ ပါး၊ ဈာန်ခွဲ၍ ရေတွက်လျှင် ၁၀၇ ပါး)"],
   ["ပသာဒ", "☸️ စိတ်၏ အချက်များ", "မျက်စိ၊ နား၊ နှာခေါင်း၊ လျှာ၊ ကိုယ်တို့၌ အာရုံကို လက်ခံနိုင်သော ကြည်လင်သည့် ရုပ် ၅ ပါး (စက္ခု၊ သောတ၊ ဃာန၊ ဇိဝှါ၊ ကာယ ပသာဒ)။ ဤ ၅ ပါးသည် ဒွါရလည်း ဖြစ်၊ ဝတ္ထုလည်း ဖြစ်သည်။"],
   ["ဟဒယဝတ္ထု", "☸️ စိတ်၏ အချက်များ", "ဟဒယ (နှလုံး) ၌ တည်၍ စိတ်တို့၏ မှီရာ ဖြစ်သော ရုပ်။ ပဉ္စဝိညာဏ်မှ တပါး ကျန်စိတ်များ၏ မှီရာ ဝတ္ထု။ ဒွါရ မဟုတ်ပါ (မနောဒွါရမှာ ဘဝင်စိတ်)။"],
   ["ဒွါရ၊ ဝတ္ထု၊ ပသာဒ ကွာခြားပုံ", "☸️ စိတ်၏ အချက်များ", "ဒွါရ = စိတ်ဝင်ရောက်ရာ တံခါး (၆)။ ဝတ္ထု = စိတ် မှီရာ ရုပ် (၆)။ ပသာဒ = အာရုံ လက်ခံသော ကြည်လင်ရုပ် (၅)။ ပဉ္စဒွါရတွင် ပသာဒ ၅ ပါးသည် ဒွါရလည်း၊ ဝတ္ထုလည်း ဖြစ်၍ ကိုက်ညီသည်။ မနောဒွါရမှာ ဘဝင်စိတ်၊ မနောမှီရာ ဝတ္ထုမှာ ဟဒယ၊ ပသာဒ မပါ၊ ထို့ကြောင့် မတူပါ။"],
@@ -737,12 +748,37 @@ const GL = [
   ["ဝိရတီ", "☸️ စေတသိက် အုပ်စုများ", "မကောင်းမှုမှ ရှောင်ကြဉ်ခြင်း - သမ္မာဝါစာ၊ သမ္မာကမ္မန္တ၊ သမ္မာအာဇီဝ ၃ ပါး။"],
   ["အပ္ပမညာ", "☸️ စေတသိက် အုပ်စုများ", "အကန့်အသတ်မရှိ သတ္တဝါများကို အာရုံပြုသော ကရုဏာ (သနားခြင်း)၊ မုဒိတာ (ဝမ်းမြောက်ခြင်း) ၂ ပါး။"],
   ["ပညိန္ဒြေ", "☸️ စေတသိက် အုပ်စုများ", "အမောဟ၊ ပညာ၊ ဉာဏ်။ အမှန်အတိုင်း သိမြင်စေသော စေတသိက်။ ဉာဏသမ္ပယုတ်စိတ်နှင့်သာ ယှဉ်သည်။"],
+  ["နိယတယောဂီ", "☸️ စေတသိက် အုပ်စုများ", "မိမိယှဉ်ခွင့်ရသော စိတ်တိုင်း၌ အမြဲမပြတ် ဧကန်မုချ ယှဉ်တွဲဖြစ်ပွားသော စေတသိက် ၄၁ ပါး (သဗ္ဗစိတ္တသာဓာရဏ ၇၊ ပကိဏ္ဏက ၆၊ မောစတုက် ၄၊ လောဘ၊ ဒိဋ္ဌိ၊ ဒေါသ၊ သောဘဏသာဓာရဏ ၁၉၊ ပညိန္ဒြေ ၁)။"],
+  ["အနိယတယောဂီ", "☸️ စေတသိက် အုပ်စုများ", "မိမိယှဉ်ခွင့်ရသော စိတ်တိုင်း၌ အမြဲမဟုတ်ဘဲ တစ်ခါတစ်ရံသာ (အခါအားလျော်စွာ) ယှဉ်တွဲဖြစ်ပွားသော စေတသိက် ၁၁ ပါး (အကုသိုလ်မှ ၆ ပါး - ဣဿာ၊ မစ္ဆရိယ၊ ကုက္ကုစ္စ၊ မာန၊ ထိန၊ မိဒ္ဓ နှင့် သောဘနမှ ၅ ပါး - ဝိရတီ ၃၊ အပ္ပမညာ ၂)။"],
+  ["သဟ ကဒါစိ", "☸️ စေတသိက် အုပ်စုများ", "အနိယတယောဂီ ၁၁ ပါးတွင် တစ်စိတ်တည်း၌ အတူတကွ ယှဉ်ခွင့်ရလျှင် အမြဲအတူတကွ ယှဉ်သော ထိန နှင့် မိဒ္ဓ စေတသိက် ၂ ပါး။"],
+  ["နာနာ ကဒါစိ", "☸️ စေတသိက် အုပ်စုများ", "အနိယတယောဂီ ၁၁ ပါးတွင် တစ်စိတ်တည်း၌ ဘယ်သောအခါမျှ အတူမယှဉ်ဘဲ တစ်ပါးစီသာ ယှဉ်သော စေတသိက် ၈ ပါး (ဣဿာ၊ မစ္ဆရိယ၊ ကုက္ကုစ္စ နှင့် လောကီဝိရတီ ၃ ပါး၊ အပ္ပမညာ ၂ ပါး)။"],
+  ["ယထာရဟံ", "☸️ စေတသိက် အုပ်စုများ", "အနိယတယောဂီ ၁၁ ပါးတွင် လောဘမူ ဒိဋ္ဌိဝိပ္ပယုတ်စိတ် ၄ ပါး၌ ယှဉ်နိုင်သော အခြေအနေအလိုက် သင့်သလို ယှဉ်သည့် မာနစေတသိက် ၁ ပါး။"],
 
   ["မဟာဘုတ် ၄ ပါး", "☸️ ရုပ်", "ရုပ်အားလုံး၏ အခြေခံ မူလဓာတ်ကြီး ၄ ပါး - ပထဝီ (မြေ)၊ အာပေါ (ရေ)၊ တေဇော (မီး)၊ ဝါယော (လေ)။"],
   ["ဥပါဒါရုပ် ၂၄ ပါး", "☸️ ရုပ်", "မဟာဘုတ် ၄ ပါးကို မှီ၍ ဖြစ်ပေါ်လာသော မှီရုပ် ၂၄ ပါး (ပသာဒ ၅၊ ဂေါစရ ၄၊ ဘာဝ ၂၊ ဟဒယ ၁၊ ဇီဝိတ ၁၊ အာဟာရ ၁၊ ပရိစ္ဆေဒ ၁၊ ဝိညတ် ၂၊ ဝိကာရ ၃၊ လက္ခဏ ၄)။"],
   ["နိပ္ဖန်ရုပ် ၁၈ ပါး", "☸️ ရုပ်", "ကံ၊ စိတ်၊ ဥတု၊ အာဟာရ ဟူသော အကြောင်းတရားတို့ကြောင့် ကိုယ်ပိုင်သဘာဝလက္ခဏာဖြင့် ပြီးစီးဖြစ်ပေါ်သော ရုပ်အစစ် ၁၈ ပါး (မဟာဘုတ် ၄ မှ အာဟာရရုပ်အထိ)။"],
   ["အနိပ္ဖန်ရုပ် ၁၀ ပါး", "☸️ ရုပ်", "အကြောင်းတရား ၄ ပါးကြောင့် တိုက်ရိုက်ပြီးစီးသည် မဟုတ်ဘဲ နိပ္ဖန်ရုပ်တို့၏ အပိုင်းအခြား၊ အမူအရာ၊ အခြေအနေမျှသာ ဖြစ်သော ရုပ် ၁၀ ပါး (ပရိစ္ဆေဒ ၁၊ ဝိညတ် ၂၊ ဝိကာရ ၃၊ လက္ခဏ ၄)။"],
-  ["ကလာပ် (ရုပ်ကလာပ်)", "☸️ ရုပ်", "အနည်းဆုံး ရုပ် ၈ ပါး (အဝိနိဗ္ဘောဂရုပ် ၈ ပါး - ပထဝီ၊ အာပေါ၊ တေဇော၊ ဝါယော၊ ဝဏ္ဏ၊ ဂန္ဓ၊ ရသ၊ ဩဇာ) အတူတကွ စုပေါင်းဖြစ်ပေါ်နေသော အသေးငယ်ဆုံး ရုပ်အစုအဝေး။"]
+  ["ကလာပ် (ရုပ်ကလာပ်)", "☸️ ရုပ်", "အနည်းဆုံး ရုပ် ၈ ပါး (အဝိနိဗ္ဘောဂရုပ် ၈ ပါး - ပထဝီ၊ အာပေါ၊ တေဇော၊ ဝါယော၊ ဝဏ္ဏ၊ ဂန္ဓ၊ ရသ၊ ဩဇာ) အတူတကွ စုပေါင်းဖြစ်ပေါ်နေသော အသေးငယ်ဆုံး ရုပ်အစုအဝေး။"],
+  ["ဘေဒ ၆ မျိုး (ယှဉ်ပုံဘေဒ)", "☸️ စေတသိက် အုပ်စုများ", "စေတသိက် ၅၂ ပါးကို စိတ်တို့၌ ယှဉ်တွဲပုံ အမျိုးအစားအလိုက် ခွဲခြားထားသော ၆ မျိုး — (၁) သဗ္ဗစိတ္တ ၇ ပါး၊ (၂) ပကိဏ္ဏက ၆ ပါး၊ (၃) အကုသလ ၁၄ ပါး၊ (၄) သောဘဏ ၁၉ ပါး၊ (၅) အပ္ပမညာ ၂ ပါး၊ (၆) ဝိရတီ ၃ ပါး နှင့် ပညိန္ဒြေ ၁ ပါး (ပေါင်း ၄ ပါး)။"]
+  ,
+  ["ခန္ဓာ ၅ ပါး", "☸️ သင်္ခတတရားနှင့် သစ္စာ", "ရူပက္ခန္ဓာ၊ ဝေဒနာက္ခန္ဓာ၊ သညာက္ခန္ဓာ၊ သင်္ခါရက္ခန္ဓာ၊ ဝိညာဏက္ခန္ဓာ ဟူ၍ ၅ ပါး။ ရုပ် ၂၈ ပါးသည် ရူပက္ခန္ဓာ၊ ဝေဒနာစေတသိက်သည် ဝေဒနာက္ခန္ဓာ၊ သညာစေတသိက်သည် သညာက္ခန္ဓာ၊ ကျန်စေတသိက် ၅၀ ပါးသည် သင်္ခါရက္ခန္ဓာ၊ စိတ် ၈၉/၁၂၁ ပါးသည် ဝိညာဏက္ခန္ဓာ ဖြစ်သည်။"],
+  ["အာယတန ၁၂ ပါး", "☸️ သင်္ခတတရားနှင့် သစ္စာ", "အဇ္ဈတ္တိကာယတန ၆ ပါး — စက္ခု၊ သောတ၊ ဃာန၊ ဇိဝှါ၊ ကာယ၊ မနော။ ဗာဟိရာယတန ၆ ပါး — ရူပ၊ သဒ္ဒ၊ ဂန္ဓ၊ ရသ၊ ဖောဋ္ဌဗ္ဗ၊ ဓမ္မာယတန။ မနောအာယတနသည် စိတ်အားလုံး၊ ဓမ္မာယတနတွင် စေတသိက်၊ သုခုမရုပ်၊ နိဗ္ဗာန် ပါဝင်သည်။"],
+  ["ဓာတ် ၁၈ ပါး", "☸️ သင်္ခတတရားနှင့် သစ္စာ", "စက္ခုဓာတ်၊ ရူပဓာတ်၊ စက္ခုဝိညာဏ်ဓာတ်၊ သောတဓာတ်၊ သဒ္ဒဓာတ်၊ သောတဝိညာဏ်ဓာတ်၊ ဃာနဓာတ်၊ ဂန္ဓဓာတ်၊ ဃာနဝိညာဏ်ဓာတ်၊ ဇိဝှါဓာတ်၊ ရသဓာတ်၊ ဇိဝှါဝိညာဏ်ဓာတ်၊ ကာယဓာတ်၊ ဖောဋ္ဌဗ္ဗဓာတ်၊ ကာယဝိညာဏ်ဓာတ်၊ မနောဓာတ်၊ ဓမ္မဓာတ်၊ မနောဝိညာဏ်ဓာတ်။"],
+  ["အရိယသစ္စာ ၄ ပါး", "☸️ သင်္ခတတရားနှင့် သစ္စာ", "ဒုက္ခသစ္စာ — ဥပါဒါနက္ခန္ဓာ ၅ ပါး။ သမုဒယသစ္စာ — တဏှာ။ နိရောဓသစ္စာ — တဏှာနှင့် ဒုက္ခချုပ်ငြိမ်းရာ နိဗ္ဗာန်။ မဂ္ဂသစ္စာ — အရိယအဋ္ဌင်္ဂိကမဂ်။"],
+  ["ပဋိစ္စသမုပ္ပါဒ် ၁၂ ပါး", "☸️ အကြောင်းအကျိုး", "အဝိဇ္ဇာပစ္စယာ သင်္ခါရာ၊ သင်္ခါရပစ္စယာ ဝိညာဏံ၊ ဝိညာဏပစ္စယာ နာမရူပံ၊ နာမရူပပစ္စယာ သဠာယတနံ၊ သဠာယတနပစ္စယာ ဖဿော၊ ဖဿပစ္စယာ ဝေဒနာ၊ ဝေဒနာပစ္စယာ တဏှာ၊ တဏှာပစ္စယာ ဥပါဒါနံ၊ ဥပါဒါနပစ္စယာ ဘဝေါ၊ ဘဝပစ္စယာ ဇာတိ၊ ဇာတိပစ္စယာ ဇရာမရဏံ။ အဝိဇ္ဇာချုပ်လျှင် အစဉ်လိုက် ချုပ်ငြိမ်းမှု ဖြစ်သည်။"],
+  ["ပဋိစ္စသမုပ္ပါဒ် အုပ်စု ၄ စု", "☸️ အကြောင်းအကျိုး", "အတိတ်အကြောင်း ၂ ပါး — အဝိဇ္ဇာ၊ သင်္ခါရ။ ပစ္စုပ္ပန်အကျိုး ၅ ပါး — ဝိညာဏ်၊ နာမရုပ်၊ သဠာယတန၊ ဖဿ၊ ဝေဒနာ။ ပစ္စုပ္ပန်အကြောင်း ၃ ပါး — တဏှာ၊ ဥပါဒါန်၊ ဘဝ။ အနာဂတ်အကျိုး ၂ ပါး — ဇာတိ၊ ဇရာမရဏ။"],
+  ["ပဋ္ဌာန်း ပစ္စည်း ၂၄ ပါး", "☸️ အကြောင်းအကျိုး", "ဟေတုပစ္စည်း၊ အာရမ္မဏပစ္စည်း၊ အဓိပတိပစ္စည်း၊ အနန္တရပစ္စည်း၊ သမနန္တရပစ္စည်း၊ သဟဇာတပစ္စည်း၊ အညမညပစ္စည်း၊ နိဿယပစ္စည်း၊ ဥပနိဿယပစ္စည်း၊ ပုရေဇာတပစ္စည်း၊ ပစ္ဆာဇာတပစ္စည်း၊ အာသေဝနပစ္စည်း၊ ကမ္မပစ္စည်း၊ ဝိပါကပစ္စည်း၊ အာဟာရပစ္စည်း၊ ဣန္ဒြိယပစ္စည်း၊ ဈာနပစ္စည်း၊ မဂ္ဂပစ္စည်း၊ သမ္ပယုတ္တပစ္စည်း၊ ဝိပ္ပယုတ္တပစ္စည်း၊ အတ္ထိပစ္စည်း၊ နတ္ထိပစ္စည်း၊ ဝိဂတပစ္စည်း၊ အဝိဂတပစ္စည်း။"],
+  ["အာဟာရ ၄ ပါး", "☸️ အကြောင်းအကျိုး", "ကဗဠီကာရာဟာရ (စားဖွယ်အာဟာရ)၊ ဖဿာဟာရ (ဖဿ)၊ မနောသဉ္စေတနာဟာရ (စေတနာ)၊ ဝိညာဏာဟာရ (ဝိညာဏ်)။ သတ္တဝါတို့၏ ရုပ်နာမ်ဖြစ်စဉ်ကို ထောက်ပံ့သော အာဟာရ ၄ ပါး ဖြစ်သည်။"],
+  ["သတိပဋ္ဌာန် ၄ ပါး", "☸️ ဗောဓိပက္ခိယတရား", "ကာယာနုပဿနာ၊ ဝေဒနာနုပဿနာ၊ စိတ္တာနုပဿနာ၊ ဓမ္မာနုပဿနာ။ ကိုယ်၊ ခံစားမှု၊ စိတ်၊ သဘောတရားတို့ကို သတိဖြင့် ရှုမှတ်ခြင်း ဖြစ်သည်။"],
+  ["သမ္မပ္ပဓာန် ၄ ပါး", "☸️ ဗောဓိပက္ခိယတရား", "မဖြစ်သေးသော အကုသိုလ် မဖြစ်စေရန်၊ ဖြစ်ပြီးသော အကုသိုလ် ပယ်ရန်၊ မဖြစ်သေးသော ကုသိုလ် ဖြစ်စေရန်၊ ဖြစ်ပြီးသော ကုသိုလ် တည်တံ့တိုးပွားစေရန် လုံ့လ ၄ ပါး။"],
+  ["ဣဒ္ဓိပါဒ် ၄ ပါး", "☸️ ဗောဓိပက္ခိယတရား", "ဆန္ဒိဒ္ဓိပါဒ်၊ ဝီရိယိဒ္ဓိပါဒ်၊ စိတ္တိဒ္ဓိပါဒ်၊ ဝီမံသိဒ္ဓိပါဒ်။ ပြီးမြောက်အောင်မြင်မှု၏ အခြေခံတရား ၄ ပါး။"],
+  ["ဣန္ဒြေ ၅ ပါး", "☸️ ဗောဓိပက္ခိယတရား", "သဒ္ဓိန္ဒြေ၊ ဝီရိယိန္ဒြေ၊ သတိန္ဒြေ၊ သမာဓိန္ဒြေ၊ ပညိန္ဒြေ။ ယုံကြည်မှု၊ လုံ့လ၊ သတိ၊ တည်ကြည်မှု၊ ပညာတို့၏ အုပ်စိုးနိုင်စွမ်း။"],
+  ["ဗလ ၅ ပါး", "☸️ ဗောဓိပက္ခိယတရား", "သဒ္ဓါဗလ၊ ဝီရိယဗလ၊ သတိဗလ၊ သမာဓိဗလ၊ ပညာဗလ။ ဣန္ဒြေ ၅ ပါးနှင့် တရားအမည်တူပြီး တုန်လှုပ်မှုကို တားဆီးနိုင်သော အားအဖြစ် ဖော်ပြသည်။"],
+  ["ဗောဇ္ဈင် ၇ ပါး", "☸️ ဗောဓိပက္ခိယတရား", "သတိ၊ ဓမ္မဝိစယ၊ ဝီရိယ၊ ပီတိ၊ ပဿဒ္ဓိ၊ သမာဓိ၊ ဥပေက္ခာ သမ္ဗောဇ္ဈင်။ မဂ်ဉာဏ်သို့ နိုးကြားစေသော အင်္ဂါ ၇ ပါး။"],
+  ["အရိယအဋ္ဌင်္ဂိကမဂ်", "☸️ ဗောဓိပက္ခိယတရား", "သမ္မာဒိဋ္ဌိ၊ သမ္မာသင်္ကပ္ပ၊ သမ္မာဝါစာ၊ သမ္မာကမ္မန္တ၊ သမ္မာအာဇီဝ၊ သမ္မာဝါယာမ၊ သမ္မာသတိ၊ သမ္မာသမာဓိ။ မဂ္ဂသစ္စာ၏ အင်္ဂါ ၈ ပါး။"],
+  ["အနိစ္စ၊ ဒုက္ခ၊ အနတ္တ", "☸️ လက္ခဏာ ၃ ပါး", "အနိစ္စ — ဖြစ်ပြီး ပျက်စီးခြင်း၊ တည်မြဲမနေခြင်း။ ဒုက္ခ — ဖိစီးနှိပ်စက်ခံရခြင်း၊ အလိုအတိုင်း မဖြစ်နိုင်ခြင်း။ အနတ္တ — အစိုးရသူ၊ ပိုင်ရှင်၊ အတ္တအနှစ်သာရ မရှိခြင်း။ သင်္ခတတရားတို့ကို လက္ခဏ ၃ ပါးဖြင့် ရှုမြင်ရသည်။"],
+  ["နိဗ္ဗာန် အမျိုးအစား", "☸️ နိဗ္ဗာန်", "သဥပါဒိသေသနိဗ္ဗာန်ဓာတ် — အရဟတ္တဖိုလ်ရပြီးနောက် ခန္ဓာဝန် ကျန်ရှိစဉ် ကိလေသာချုပ်ငြိမ်းမှု။ အနုပါဒိသေသနိဗ္ဗာန်ဓာတ် — ခန္ဓာအစဉ်ပါ ချုပ်ဆုံးသော အခြေအနေ။ ဤခွဲခြားမှုသည် နိဗ္ဗာန်နှစ်မျိုးဟု အရာဝတ္ထုနှစ်ခု ခွဲခြင်းမဟုတ်ဘဲ ဥပါဒိအကြွင်းအကျန်အလိုက် ခေါ်ခြင်းဖြစ်သည်။"]
+
 ];
 
 let GN = {};
@@ -776,8 +812,33 @@ const SB = [
   ["စိတ် ၈၉ ကို ဘူမိအလိုက် ခွဲပါ", "ကာမ ၅၄၊ ရူပ ၁၅၊ အရူပ ၁၂၊ လောကုတ္တရာ ၈"],
   ["စိတ် ၈၉ ကို ဇာတိအလိုက် ခွဲပါ", "ကုသိုလ် ၂၁၊ အကုသိုလ် ၁၂၊ ဝိပါက် ၃၆၊ ကြိယာ ၂၀"],
   ["ရုပ် ၂၈ ကို ခွဲပါ", "မဟာဘုတ် ၄၊ ဥပါဒါရုပ် ၂၄"],
-  ["ဥပါဒါရုပ် ၂၄ ကို အုပ်စုခွဲပါ", "ပသာဒ ၅၊ ဂေါစရ ၄၊ ဘာဝ ၂၊ ဟဒယ ၁၊ ဇီဝိတ ၁၊ အာဟာရ ၁၊ ပရိစ္ဆေဒ ၁၊ ဝိညတ် ၂၊ ဝိကာရ ၃၊ လက္ခဏ ၄"]
+  ["ဥပါဒါရုပ် ၂၄ ကို အုပ်စုခွဲပါ", "ပသာဒ ၅၊ ဂေါစရ ၄၊ ဘာဝ ၂၊ ဟဒယ ၁၊ ဇီဝိတ ၁၊ အာဟာရ ၁၊ ပရိစ္ဆေဒ ၁၊ ဝိညတ် ၂၊ ဝိကာရ ၃၊ လက္ခဏ ၄"],
+  ["ခန္ဓာ ၅ ပါးကို ရေတွက်ပါ", "ရူပက္ခန္ဓာ၊ ဝေဒနာက္ခန္ဓာ၊ သညာက္ခန္ဓာ၊ သင်္ခါရက္ခန္ဓာ၊ ဝိညာဏက္ခန္ဓာ"],
+  ["အာယတန ၁၂ ပါးကို ခွဲပါ", "အဇ္ဈတ္တိက ၆ — စက္ခု၊ သောတ၊ ဃာန၊ ဇိဝှါ၊ ကာယ၊ မနော။ ဗာဟိရ ၆ — ရူပ၊ သဒ္ဒ၊ ဂန္ဓ၊ ရသ၊ ဖောဋ္ဌဗ္ဗ၊ ဓမ္မ"],
+  ["ဓာတ် ၁၈ ပါးကို ခွဲပါ", "အာယတန ၁၂ ပါးနှင့် သက်ဆိုင်ရာ ဝိညာဏ်ဓာတ် ၆ ပါး (စက္ခု၊ သောတ၊ ဃာန၊ ဇိဝှါ၊ ကာယ၊ မနောဝိညာဏ်)"],
+  ["အရိယသစ္စာ ၄ ပါးကို ဖော်ပြပါ", "ဒုက္ခသစ္စာ၊ သမုဒယသစ္စာ၊ နိရောဓသစ္စာ၊ မဂ္ဂသစ္စာ"],
+  ["ပဋိစ္စသမုပ္ပါဒ် ၁၂ ပါးကို အစဉ်လိုက် ဖော်ပြပါ", "အဝိဇ္ဇာ၊ သင်္ခါရ၊ ဝိညာဏ်၊ နာမရုပ်၊ သဠာယတန၊ ဖဿ၊ ဝေဒနာ၊ တဏှာ၊ ဥပါဒါန်၊ ဘဝ၊ ဇာတိ၊ ဇရာမရဏ"],
+  ["ပဋ္ဌာန်း ပစ္စည်း ဘယ်နှပါး ရှိသနည်း", "၂၄ ပါး"],
+  ["အာဟာရ ၄ ပါးကို ဖော်ပြပါ", "ကဗဠီကာရာဟာရ၊ ဖဿာဟာရ၊ မနောသဉ္စေတနာဟာရ၊ ဝိညာဏာဟာရ"],
+  ["ဗောဓိပက္ခိယတရား ၃၇ ပါးကို ခွဲပါ", "သတိပဋ္ဌာန် ၄၊ သမ္မပ္ပဓာန် ၄၊ ဣဒ္ဓိပါဒ် ၄၊ ဣန္ဒြေ ၅၊ ဗလ ၅၊ ဗောဇ္ဈင် ၇၊ မဂ္ဂင် ၈"],
+  ["အရိယအဋ္ဌင်္ဂိကမဂ် ၈ ပါးကို ဖော်ပြပါ", "သမ္မာဒိဋ္ဌိ၊ သမ္မာသင်္ကပ္ပ၊ သမ္မာဝါစာ၊ သမ္မာကမ္မန္တ၊ သမ္မာအာဇီဝ၊ သမ္မာဝါယာမ၊ သမ္မာသတိ၊ သမ္မာသမာဓိ"]
 ];
+// စေတသိက် ကျက်ရန်ဒေတာ
+const CET_GROUPS = [
+  ["သဗ္ဗစိတ္တသာဓာရဏ ၇", C7],
+  ["ပကိဏ္ဏက ၆", PN],
+  ["မောဟစတုက် ၄", MOHA],
+  ["လောဘတိက် ၃", ["လောဘ", "ဒိဋ္ဌိ", "မာန"]],
+  ["ဒေါသစတုက် ၄", ["ဒေါသ", "ဣဿာ", "မစ္ဆရိယ", "ကုက္ကုစ္စ"]],
+  ["ထိနမိဒ္ဓဒုက် ၂", ["ထိန", "မိဒ္ဓ"]],
+  ["ဝိစိကိစ္ဆာ ၁", ["ဝိစိကိစ္ဆာ"]],
+  ["သောဘနသာဓာရဏ ၁၉", SOB],
+  ["ဝိရတီ ၃", VIR.map(x => x.replace("*", ""))],
+  ["အပ္ပမညာ ၂", APP],
+  ["ပညိန္ဒြေ ၁", ["ပညိန္ဒြေ"]]
+];
+const CET_ALL = uq(CET_GROUPS.flatMap(g => g[1]));
+const CET_GROUP_OF = name => CET_GROUPS.find(g => g[1].includes(name));
 const ST = { d: "citta", m: "card", q: null, f: 0, s: 0, t: 0 };
 const PK = "abhi-prog-v1";
 let PG = {};
@@ -808,6 +869,16 @@ function mkQ(d) {
     return { q: `${v.n} ၏ စိတ်အစဉ်ကား`, a: S.map(lb).join(" › "), p: VV.map(w => w.s.map(lb).join(" › ")) };
   }
   let name, P;
+  if (d == "cet") {
+    const name = CET_ALL[rnd(CET_ALL.length)];
+    const group = CET_GROUP_OF(name);
+    const p = [
+      ["အုပ်စု", group[0], uq(CET_GROUPS.map(g => g[0]))],
+      ["စေတသိက် ၅၂ ပါးအနက် အမျိုးအစား", group[0], uq(CET_GROUPS.map(g => g[0]))],
+      ["အရေအတွက်", group[1].length + " ပါးပါဝင်သော အုပ်စု", uq(CET_GROUPS.map(g => g[1].length + " ပါးပါဝင်သော အုပ်စု"))]
+    ][rnd(3)];
+    return { q: `${name} သည် မည်သည့်အုပ်စုတွင် ပါသနည်း။`, a: group[0], p: uq(CET_GROUPS.map(g => g[0])) };
+  }
   if (d == "citta") {
     const c = T[rnd(T.length)];
     name = c.n;
@@ -847,22 +918,27 @@ const progLine = () => {
 };
 function studyHome() {
   const q = ST.q || (ST.q = nextQ(ST.d));
-  let h = `<div class="chips">${[["vithi", "ဝီထိ"], ["citta", "စိတ်"], ["rupa", "ရုပ်"], ["basic", "အခြေခံ အုပ်စုများ"]].map(([k, n]) => `<button class="chip ${ST.d == k ? "on" : ""}" data-sd="${k}">${n}</button>`).join("")}</div>` +
-    `<div class="seg" style="margin:10px 0"><button data-sm="card" aria-pressed="${ST.m == "card"}">ကျတ်ရန်</button><button data-sm="quiz" aria-pressed="${ST.m == "quiz"}">စမ်းဖြေရန်</button></div>` +
-    `<div class="note">မှန်ကန်/မှတ်မိ ${ST.s} / ${ST.t}</div>${progLine()}`;
   if (ST.m == "card") {
+    let h = `<div class="chips">${[["vithi", "ဝီထိ"], ["citta", "စိတ်"], ["cet", "စေတသိက်"], ["rupa", "ရုပ်"], ["basic", "အခြေခံ အုပ်စုများ"]].map(([k, n]) => `<button class="chip ${ST.d == k ? "on" : ""}" data-sd="${k}">${n}</button>`).join("")}</div>` +
+      `<div class="seg" style="margin:10px 0"><button data-sm="card" aria-pressed="true">ကျက်ရန်</button><button data-sm="quiz" aria-pressed="false">စမ်းဖြေရန်</button></div>` +
+      `<div class="note">မှန်ကန်/မှတ်မိ ${bm(ST.s)} / ${bm(ST.t)}</div>${progLine()}`;
     h += `<button class="it" style="min-height:160px;text-align:center;padding:24px" data-sf="1"><b>${q.q}</b>${ST.f ? `<div class="note" style="margin-top:12px">အဖြေ</div><div style="font-weight:700;margin-top:4px">${q.a}</div>` : `<small style="margin-top:12px;display:block">နှိပ်၍ အဖြေကြည့်ပါ</small>`}</button>`;
     if (ST.f) h += `<div class="chips" style="justify-content:center;margin-top:10px"><button class="chip" data-sn="0">ပြန်ကျက်ရန်</button><button class="chip on" data-sn="1">မှတ်မိပြီ</button></div>`;
-  } else {
-    if (!q.o) q.o = shf([q.a, ...shf(q.p.filter(x => x != q.a)).slice(0, 3)]);
-    const dn = q.g !== undefined;
-    h += `<div class="box"><b>${q.q}</b></div>` + q.o.map((o, i) => {
-      const ok = o == q.a;
-      return `<button class="it" data-so="${i}" ${dn ? "disabled" : ""} style="${dn && ok ? "border-left-color:#1F7A5C;font-weight:700;background:var(--tint)" : dn && i == q.g ? "border-left-color:#B3342B" : ""}">${dn ? (ok ? "✓ " : i == q.g ? "✗ " : "") : ""}${o}</button>`;
-    }).join("");
-    if (dn) h += `<button class="it" data-sn="x" style="text-align:center;font-weight:700;margin-top:12px">ရှေ့ဆက်မည်</button>`;
+    return h;
   }
-  return h;
+  const topicLabel = { vithi: "ဝီထိ", citta: "စိတ်", cet: "စေတသိက်", rupa: "ရုပ်", basic: "အခြေခံ အုပ်စုများ" }[ST.d] || "";
+  if (!q.o) q.o = shf([q.a, ...shf(q.p.filter(x => x != q.a)).slice(0, 3)]);
+  const dn = q.g !== undefined;
+  return `<button class="back" data-b>‹ နောက်သို့</button>` +
+    `<div class="box quiz-card">` +
+      `<div class="row2 quiz-header-compact"><span class="sub">${topicLabel} · စမ်းဖြေရန်</span><b>အမှတ် ${bm(ST.s)}/${bm(ST.t)}</b></div>` +
+      `<div style="font-size:1rem;font-weight:700;line-height:1.8;margin:12px 0">${q.q}</div>` +
+      q.o.map((o, i) => {
+        const ok = o == q.a;
+        return `<button class="it" data-so="${i}" ${dn ? "disabled" : ""} style="font-size:1rem;font-weight:400;line-height:1.75;${dn && ok ? "border-left-color:#1F7A5C;font-weight:700;background:var(--tint)" : dn && i == q.g ? "border-left-color:#B3342B" : ""}">${dn ? (ok ? "✓ " : i == q.g ? "✗ " : "") : ""}${o}</button>`;
+      }).join("") +
+      (dn ? `<button class="chip on" data-sn="x" style="margin-top:10px">ရှေ့ဆက်မည်</button>` : "") +
+    `</div>`;
 }
 
 // ================= မေးခွန်းဘဏ် (EXAM_BANK) =================
@@ -2248,6 +2324,27 @@ const EXAM_BANK = [
   }
 ];
 
+
+EXAM_BANK.push(
+  {t:"ပဋိစ္စသမုပ္ပာဒ်",q:"ပဋိစ္စသမုပ္ပာဒ်၏ ပထမအင်္ဂါမှာ အဘယ်နည်း။",a:"အဝိဇ္ဇာ",o:["အဝိဇ္ဇာ","သင်္ခါရ","ဝိညာဏ်","နာမရုပ်"]},
+  {t:"ပဋိစ္စသမုပ္ပာဒ်",q:"ဝေဒနာပစ္စယာ မည်သည် ဖြစ်သနည်း။",a:"တဏှာ",o:["ဖဿ","တဏှာ","ဥပါဒါန်","ဘဝ"]},
+  {t:"ပဋိစ္စသမုပ္ပာဒ်",q:"ဥပါဒါနပစ္စယာ မည်သည် ဖြစ်သနည်း။",a:"ဘဝ",o:["ဇာတိ","ဘဝ","ဝေဒနာ","သင်္ခါရ"]},
+  {t:"ပဋိစ္စသမုပ္ပာဒ်",q:"ပဋိစ္စသမုပ္ပာဒ်တွင် အင်္ဂါ စုစုပေါင်း မည်မျှရှိသနည်း။",a:"၁၂ ပါး",o:["၈ ပါး","၁၀ ပါး","၁၂ ပါး","၂၄ ပါး"]},
+  {t:"ပစ္စည်း ၂၄",q:"ပဋ္ဌာန်းတွင် ပစ္စည်း မည်မျှ ဖော်ပြထားသနည်း။",a:"၂၄ ပါး",o:["၁၂ ပါး","၁၈ ပါး","၂၁ ပါး","၂၄ ပါး"]},
+  {t:"ပစ္စည်း ၂၄",q:"စိတ်နှင့် စေတသိက်တို့ အတူတကွ ဖြစ်ပေါ်ခြင်းကို ထောက်ပံ့သော ပစ္စည်းမှာ အဘယ်နည်း။",a:"သဟဇာတပစ္စည်း",o:["အာရမ္မဏပစ္စည်း","သဟဇာတပစ္စည်း","အာသေဝနပစ္စည်း","ပုရေဇာတပစ္စည်း"]},
+  {t:"ပစ္စည်း ၂၄",q:"ရှေ့စိတ်က နောက်စိတ်ကို အစဉ်မပြတ် ဖြစ်စေရန် ထောက်ပံ့သော ပစ္စည်းမှာ အဘယ်နည်း။",a:"အနန္တရပစ္စည်း",o:["ဟေတုပစ္စည်း","အနန္တရပစ္စည်း","ကမ္မပစ္စည်း","အာဟာရပစ္စည်း"]},
+  {t:"ခန္ဓာ/အာယတန/ဓာတ်",q:"ခန္ဓာ မည်မျှ ရှိသနည်း။",a:"၅ ပါး",o:["၄ ပါး","၅ ပါး","၁၂ ပါး","၁၈ ပါး"]},
+  {t:"ခန္ဓာ/အာယတန/ဓာတ်",q:"အာယတန မည်မျှ ရှိသနည်း။",a:"၁၂ ပါး",o:["၅ ပါး","၁၂ ပါး","၁၈ ပါး","၂၈ ပါး"]},
+  {t:"ခန္ဓာ/အာယတန/ဓာတ်",q:"ဓာတ် မည်မျှ ရှိသနည်း။",a:"၁၈ ပါး",o:["၅ ပါး","၁၂ ပါး","၁၈ ပါး","၂၄ ပါး"]},
+  {t:"ခန္ဓာ/အာယတန/ဓာတ်",q:"စိတ် ၈၉/၁၂၁ ပါးသည် မည်သည့်ခန္ဓာနည်း။",a:"ဝိညာဏက္ခန္ဓာ",o:["ရူပက္ခန္ဓာ","ဝေဒနာက္ခန္ဓာ","သညာက္ခန္ဓာ","ဝိညာဏက္ခန္ဓာ"]},
+  {t:"အရိယသစ္စာ",q:"သမုဒယသစ္စာ၏ အဓိကသဘောမှာ အဘယ်နည်း။",a:"တဏှာ",o:["နိဗ္ဗာန်","တဏှာ","မဂ်","ဥပါဒါနက္ခန္ဓာ"]},
+  {t:"အရိယသစ္စာ",q:"နိရောဓသစ္စာမှာ အဘယ်နည်း။",a:"နိဗ္ဗာန်",o:["တဏှာ","ကံ","နိဗ္ဗာန်","ဝေဒနာ"]},
+  {t:"ဗောဓိပက္ခိယတရား",q:"ဗောဓိပက္ခိယတရား စုစုပေါင်း မည်မျှ ရှိသနည်း။",a:"၃၇ ပါး",o:["၂၄ ပါး","၃၁ ပါး","၃၇ ပါး","၄၀ ပါး"]},
+  {t:"ဗောဓိပက္ခိယတရား",q:"သတိပဋ္ဌာန် မည်မျှ ရှိသနည်း။",a:"၄ ပါး",o:["၂ ပါး","၄ ပါး","၅ ပါး","၇ ပါး"]},
+  {t:"ဗောဓိပက္ခိယတရား",q:"ဗောဇ္ဈင် မည်မျှ ရှိသနည်း။",a:"၇ ပါး",o:["၄ ပါး","၅ ပါး","၇ ပါး","၈ ပါး"]},
+  {t:"ဗောဓိပက္ခိယတရား",q:"မဂ္ဂင် မည်မျှ ရှိသနည်း။",a:"၈ ပါး",o:["၅ ပါး","၇ ပါး","၈ ပါး","၁၀ ပါး"]}
+);
+
 const EXAM_TOPICS = [
   "စိတ်",
   "စိတ်ပိုင်း",
@@ -2257,7 +2354,12 @@ const EXAM_TOPICS = [
   "ပကိဏ္ဏက",
   "ပကိဏ်းပိုင်း",
   "ဝီထိ",
-  "အခြေခံ"
+  "အခြေခံ",
+  "ပဋိစ္စသမုပ္ပာဒ်",
+  "ပစ္စည်း ၂၄",
+  "ခန္ဓာ/အာယတန/ဓာတ်",
+  "အရိယသစ္စာ",
+  "ဗောဓိပက္ခိယတရား"
 ];const EXAM_KEY = "abhi-exam-wrong-v1";
 let EXAM_WRONG = [];
 try { EXAM_WRONG = JSON.parse(localStorage.getItem(EXAM_KEY) || "[]"); } catch (e) {}
@@ -2271,14 +2373,14 @@ function examStart(review = false) {
 }
 function examHome() {
   const topicCount = t => EXAM_BANK.filter(q => q.t == t).length;
-  let h = `<div class="box subject-selector-box"><h3>မေးခွန်းများကို ဘာသာရပ်အလိုက် လေ့ကျင့်ရန်</h3><div class="chips">${EXAM_TOPICS.map(t => `<button class="chip ${EXAM.topic == t ? "on" : ""}" data-et="${t}">${t}<i>${topicCount(t)}</i></button>`).join("")}</div><div class="note">နှစ်အလိုက်မဟုတ်ဘဲ စိတ်၊ စေတသိက်၊ ရုပ်၊ ဝီထိ စသည့် ခေါင်းစဉ်အလိုက် စုထားပါသည်။</div></div>`;
+  let h = `<div class="box subject-selector-box"><h3>မေးခွန်းများကို ဘာသာရပ်အလိုက် လေ့ကျင့်ရန်</h3><div class="chips">${EXAM_TOPICS.map(t => `<button class="chip ${EXAM.topic == t ? "on" : ""}" data-et="${t}">${t}<i>${bm(topicCount(t))}</i></button>`).join("")}</div><div class="note">နှစ်အလိုက်မဟုတ်ဘဲ စိတ်၊ စေတသိက်၊ ရုပ်၊ ဝီထိ စသည့် ခေါင်းစဉ်အလိုက် စုထားပါသည်။</div></div>`;
   const wrongCount = EXAM_WRONG.filter(q => q.t == EXAM.topic).length;
   h += `<div class="box subject-selector-box"><div class="nm" style="font-size:1.05rem">${EXAM.topic} မေးခွန်း</div><div class="sub">လေ့ကျင့်ရန် ${topicCount(EXAM.topic)} ပုဒ် · မှားထားသောမေးခွန်း ${wrongCount} ပုဒ်</div><div class="chips" style="margin-top:12px"><button class="chip on" data-estart="1">မေးခွန်း စတင်ဖြေမည်</button><button class="chip" data-ereview="1" ${wrongCount ? "" : "disabled"}>မှားထားတာ ပြန်ဖြေမည်</button></div></div>`;
   if (EXAM.pool.length && EXAM.pos < EXAM.pool.length) {
     const q = EXAM.pool[EXAM.pos];
     const opts = Array.isArray(q._opts) ? q._opts : (Array.isArray(q.o) ? q.o : []);
     h += `<button class="back" data-b>‹ နောက်သို့</button>` +
-      `<div class="box quiz-card"><div class="row2 quiz-header-compact"><span class="sub">${EXAM.review ? "မှားခဲ့သော မေးခွန်းများ" : "လေ့ကျင့်ခန်း"} · ${EXAM.pos + 1}/${EXAM.pool.length}</span><b>အမှတ် ${EXAM.score}/${EXAM.answered}</b></div>` +
+      `<div class="box quiz-card"><div class="row2 quiz-header-compact"><span class="sub">${EXAM.review ? "မှားခဲ့သော မေးခွန်းများ" : "လေ့ကျင့်ခန်း"} · ${bm(EXAM.pos + 1)}/${bm(EXAM.pool.length)}</span><b>အမှတ် ${bm(EXAM.score)}/${bm(EXAM.answered)}</b></div>` +
       `<div style="font-size:1rem;font-weight:700;line-height:1.8;margin:12px 0">${q.q}</div>` +
       opts.map(o => `<button class="it" data-eopt="${encodeURIComponent(o)}" ${EXAM.show ? "disabled" : ""} style="font-size:1rem;font-weight:400;line-height:1.75;${EXAM.show && o == q.a ? "border-left-color:#1F7A5C" : EXAM.show && o == EXAM.chosen ? "border-left-color:#B3342B" : ""}">${EXAM.show && o == q.a ? "✓ " : ""}${EXAM.show && o == EXAM.chosen && o != q.a ? "✗ " : ""}${o}</button>`).join("");
     if (EXAM.show) h += `<div class="note" style="font-size:0.9375rem;color:var(--ink);margin-top:10px">${EXAM.chosen == q.a ? "မှန်ကန်ပါတယ်။" : "အဖြေမှန် — " + q.a}</div><button class="chip on" data-enext="1" style="margin-top:10px">${EXAM.pos + 1 == EXAM.pool.length ? "ရလဒ်ကြည့်မည်" : "နောက်မေးခွန်း"}</button>`;
@@ -2491,7 +2593,7 @@ function render() {
   if (!s) {
     h = sysBar() + `<div class="seg">` +
       `<button data-t="list" aria-pressed="${tab == "list"}">စိတ်စာရင်း</button>` +
-      `<button data-t="flt" aria-pressed="${tab == "flt"}">အချက်ဖြင့် ရှာရန်</button>` +
+      `<button data-t="flt" aria-pressed="${tab == "flt"}">ခေါင်းစဉ်ဖြင့် ရှာရန်</button>` +
       `<button data-t="vithi" aria-pressed="${tab == "vithi"}">ဝီထိ</button>` +
       `<button data-t="rupa" aria-pressed="${tab == "rupa"}">ရုပ် ၂၈</button>` +
       `<button data-t="gl" aria-pressed="${tab == "gl"}">အဓိပ္ပါယ်</button>` +
@@ -2507,15 +2609,137 @@ function render() {
     else if (tab == "vithi") h += vithiHome();
     else if (tab == "rupa") h += rupaHome();
     else if (tab == "list") {
-      const seen = [];
-      T.forEach(c => { if (!seen.includes(c.g)) seen.push(c.g); });
-      h += seen.map(g => `<details><summary>${g}</summary>${T.map((c, i) => c.g == g ? itm(i) : "").join("")}</details>`).join("");
-    } else {
-      h += `<div class="chips">${AT.map(a => `<button class="chip ${a == fa ? "on" : ""}" data-a="${a}">${a}</button>`).join("")}</div><div class="box" style="margin-top:10px"><div class="chips">`;
+      const CITTA_MAIN_GROUPS = [
+        {
+          title: "၁။ အကုသိုလ်စိတ် (၁၂) ပါး",
+          groups: ["လောဘမူ ၈", "ဒေါသမူ ၂", "မောဟမူ ၂"]
+        },
+        {
+          title: "၂။ အဟိတ်စိတ် (၁၈) ပါး",
+          groups: ["အကုသိုလ်ဝိပါက် ၇", "အဟေတုက ကုသိုလ်ဝိပါက် ၈", "အဟေတုက ကြိယာ ၃"]
+        },
+        {
+          title: "၃။ ကာမသောဘနစိတ် (၂၄) ပါး",
+          groups: ["မဟာကုသိုလ် ၈", "မဟာဝိပါက် ၈", "မဟာကြိယာ ၈"]
+        },
+        {
+          title: "၄။ ရူပါဝစရစိတ် (၁၅) ပါး",
+          groups: ["ရူပါဝစရ ကုသိုလ် ၅", "ရူပါဝစရ ဝိပါက် ၅", "ရူပါဝစရ ကြိယာ ၅"]
+        },
+        {
+          title: "၅။ အရူပါဝစရစိတ် (၁၂) ပါး",
+          groups: ["အရူပ ကုသိုလ် ၄", "အရူပ ဝိပါက် ၄", "အရူပ ကြိယာ ၄"]
+        },
+        {
+          title: "၆။ လောကုတ္တရာစိတ် (၈ / ၄၀) ပါး",
+          groups: [
+            "သောတာပတ္တိမဂ်", "သကဒါဂါမိမဂ်", "အနာဂါမိမဂ်", "အရဟတ္တမဂ်",
+            "သောတာပတ္တိဖိုလ်", "သကဒါဂါမိဖိုလ်", "အနာဂါမိဖိုလ်", "အရဟတ္တဖိုလ်"
+          ]
+        }
+      ];
+
+      h += CITTA_MAIN_GROUPS.map(mg => {
+        const subHtml = mg.groups.map(g => {
+          const items = T.map((c, i) => ({ c, i })).filter(x => x.c.g == g);
+          if (!items.length) return "";
+          return `<div class="ce-group">
+            <div class="ce-group-title"><span>${g}</span><span class="ce-group-count">${bm(items.length)} ပါး</span></div>
+            <div class="chips">${items.map(({c, i}) => `<button class="chip" data-i="${i}">${esc(c.n)}</button>`).join("")}</div>
+          </div>`;
+        }).join("");
+        return subHtml ? `
+          <div class="citta-main-group">
+            <div class="citta-main-title"><span>${mg.title}</span></div>
+            ${subHtml}
+          </div>
+        ` : "";
+      }).join("");
+    }
+ else {
+      h += `<div class="chips">${AT.map(a => `<button class="chip ${a == fa ? "on" : ""}" data-a="${a}">${a}</button>`).join("")}</div>`;
       const m = {};
       T.forEach(c => attr(c, fa).forEach(v => m[v] = (m[v] || 0) + 1));
-      h += Object.keys(m).map(v => `<button class="chip" data-f="${fa}" data-v="${v}">${v}<i>${m[v]}</i></button>`).join("") + `</div></div>`;
+      
+            if (fa === "စေတသိက်") {
+        const ANI_Saha = ["ထိန", "မိဒ္ဓ"];
+        const ANI_Nana = ["ဣဿာ", "မစ္ဆရိယ", "ကုက္ကုစ္စ", "သမ္မာဝါစာ", "သမ္မာကမ္မန္တ", "သမ္မာအာဇီဝ", "ကရုဏာ", "မုဒိတာ"];
+        const ANI_Yatha = ["မာန"];
+        const ANI_ALL = [...ANI_Saha, ...ANI_Nana, ...ANI_Yatha];
+        const NIYATA_ALL = [...C7, ...PN, ...MOHA, "လောဘ", "ဒိဋ္ဌိ", "ဒေါသ", ...SOB, "ပညိန္ဒြေ"];
+
+        const CE_SECTIONS = [
+          {
+            big: "၁။ အညသမာန်းစေတသိက် (၁၃) ပါး",
+            groups: [
+              ["သဗ္ဗစိတ္တသာဓာရဏ (၇) ပါး", C7],
+              ["ပကိဏ်း (၆) ပါး", PN]
+            ]
+          },
+          {
+            big: "၂။ အကုသိုလ်စေတသိက် (၁၄) ပါး",
+            groups: [
+              ["မောစတုက် (၄) ပါး", MOHA],
+              ["လောတြိက် (၃) ပါး", ["လောဘ", "ဒိဋ္ဌိ", "မာန"]],
+              ["ဒေါစတုက် (၄) ပါး", ["ဒေါသ", "ဣဿာ", "မစ္ဆရိယ", "ကုက္ကုစ္စ"]],
+              ["ထိဒုက် (၂) ပါး", ["ထိန", "မိဒ္ဓ"]],
+              ["ဝိစိကိစ္ဆာ (၁) ပါး", ["ဝိစိကိစ္ဆာ"]]
+            ]
+          },
+          {
+            big: "၃။ သောဘဏစေတသိက် (၂၅) ပါး",
+            groups: [
+              ["သောဘဏသာဓာရဏ (၁၉) ပါး", SOB],
+              ["ဝိရတီ (၃) ပါး", ["သမ္မာဝါစာ", "သမ္မာကမ္မန္တ", "သမ္မာအာဇီဝ"]],
+              ["အပ္ပမညာ (၂) ပါး", ["ကရုဏာ", "မုဒိတာ"]],
+              ["ပညိန္ဒြေ (၁) ပါး", ["ပညိန္ဒြေ"]]
+            ]
+          },
+          {
+            big: "၄။ နိယတယောဂီ (၄၁) ပါး နှင့် အနိယတယောဂီ (၁၁) ပါး",
+            groups: [
+              ["နိယတယောဂီ (၄၁) ပါး — ယှဉ်ခွင့်ရရာစိတ်၌ အမြဲယှဉ်", NIYATA_ALL],
+              ["အနိယတ · သဟ ကဒါစိ (၂) ပါး — အတူတကွ ယှဉ်ခွင့်ရလျှင် အမြဲအတူယှဉ်", ANI_Saha],
+              ["အနိယတ · နာနာ ကဒါစိ (၈) ပါး — တစ်စိတ်တည်း အတူမယှဉ်ဘဲ တစ်ပါးစီသာ ယှဉ်", ANI_Nana],
+              ["အနိယတ · ယထာရဟံ (၁) ပါး — အခြေအနေအလိုက် သင့်သလို ယှဉ်", ANI_Yatha]
+            ]
+          },
+          {
+            big: "၅။ ယှဉ်ပုံ ဘေဒ (၆) မျိုး",
+            groups: [
+              ["၁။ သဗ္ဗစိတ္တ (စိတ်အားလုံး၌ ယှဉ်)", C7],
+              ["၂။ ပကိဏ္ဏက (အလုံးစုံ၌ ရောနှောယှဉ်)", PN],
+              ["၃။ အကုသလ (အကုသိုလ်စိတ်၌သာ ယှဉ်)", [...MOHA, "လောဘ", "ဒိဋ္ဌိ", "မာန", "ဒေါသ", "ဣဿာ", "မစ္ဆရိယ", "ကုက္ကုစ္စ", "ထိန", "မိဒ္ဓ", "ဝိစိကိစ္ဆာ"]],
+              ["၄။ သောဘဏ (သောဘဏစိတ်၌သာ ယှဉ်)", SOB],
+              ["၅။ အပ္ပမညာ (ကာမသောဘဏနှင့် ရူပစိတ်၌ ယှဉ်)", ["ကရုဏာ", "မုဒိတာ"]],
+              ["၆။ ဝိရတီ နှင့် ပညိန္ဒြေ (မဟာကုသိုလ်၊ မဟဂ္ဂုတ်၊ လောကုတ္တရာတို့၌ ယှဉ်)", ["သမ္မာဝါစာ", "သမ္မာကမ္မန္တ", "သမ္မာအာဇီဝ", "ပညိန္ဒြေ"]]
+            ]
+          }
+        ];
+
+        h += `<div class="box" style="margin-top:10px">` + CE_SECTIONS.map(sec => `
+          <div style="margin-top:14px">
+            <div class="nm" style="font-size:1rem;color:var(--gold);margin-bottom:6px">${sec.big}</div>
+            ${sec.groups.map(([title, list]) => `
+              <div class="ce-group">
+                <div class="ce-group-title"><span>${title}</span><span class="ce-group-count">${bm(list.length)} ပါး</span></div>
+                <div class="chips">
+                  ${list.map(v => {
+                    const tag = ANI_ALL.includes(v) ? " · အနိယ" : "";
+                    return `<button class="chip" data-f="စေတသိက်" data-v="${v}">${v}${tag}<i>${bm(m[v] || 0)}</i></button>`;
+                  }).join("")}
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        `).join("") + `</div>`;
+      } else {
+        h += `<div class="box" style="margin-top:10px"><div class="chips">` +
+          Object.keys(m).map(v => `<button class="chip" data-f="${fa}" data-v="${v}">${v}<i>${bm(m[v])}</i></button>`).join("") +
+          `</div></div>`;
+      }
     }
+
   } else if (s.g !== undefined) {
     h = glView(s.g);
   } else if (s.mv !== undefined) {
@@ -2539,7 +2763,8 @@ function render() {
   (JSON.stringify(c.ce).includes("*") ? `<div class="note" style="margin-top:8px">* ပါသော စေတသိက်သည် တစ်ခါတစ်ရံသာ ယှဉ်သော်လည်း အရေအတွက်ထဲ ပါဝင်သည်။</div>` : "") +
 `</div>`;
   }
-  const isQuizPlaying = (tab == "exam" && !s && EXAM.pool.length && EXAM.pos < EXAM.pool.length);
+const isQuizPlaying = !s && ((tab == "exam" && EXAM.pool.length && EXAM.pos < EXAM.pool.length) || (tab == "study" && ST.m == "quiz"));
+
 document.body.classList.toggle("quiz-active", Boolean(isQuizPlaying));
   $("app").innerHTML = h;
   scrollTo(0, 0);
@@ -2559,13 +2784,17 @@ $("app").onclick = e => {
     render();
     return;
   }
-  else if (b.dataset.t) {
+    else if (b.dataset.t) {
     if (b.dataset.t == "exam" && EXAM.pool.length) {
       EXAM.pool = []; EXAM.pos = 0; EXAM.show = false; EXAM.review = false;
+    }
+    if (b.dataset.t == "study" && ST.m == "quiz") {
+      ST.m = "card"; ST.q = null; ST.f = 0;
     }
     tab = b.dataset.t;
     render();
   }
+
   else if (b.dataset.et) { EXAM.topic = b.dataset.et; EXAM.pool = []; EXAM.pos = 0; EXAM.show = false; render(); }
   else if (b.dataset.estart) { examStart(false); render(); }
   else if (b.dataset.ereview) { examStart(true); render(); }
@@ -2626,15 +2855,21 @@ $("app").onclick = e => {
   else if (b.dataset.rf) { st.push({ rf: b.dataset.rf, v: b.dataset.v }); render(); }
   else if (b.dataset.f) { st.push({ f: b.dataset.f, v: b.dataset.v }); render(); }
   // 👇 ဒီနေရာမှာ ပြင်ထားပါတယ်
-  else if (b.dataset.b !== undefined) {
+    else if (b.dataset.b !== undefined) {
     if (tab == "exam" && EXAM.pool.length) {
       EXAM.pool = []; EXAM.pos = 0; EXAM.show = false; EXAM.review = false;
+      render();
+      return;
+    }
+    if (tab == "study" && ST.m == "quiz") {
+      ST.m = "card"; ST.q = null; ST.f = 0;
       render();
       return;
     }
     st.pop();
     render();
   }
+
   else if (b.dataset.fs) {
     if (b.dataset.fs == "+" && FSize < 36) FSize += 2;
     if (b.dataset.fs == "-" && FSize > 12) FSize -= 2;
@@ -2669,6 +2904,60 @@ $("app").onchange = async e => {
 
 render();
 mLoad();
+</script>
+<script>
+// အင်္ဂလိပ်ဂဏန်း (0-9) ကို မြန်မာဂဏန်း (၀-၉) ပြောင်းပေးသည့် function
+function toMyanmarDigits(str) {
+  if (str === null || str === undefined) return '';
+  const map = {
+    '0': '၀', '1': '၁', '2': '၂', '3': '၃', '4': '၄',
+    '5': '၅', '6': '၆', '7': '၇', '8': '၈', '9': '၉'
+  };
+  return String(str).replace(/[0-9]/g, d => map[d]);
+}
+
+// မျက်နှာပြင် (UI) အတွင်းရှိ အရေအတွက် ဂဏန်းများကို မြန်မာဂဏန်း ပြောင်းခြင်း
+// input, textarea, select, code, pre တို့ကို ချန်လှပ်ထားသည်
+function convertVisibleNumbersToMyanmar(root = document.body) {
+  if (!root) return;
+  const skipTags = new Set(['SCRIPT', 'STYLE', 'INPUT', 'TEXTAREA', 'SELECT', 'OPTION', 'CODE', 'PRE']);
+
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const parent = node.parentElement;
+      if (!parent) return NodeFilter.FILTER_REJECT;
+      if (skipTags.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
+      if (parent.closest('[contenteditable="true"], .no-mm-num')) return NodeFilter.FILTER_REJECT;
+      if (!/[0-9]/.test(node.nodeValue)) return NodeFilter.FILTER_SKIP;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+
+  const textNodes = [];
+  while (walker.nextNode()) {
+    textNodes.push(walker.currentNode);
+  }
+  for (const node of textNodes) {
+    node.nodeValue = toMyanmarDigits(node.nodeValue);
+  }
+}
+
+// စာမျက်နှာ load ပြီးချိန်နှင့် UI ပြောင်းလဲမှုများအတွက် စောင့်ကြည့်ခြင်း
+window.addEventListener('DOMContentLoaded', () => {
+  convertVisibleNumbersToMyanmar();
+
+  let timer = null;
+  const observer = new MutationObserver(() => {
+    clearTimeout(timer);
+    timer = setTimeout(() => convertVisibleNumbersToMyanmar(), 30);
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    characterData: true,
+    subtree: true
+  });
+});
 </script>
 </body>
 </html>
