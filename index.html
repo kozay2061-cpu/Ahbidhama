@@ -895,14 +895,14 @@ const glBox = v => {
 function glHome() {
   const gs = [];
   GL.forEach(g => { if (!gs.includes(g[1])) gs.push(g[1]); });
-  const initialQ = (typeof DICT_ST !== "undefined" && DICT_ST && DICT_ST.q) ? String(DICT_ST.q) : "";
-  const safeQ = typeof esc === "function" ? esc(initialQ) : initialQ.replace(/"/g, "&quot;");
-
+  if (typeof renderDictResults === "function") {
+    setTimeout(renderDictResults, 0);
+  }
   return `
 <div id="dhamma-dict-app">
   <!-- ၁။ Search Box -->
   <div class="dict-search-bar">
-    <input type="text" id="gnmSearchInput" value="${safeQ}" placeholder="စကားလုံး သို့မဟုတ် အဓိပ္ပာယ် ရှာရန်...">
+    <input type="text" id="gnmSearchInput" value="${typeof DICT_ST !== "undefined" ? esc(DICT_ST.q) : ""}" placeholder="စကားလုံး သို့မဟုတ် အဓိပ္ပာယ် ရှာရန်...">
     <button type="button" id="gnmClearBtn">ရှင်းရန်</button>
   </div>
 
