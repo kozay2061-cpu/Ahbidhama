@@ -342,6 +342,109 @@ textarea.fm{min-height:120px;resize:vertical;line-height:1.7}
     margin-top: 6px;
   }
 }
+  /* ===== Dhamma Dictionary Search & Filter UI ===== */
+#dhamma-dict-app {
+  margin-bottom: 14px;
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--sf);
+  border: 1px solid var(--ln);
+  box-shadow: var(--sh);
+}
+.dict-search-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.dict-search-bar input {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--ln);
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.92rem;
+}
+.dict-search-bar input:focus {
+  outline: 2px solid var(--ac);
+  border-color: transparent;
+}
+.dict-search-bar button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--ln);
+  background: var(--tint);
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.dict-filter-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  scrollbar-width: thin;
+}
+.dict-chip {
+  flex: 0 0 auto;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--ln);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.dict-chip.active {
+  background: var(--ac);
+  color: var(--act);
+  border-color: var(--ac);
+}
+.dict-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 55vh;
+  overflow-y: auto;
+  margin-top: 6px;
+}
+.dict-item-card {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--bg);
+  border: 1px solid var(--ln);
+}
+.dict-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.dict-item-word {
+  font-weight: 700;
+  color: var(--ac);
+  font-size: 0.96rem;
+}
+.dict-item-tag {
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--tint);
+  color: var(--mu);
+  white-space: nowrap;
+}
+.dict-item-meaning {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--ink);
+  white-space: pre-line;
+}
 </style>
 </head>
 <body>
@@ -410,9 +513,9 @@ for (const [g, j, sv] of [["အကုသိုလ်ဝိပါက် ၇", "�
   }
 }
 const AH = (g, j, n, ve, f, dv, kc, ar, an, jv) => add({ g, n, s: ve, pl: "ကာမ", j, ve, hetu: [], ce: base(f), dv, kc, ar, an, jv });
-AH("အကုသိုလ်ဝိပါက် ၇", "ဝိပါက်", "သမ္ပဋိစ္ဆိန် (အကုသိုလ်ဝိပါက်)", "ဥပေက္ခာ", "111000", S5, ["သမ္ပဋိစ္ဆိန်"], A5, "ပဉ္စာရုံ ၅ ပါး", 0);
+AH("အကုသိုလ်ဝိပါက် ၇", "ဝိပါက်", "သမ္ပဋိစ္ဆိန် (အကုသိုလ်ဝိပါက်)", "ဥပေက္ခာ", "111000", S5, ["သမ္ပဋိစ္ဆိုင်း"], A5, "ပဉ္စာရုံ ၅ ပါး", 0);
 AH("အကုသိုလ်ဝိပါက် ၇", "ဝိပါက်", "သန္တီရဏ (အကုသိုလ်ဝိပါက်)", "ဥပေက္ခာ", "111000", [...S5, D6[5], VM], ["ပဋိသန္ဓေ", "ဘဝင်", "စုတိ", "သန္တီရဏ", "တဒါရုံ"], A6, KAMA, 0);
-AH("အဟေတုက ကုသိုလ်ဝိပါက် ၈", "ဝိပါက်", "သမ္ပဋိစ္ဆိန် (ကုသိုလ်ဝိပါက်)", "ဥပေက္ခာ", "111000", S5, ["သမ္ပဋိစ္ဆိန်"], A5, "ပဉ္စာရုံ ၅ ပါး", 0);
+AH("အဟေတုက ကုသိုလ်ဝိပါက် ၈", "ဝိပါက်", "သမ္ပဋိစ္ဆိန် (ကုသိုလ်ဝိပါက်)", "ဥပေက္ခာ", "111000", S5, ["သမ္ပဋိစ္ဆိုင်း"], A5, "ပဉ္စာရုံ ၅ ပါး", 0);
 AH("အဟေတုက ကုသိုလ်ဝိပါက် ၈", "ဝိပါက်", "သန္တီရဏ (သောမနဿ)", "သောမနဿ", "111010", [...S5, D6[5]], ["သန္တီရဏ", "တဒါရုံ"], A6, KAMA, 0);
 AH("အဟေတုက ကုသိုလ်ဝိပါက် ၈", "ဝိပါက်", "သန္တီရဏ (ဥပေက္ခာ)", "ဥပေက္ခာ", "111000", [...S5, D6[5], VM], ["ပဋိသန္ဓေ", "ဘဝင်", "စုတိ", "သန္တီရဏ", "တဒါရုံ"], A6, KAMA, 0);
 AH("အဟေတုက ကြိယာ ၃", "ကြိယာ", "ပဉ္စဒွါရာဝဇ္ဇန်း", "ဥပေက္ခာ", "111000", S5, ["အာဝဇ္ဇန်း"], A5, "ပဉ္စာရုံ ၅ ပါး", 0);
@@ -603,7 +706,7 @@ function rupaList(a, v) {
 
 // ================= ဝီထိ ဒေတာ =================
 const VPRE = [["အတီတဘဝင်", 1, "ဘဝင်"], ["ဘဝင်စလှုပ်", 1, "ဘဝင်"], ["ဘဝင်ဥပစ္ဆေဒ", 1, "ဘဝင်"]];
-const VFIVE = [["ပဉ္စဒွါရာဝဇ္ဇန်း", 1, "အာဝဇ္ဇန်း"], ["ပဉ္စဝိညာဏ် (ဒဿန စသည်)", 1, "ဒဿန"], ["သမ္ပဋိစ္ဆိန်", 1, "သမ္ပဋိစ္ဆိန်"], ["သန္တီရဏ", 1, "သန္တီရဏ"], ["ဝုဋ္ဌော", 1, "ဝုဋ္ဌော"]];
+const VFIVE = [["ပဉ္စဒွါရာဝဇ္ဇန်း", 1, "အာဝဇ္ဇန်း"], ["ပဉ္စဝိညာဏ် (ဒဿန စသည်)", 1, "ဒဿန"], ["သမ္ပဋိစ္ဆိုင်း", 1, "သမ္ပဋိစ္ဆိုင်း"], ["သန္တီရဏ", 1, "သန္တီရဏ"], ["ဝုဋ္ဌော", 1, "ဝုဋ္ဌော"]];
 const VMA = [["ဘဝင်စလှုပ်", 1, "ဘဝင်"], ["ဘဝင်ဥပစ္ဆေဒ", 1, "ဘဝင်"], ["မနောဒွါရာဝဇ္ဇန်း (ဝုဋ္ဌော)", 1, "ဝုဋ္ဌော"]];
 const VJ = ["ဇော", 7, "ဇော"], VT = ["တဒါရုံ", 2, "တဒါရုံ"], VB = ["ဘဝင်", 0, "ဘဝင်"];
 const VPRP = [["ဥပစာရ", 1, "ဇော"], ["အနုလုံ", 1, "ဇော"], ["ဂေါတြဘူ", 1, "ဇော"]];
@@ -621,7 +724,7 @@ const VV = [
 ];
 function vithiHome() {
   let h = `<div class="note">ရုပ်တစ်ခုသည် စိတ်ခဏ ၁၇ ခု ကြာတည်သည်။ အဆင့်တစ်ခုကို နှိပ်လျှင် ထိုကိစ္စ ဆောင်နိုင်သော စိတ်များ ပေါ်မည်။</div>`;
-  h += `<div class="box"><h3>ဝီထိစိတ်၏ ကိစ္စများ</h3><div class="chips">` + ["အာဝဇ္ဇန်း", "သမ္ပဋိစ္ဆိန်", "သန္တီရဏ", "ဝုဋ္ဌော", "ဇော", "တဒါရုံ", "ဘဝင်"].map(k => chip("ကိစ္စ", k)).join("") + `</div><div class="note">ဇော ၅၅ ပါး (လောကုတ္တရာကို ၈ ပါးအဖြစ် ရေတွက်လျှင်)၊ ဈာန်ခွဲ၍ ရေတွက်လျှင် ၈၇ ပါး။ တဒါရုံ ၁၁ ပါး၊ ဘဝင် ၁၉ ပါး။</div></div>`;
+  h += `<div class="box"><h3>ဝီထိစိတ်၏ ကိစ္စများ</h3><div class="chips">` + ["အာဝဇ္ဇန်း", "သမ္ပဋိစ္ဆိုင်း", "သန္တီရဏ", "ဝုဋ္ဌော", "ဇော", "တဒါရုံ", "ဘဝင်"].map(k => chip("ကိစ္စ", k)).join("") + `</div><div class="note">ဇော ၅၅ ပါး (လောကုတ္တရာကို ၈ ပါးအဖြစ် ရေတွက်လျှင်)၊ ဈာန်ခွဲ၍ ရေတွက်လျှင် ၈၇ ပါး။ တဒါရုံ ၁၁ ပါး၊ ဘဝင် ၁၉ ပါး။</div></div>`;
   VV.forEach(v => {
     h += `<div class="box"><div class="nm" style="font-size:1rem">${v.n}</div><div class="chips" style="margin-top:6px">` +
       v.s.map((x, i) => (i ? `<span style="color:var(--mu)">›</span>` : "") + `<button class="chip" data-f="ကိစ္စ" data-v="${x[2]}">${x[0]}${x[1] > 1 ? " ×" + x[1] : ""}</button>`).join("") +
@@ -680,7 +783,7 @@ const GL = [
   ["ဃာယန", "☸️ ကိစ္စ ၁၄ ပါး", "နံ့ရှူခြင်း။ ဃာနဝိညာဏ်က ဂန္ဓာရုံကို နံ့သိခြင်း ကိစ္စ။ စိတ် ၂ ပါး။"],
   ["သာယန", "☸️ ကိစ္စ ၁၄ ပါး", "အရသာ သိခြင်း။ ဇိဝှါဝိညာဏ်က ရသာရုံကို သိခြင်း ကိစ္စ။ စိတ် ၂ ပါး။"],
   ["ဖုသန", "☸️ ကိစ္စ ၁၄ ပါး", "ထိတွေ့သိခြင်း။ ကာယဝိညာဏ်က ဖောဋ္ဌဗ္ဗာရုံကို သိခြင်း ကိစ္စ။ စိတ် ၂ ပါး (သုခနှင့်ယှဉ်သော ကုသိုလ်ဝိပါက်၊ ဒုက္ခနှင့်ယှဉ်သော အကုသိုလ်ဝိပါက်)။"],
-  ["သမ္ပဋိစ္ဆိန်", "☸️ ကိစ္စ ၁၄ ပါး", "ပဉ္စဝိညာဏ်က သိပြီးသော အာရုံကို ဆက်ခံ လက်ခံခြင်း ကိစ္စ။ စိတ် ၂ ပါး (ကုသိုလ်ဝိပါက်၊ အကုသိုလ်ဝိပါက် သမ္ပဋိစ္ဆိန်)။"],
+  ["သမ္ပဋိစ္ဆိုင်း", "☸️ ကိစ္စ ၁၄ ပါး", "ပဉ္စဝိညာဏ်က သိပြီးသော အာရုံကို ဆက်ခံ လက်ခံခြင်း ကိစ္စ။ စိတ် ၂ ပါး (ကုသိုလ်ဝိပါက်၊ အကုသိုလ်ဝိပါက် သမ္ပဋိစ္ဆိန်)။"],
   ["သန္တီရဏ", "☸️ ကိစ္စ ၁၄ ပါး", "လက်ခံပြီးသော အာရုံကို စစ်ဆေး စူးစမ်းခြင်း ကိစ္စ။ စိတ် ၃ ပါး (သောမနဿသန္တီရဏ၊ ကုသိုလ်ဝိပါက် ဥပေက္ခာသန္တီရဏ၊ အကုသိုလ်ဝိပါက် ဥပေက္ခာသန္တီရဏ)။"],
   ["ဝုဋ္ဌော", "☸️ ကိစ္စ ၁၄ ပါး", "စစ်ဆေးပြီးသော အာရုံကို ဆုံးဖြတ်၍ ဇော ဖြစ်စေရန် သတ်မှတ်ခြင်း ကိစ္စ။ မနောဒွါရာဝဇ္ဇန်း ၁ ပါးက ဆောင်ရွက်သည်။"],
   ["ဇော", "☸️ ကိစ္စ ၁၄ ပါး", "အာရုံကို အပြည့်အဝ ခံစားသုံးစွဲသော စိတ်၊ ကုသိုလ်/အကုသိုလ်ကံ ဖြစ်စေသော စိတ်။ ဇောစိတ် ၅၅ ပါး (လောကုတ္တရာကို ၈ ပါးအဖြစ် ရေတွက်လျှင်၊ ဈာန်ခွဲလျှင် ၈၇ ပါး)။ ကာမဝီထိတွင် ၇ ကြိမ်ဖြစ်လေ့ရှိသည်။"],
@@ -792,9 +895,30 @@ const glBox = v => {
 function glHome() {
   const gs = [];
   GL.forEach(g => { if (!gs.includes(g[1])) gs.push(g[1]); });
-  return `<div class="note" style="margin:0 0 8px">အဓိပ္ပာယ်ကို နှိပ်ကြည့်ပါ။ ကိုယ့်သင်ရိုးအတိုင်း မှတ်စုလည်း ရေးထားနိုင်သည်။</div>` +
+  const initialQ = (typeof DICT_ST !== "undefined" && DICT_ST && DICT_ST.q) ? String(DICT_ST.q) : "";
+  const safeQ = typeof esc === "function" ? esc(initialQ) : initialQ.replace(/"/g, "&quot;");
+
+  return `
+<div id="dhamma-dict-app">
+  <!-- ၁။ Search Box -->
+  <div class="dict-search-bar">
+    <input type="text" id="gnmSearchInput" value="${safeQ}" placeholder="စကားလုံး သို့မဟုတ် အဓိပ္ပာယ် ရှာရန်...">
+    <button type="button" id="gnmClearBtn">ရှင်းရန်</button>
+  </div>
+
+  <!-- ၂။ ခေါင်းစဉ် (Topic) အလိုက် ရွေးချယ်ရန် -->
+  <div id="gnmTopicTabs" class="dict-filter-row"></div>
+
+  <!-- ၃။ က - အ အက္ခရာစဉ်အလိုက် ရွေးချယ်ရန် -->
+  <div id="gnmLetterTabs" class="dict-filter-row"></div>
+
+  <!-- ၄။ အဓိပ္ပာယ်များ ပြသမည့် နေရာ -->
+  <div id="gnmResultsList" class="dict-results-list"></div>
+</div>
+<div class="note" style="margin:0 0 8px">အဓိပ္ပာယ်ကို နှိပ်ကြည့်ပါ။ ကိုယ့်သင်ရိုးအတိုင်း မှတ်စုလည်း ရေးထားနိုင်သည်။</div>` +
     gs.map(k => `<details><summary>${k}</summary>${GL.map((g, i) => g[1] == k ? `<button class="it" data-gi="${i}"><b>${g[0]}</b>${GN[g[0]] ? `<small>✎ ကိုယ်ပိုင်မှတ်စု ပါသည်</small>` : ""}</button>` : "").join("")}</details>`).join("");
 }
+
 function glView(i) {
   const g = GL[i];
   GCUR = g[0];
@@ -1005,7 +1129,7 @@ const EXAM_BANK = [
   { t: "ပကိဏ္ဏက", q: "ဝတ္ထုရုပ် စုစုပေါင်း မည်မျှရှိသနည်း။", a: "၆ ပါး", o: ["၃ ပါး", "၄ ပါး", "၅ ပါး", "၆ ပါး"] },
   { t: "ပကိဏ္ဏက", q: "စိတ်၏ ကိစ္စ အမျိုးအစား မည်မျှရှိသနည်း။", a: "၁၄ ပါး", o: ["၇ ပါး", "၁၁ ပါး", "၁၂ ပါး", "၁၄ ပါး"] },
   { t: "ဝီထိ", q: "ကာမဝီထိတွင် ဇောသည် အများအားဖြင့် မည်မျှကြိမ် ဖြစ်သနည်း။", a: "၇ ကြိမ်", o: ["၅ ကြိမ်", "၆ ကြိမ်", "၇ ကြိမ်", "၈ ကြိမ်"] },
-  { t: "ဝီထိ", q: "အာရုံကို လက်ခံယူသော စိတ်ကိစ္စကား မည်သည်နည်း။", a: "သမ္ပဋိစ္ဆိန်", o: ["အာဝဇ္ဇန်း", "သမ္ပဋိစ္ဆိန်", "ဇော", "တဒါရုံ"] },
+  { t: "ဝီထိ", q: "အာရုံကို လက်ခံယူသော စိတ်ကိစ္စကား မည်သည်နည်း။", a: "သမ္ပဋိစ္ဆိုင်း", o: ["အာဝဇ္ဇန်း", "သမ္ပဋိစ္ဆိုင်း", "ဇော", "တဒါရုံ"] },
   { t: "ဝီထိ", q: "ဇောပြီးနောက် အာရုံကို ဆက်လက်ယူသော စိတ်ကိစ္စကား မည်သည်နည်း။", a: "တဒါရုံ", o: ["ဘဝင်", "အာဝဇ္ဇန်း", "တဒါရုံ", "စုတိ"] },
   { t: "အခြေခံ", q: "ပရမတ္ထတရားဆိုသည်မှာ အဘယ်သို့သော တရားနည်း။", a: "ပညတ်မဟုတ်ဘဲ မိမိ၏ သဘာဝလက္ခဏာကို အမှန်ကိုင်ထားသော တရား", o: ["ပညတ်မဟုတ်ဘဲ မိမိ၏ သဘာဝလက္ခဏာကို အမှန်ကိုင်ထားသော တရား", "စကားနှင့် ခေါ်ဆိုထားသော အမည်ပညတ်", "လူတို့ ထင်မြင်ယူဆထားသော အယူအဆ", "သက်ရှိသတ္တဝါ၏ ကိုယ်ခန္ဓာ"] },
   { t: "အခြေခံ", q: "စိတ်၏ လက္ခဏာမှာ အဘယ်နည်း။", a: "အာရုံကို သိခြင်း", o: ["အာရုံကို သိခြင်း", "အာရုံကို ခံစားခြင်း", "အာရုံကို မှတ်ခြင်း", "ဆန့်ကျင်ဘက်နှင့် တွေ့လျှင် ပြောင်းလဲခြင်း"] },
@@ -1037,7 +1161,7 @@ const EXAM_BANK = [
   { t: "ပကိဏ္ဏက", q: "လောဘမူစိတ်တို့တွင် ဟေတု မည်မျှပါသနည်း။", a: "၂ ပါး (လောဘ၊ မောဟ)", o: ["၂ ပါး (လောဘ၊ မောဟ)", "၁ ပါး (လောဘ)", "၃ ပါး (လောဘ၊ ဒေါသ၊ မောဟ)", "၂ ပါး (အလောဘ၊ အဒေါသ)"] },
   { t: "ပကိဏ္ဏက", q: "ဒေါသမူစိတ်တို့တွင် ဟေတု မည်မျှပါသနည်း။", a: "၂ ပါး (ဒေါသ၊ မောဟ)", o: ["၂ ပါး (ဒေါသ၊ မောဟ)", "၁ ပါး (ဒေါသ)", "၃ ပါး (လောဘ၊ ဒေါသ၊ မောဟ)", "၂ ပါး (အလောဘ၊ အဒေါသ)"] },
   { t: "ပကိဏ္ဏက", q: "မောဟမူစိတ်တို့တွင် ဟေတု မည်မျှပါသနည်း။", a: "၁ ပါး (မောဟ)", o: ["၁ ပါး (မောဟ)", "၂ ပါး (လောဘ၊ မောဟ)", "၂ ပါး (ဒေါသ၊ မောဟ)", "၃ ပါး"] },
-  { t: "ပကိဏ္ဏက", q: "ကိစ္စ ၁၄ ပါးကို အစဉ်အတိုင်း ဖော်ပြပါ။", a: "ပဋိသန္ဓေ၊ ဘဝင်၊ အာဝဇ္ဇန်း၊ ဒဿန၊ သဝန၊ ဃာယန၊ သာယန၊ ဖုသန၊ သမ္ပဋိစ္ဆိန်၊ သန္တီရဏ၊ ဝုဋ္ဌော၊ ဇော၊ တဒါရုံ၊ စုတိ", o: ["ပဋိသန္ဓေ၊ ဘဝင်၊ အာဝဇ္ဇန်း၊ ဒဿန၊ သဝန၊ ဃာယန၊ သာယန၊ ဖုသန၊ သမ္ပဋိစ္ဆိန်၊ သန္တီရဏ၊ ဝုဋ္ဌော၊ ဇော၊ တဒါရုံ၊ စုတိ", "ပဋိသန္ဓေ၊ ဘဝင်၊ အာဝဇ္ဇန်း၊ ဒဿန၊ သဝန၊ ဃာယန၊ သာယန၊ ဖုသန၊ သန္တီရဏ၊ သမ္ပဋိစ္ဆိန်၊ ဝုဋ္ဌော၊ ဇော၊ တဒါရုံ၊ စုတိ", "ပဋိသန္ဓေ၊ ဘဝင်၊ အာဝဇ္ဇန်း၊ ဒဿန၊ သဝန၊ ဃာယန၊ သာယန၊ ဖုသန၊ သမ္ပဋိစ္ဆိန်၊ သန္တီရဏ၊ ဇော၊ ဝုဋ္ဌော၊ တဒါရုံ၊ စုတိ", "ဘဝင်၊ ပဋိသန္ဓေ၊ အာဝဇ္ဇန်း၊ ဒဿန၊ သဝန၊ ဃာယန၊ သာယန၊ ဖုသန၊ သမ္ပဋိစ္ဆိန်၊ သန္တီရဏ၊ ဝုဋ္ဌော၊ ဇော၊ တဒါရုံ၊ စုတိ"] },
+  { t: "ပကိဏ္ဏက", q: "ကိစ္စ ၁၄ ပါးကို အစဉ်အတိုင်း ဖော်ပြပါ။", a: "ပဋိသန္ဓေ၊ ဘဝင်၊ အာဝဇ္ဇန်း၊ ဒဿန၊ သဝန၊ ဃာယန၊ သာယန၊ ဖုသန၊ သမ္ပဋိစ္ဆိန်၊ သန္တီရဏ၊ ဝုဋ္ဌော၊ ဇော၊ တဒါရုံ၊ စုတိ", o: ["ပဋိသန္ဓေ၊ ဘဝင်၊ အာဝဇ္ဇန်း၊ ဒဿန၊ သဝန၊ ဃာယန၊ သာယန၊ ဖုသန၊ သမ္ပဋိစ္ဆိန်၊ သန္တီရဏ၊ ဝုဋ္ဌော၊ ဇော၊ တဒါရုံ၊ စုတိ", "ပဋိသန္ဓေ၊ ဘဝင်၊ အာဝဇ္ဇန်း၊ ဒဿန၊ သဝန၊ ဃာယန၊ သာယန၊ ဖုသန၊ သမ္ပဋိစ္ဆိန်၊ သန္တီရဏ၊ ဝုဋ္ဌော၊ တဒါရုံ၊ ဇော၊ စုတိ", "ပဋိသန္ဓေ၊ ဘဝင်၊ အာဝဇ္ဇန်း၊ ဒဿန၊ သဝန၊ ဃာယန၊ သာယန၊ ဖုသန၊ သမ္ပဋိစ္ဆိန်၊ သန္တီရဏ၊ ဇော၊ ဝုဋ္ဌော၊ တဒါရုံ၊ စုတိ", "ဘဝင်၊ ပဋိသန္ဓေ၊ အာဝဇ္ဇန်း၊ ဒဿန၊ သဝန၊ ဃာယန၊ သာယန၊ ဖုသန၊ သမ္ပဋိစ္ဆိန်၊ သန္တီရဏ၊ ဝုဋ္ဌော၊ ဇော၊ တဒါရုံ၊ စုတိ"] },
   { t: "ပကိဏ္ဏက", q: "ဒဿနကိစ္စကို ဆောင်သော စိတ်မှာ အဘယ်နည်း။", a: "စက္ခုဝိညာဏ် (၂ ပါး)", o: ["စက္ခုဝိညာဏ် (၂ ပါး)", "သောတဝိညာဏ် (၂ ပါး)", "သမ္ပဋိစ္ဆိန် (၂ ပါး)", "ဃာနဝိညာဏ် (၂ ပါး)"] },
   { t: "ပကိဏ္ဏက", q: "ပဋိသန္ဓေကိစ္စကို ဆောင်နိုင်သော စိတ် မည်မျှရှိသနည်း။", a: "၁၉ ပါး", o: ["၁၉ ပါး", "၁၀ ပါး", "၁၁ ပါး", "၁၄ ပါး"] },
   { t: "ပကိဏ္ဏက", q: "တဒါရုံကိစ္စကို ဆောင်နိုင်သော စိတ် မည်မျှရှိသနည်း။", a: "၁၁ ပါး (သန္တီရဏ ၃ + မဟာဝိပါက် ၈)", o: ["၁၁ ပါး (သန္တီရဏ ၃ + မဟာဝိပါက် ၈)", "၈ ပါး", "၁၀ ပါး", "၁၉ ပါး"] },
@@ -1076,16 +1200,16 @@ const EXAM_BANK = [
   { t: "ရုပ်", q: "ဇီဝိတိန္ဒြေရုပ်၏ လုပ်ငန်းမှာ အဘယ်နည်း။", a: "ကံဇရုပ်တို့ကို စောင့်ရှောက်ထိန်းသိမ်းခြင်း", o: ["ကံဇရုပ်တို့ကို စောင့်ရှောက်ထိန်းသိမ်းခြင်း", "ရုပ်တို့ကို ပိုင်းခြားပေးခြင်း", "ရုပ်တို့ကို ပြုစုပျိုးထောင်ခြင်း", "အသံ ကြားစေခြင်း"] },
   { t: "ရုပ်", q: "ပရိစ္ဆေဒရုပ် (အာကာသဓာတ်) ၏ လုပ်ငန်းမှာ အဘယ်နည်း။", a: "ရုပ်ကလာပ်တို့ကို ပိုင်းခြားပေးခြင်း", o: ["ရုပ်ကလာပ်တို့ကို ပိုင်းခြားပေးခြင်း", "ကံဇရုပ်တို့ကို စောင့်ရှောက်ခြင်း", "ရုပ်တို့ကို ပြုစုပျိုးထောင်ခြင်း", "ရုပ်တို့ကို ပျက်စီးစေခြင်း"] },
   { t: "ရုပ်", q: "အာဟာရရုပ် (ဩဇာ) ၏ လုပ်ငန်းမှာ အဘယ်နည်း။", a: "ရုပ်တို့ကို ပြုစုပျိုးထောင်ခြင်း", o: ["ရုပ်တို့ကို ပြုစုပျိုးထောင်ခြင်း", "ရုပ်ကလာပ်တို့ကို ပိုင်းခြားခြင်း", "ကံဇရုပ်တို့ကို စောင့်ရှောက်ခြင်း", "အာရုံကို သိစေခြင်း"] },
-  { t: "ဝီထိ", q: "ပဉ္စဒွါရဝီထိတွင် ဘဝင်ဥပစ္ဆေဒ၏ နောက်တွင် ဖြစ်သော စိတ်မှာ အဘယ်နည်း။", a: "ပဉ္စဒွါရာဝဇ္ဇန်း", o: ["ပဉ္စဒွါရာဝဇ္ဇန်း", "ပဉ္စဝိညာဏ်", "သမ္ပဋိစ္ဆိန်", "ဇော"] },
-  { t: "ဝီထိ", q: "ပဉ္စဝိညာဏ်၏ နောက်တွင် ဖြစ်သော စိတ်မှာ အဘယ်နည်း။", a: "သမ္ပဋိစ္ဆိန်", o: ["သမ္ပဋိစ္ဆိန်", "သန္တီရဏ", "ဝုဋ္ဌော", "ဇော"] },
-  { t: "ဝီထိ", q: "သန္တီရဏ၏ နောက်တွင် ဖြစ်သော စိတ်မှာ အဘယ်နည်း။", a: "ဝုဋ္ဌော", o: ["ဝုဋ္ဌော", "သမ္ပဋိစ္ဆိန်", "ဇော", "တဒါရုံ"] },
+  { t: "ဝီထိ", q: "ပဉ္စဒွါရဝီထိတွင် ဘဝင်ဥပစ္ဆေဒ၏ နောက်တွင် ဖြစ်သော စိတ်မှာ အဘယ်နည်း။", a: "ပဉ္စဒွါရာဝဇ္ဇန်း", o: ["ပဉ္စဒွါရာဝဇ္ဇန်း", "ပဉ္စဝိညာဏ်", "သမ္ပဋိစ္ဆိုင်း", "ဇော"] },
+  { t: "ဝီထိ", q: "ပဉ္စဝိညာဏ်၏ နောက်တွင် ဖြစ်သော စိတ်မှာ အဘယ်နည်း။", a: "သမ္ပဋိစ္ဆိုင်း", o: ["သမ္ပဋိစ္ဆိုင်း", "သန္တီရဏ", "ဝုဋ္ဌော", "ဇော"] },
+  { t: "ဝီထိ", q: "သန္တီရဏ၏ နောက်တွင် ဖြစ်သော စိတ်မှာ အဘယ်နည်း။", a: "ဝုဋ္ဌော", o: ["ဝုဋ္ဌော", "သမ္ပဋိစ္ဆိုင်း", "ဇော", "တဒါရုံ"] },
   { t: "ဝီထိ", q: "ဝုဋ္ဌော၏ နောက်တွင် ဖြစ်သော စိတ်မှာ အဘယ်နည်း။", a: "ဇော", o: ["ဇော", "တဒါရုံ", "သန္တီရဏ", "ဘဝင်"] },
   { t: "ဝီထိ", q: "ပဉ္စဒွါရဝီထိ ၄ မျိုးကို အာရုံအလိုက် ဖော်ပြပါ။", a: "အတိမဟန္တာရုံ၊ မဟန္တာရုံ၊ ပရိတ္တာရုံ၊ အတိပရိတ္တာရုံ", o: ["အတိမဟန္တာရုံ၊ မဟန္တာရုံ၊ ပရိတ္တာရုံ၊ အတိပရိတ္တာရုံ", "အတိမဟန္တာရုံ၊ မဟန္တာရုံ၊ ဝိဘူတာရုံ၊ အဝိဘူတာရုံ", "မဟန္တာရုံ၊ ပရိတ္တာရုံ၊ ဝိဘူတာရုံ၊ အဝိဘူတာရုံ", "အတိမဟန္တာရုံ၊ ပရိတ္တာရုံ၊ ဝိဘူတာရုံ၊ အတိပရိတ္တာရုံ"] },
   { t: "ဝီထိ", q: "ဝီထိ၏ ဝါရ ၄ မျိုးမှာ အဘယ်နည်း။", a: "တဒါရုံဝါရ၊ ဇောဝါရ၊ ဝုဋ္ဌောဝါရ၊ မောဃဝါရ", o: ["တဒါရုံဝါရ၊ ဇောဝါရ၊ ဝုဋ္ဌောဝါရ၊ မောဃဝါရ", "တဒါရုံဝါရ၊ ဇောဝါရ၊ ဘဝင်ဝါရ၊ မောဃဝါရ", "အာဝဇ္ဇန်းဝါရ၊ ဇောဝါရ၊ ဝုဋ္ဌောဝါရ၊ မောဃဝါရ", "တဒါရုံဝါရ၊ ဇောဝါရ၊ သန္တီရဏဝါရ၊ ဝုဋ္ဌောဝါရ"] },
   { t: "ဝီထိ", q: "တဒါရုံ ၂ ကြိမ်ဖြစ်သော ပဉ္စဒွါရဝီထိမှာ အဘယ်နည်း။", a: "အတိမဟန္တာရုံ ဝီထိ", o: ["အတိမဟန္တာရုံ ဝီထိ", "မဟန္တာရုံ ဝီထိ", "ပရိတ္တာရုံ ဝီထိ", "အတိပရိတ္တာရုံ ဝီထိ"] },
   { t: "ဝီထိ", q: "ဝီထိ မပေါ်ဘဲ ဘဝင်စလှုပ်ရုံသာ ဖြစ်သော အာရုံမှာ အဘယ်နည်း။", a: "အတိပရိတ္တာရုံ (မောဃဝါရ)", o: ["အတိပရိတ္တာရုံ (မောဃဝါရ)", "အတိမဟန္တာရုံ", "မဟန္တာရုံ", "ပရိတ္တာရုံ"] },
   { t: "ဝီထိ", q: "ရုပ်တစ်ခုသည် စိတ်ခဏ မည်မျှ တည်သနည်း။", a: "၁၇ ခဏ", o: ["၁၇ ခဏ", "၇ ခဏ", "၁၄ ခဏ", "၂၈ ခဏ"] },
-  { t: "ဝီထိ", q: "မနောဒွါရဝီထိတွင် ဘဝင်ဥပစ္ဆေဒ၏ နောက်တွင် ဖြစ်သော စိတ်မှာ အဘယ်နည်း။", a: "မနောဒွါရာဝဇ္ဇန်း", o: ["မနောဒွါရာဝဇ္ဇန်း", "ပဉ္စဒွါရာဝဇ္ဇန်း", "သမ္ပဋိစ္ဆိန်", "ဇော"] },
+  { t: "ဝီထိ", q: "မနောဒွါရဝီထိတွင် ဘဝင်ဥပစ္ဆေဒ၏ နောက်တွင် ဖြစ်သော စိတ်မှာ အဘယ်နည်း။", a: "မနောဒွါရာဝဇ္ဇန်း", o: ["မနောဒွါရာဝဇ္ဇန်း", "ပဉ္စဒွါရာဝဇ္ဇန်း", "သမ္ပဋိစ္ဆိုင်း", "ဇော"] },
   { t: "ဝီထိ", q: "အပ္ပနာဝီထိတွင် အပ္ပနာဇော ဘယ်နှကြိမ် ဖြစ်သနည်း။", a: "၁ ကြိမ်", o: ["၁ ကြိမ်", "၃ ကြိမ်", "၅ ကြိမ်", "၇ ကြိမ်"] },
   { t: "ဝီထိ", q: "အပ္ပနာမတိုင်မီ ကာမဇောများ၏ အစဉ်မှာ အဘယ်နည်း။", a: "ပရိကံ၊ ဥပစာရ၊ အနုလုံ၊ ဂေါတြဘူ", o: ["ပရိကံ၊ ဥပစာရ၊ အနုလုံ၊ ဂေါတြဘူ", "ဥပစာရ၊ ပရိကံ၊ အနုလုံ၊ ဂေါတြဘူ", "ပရိကံ၊ အနုလုံ၊ ဥပစာရ၊ ဂေါတြဘူ", "ပရိကံ၊ ဥပစာရ၊ ဂေါတြဘူ၊ အနုလုံ"] },
   { t: "ဝီထိ", q: "မဂ္ဂဝီထိတွင် မဂ်စိတ်သည် ဘယ်နှကြိမ် ဖြစ်သနည်း။", a: "၁ ကြိမ်", o: ["၁ ကြိမ်", "၂ ကြိမ်", "၃ ကြိမ်", "၇ ကြိမ်"] },
@@ -2431,9 +2555,11 @@ const mPut = o => {
   if (DBX) try { DBX.transaction("it", "readwrite").objectStore("it").put(o); } catch (e) {}
 };
 const mDel = id => {
-  MI = MI.filter(x => String(x.id) != String(id));
-  if (DBX) try { DBX.transaction("it", "readwrite").objectStore("it").delete(Number(id)); } catch (e) {}
+  const nid = Number(id);
+  MI = MI.filter(x => Number(x.id) !== nid);
+  if (DBX) try { DBX.transaction("it", "readwrite").objectStore("it").delete(nid); } catch (e) {}
 };
+
 const readImg = f => new Promise((res, rej) => {
   const fr = new FileReader();
   fr.onerror = rej;
@@ -2630,8 +2756,8 @@ function render() {
           title: "၅။ အရူပါဝစရစိတ် (၁၂) ပါး",
           groups: ["အရူပ ကုသိုလ် ၄", "အရူပ ဝိပါက် ၄", "အရူပ ကြိယာ ၄"]
         },
-        {
-          title: "၆။ လောကုတ္တရာစိတ် (၈ / ၄၀) ပါး",
+                {
+          title: "၆။ လောကုတ္တရာစိတ် (၄၀) ပါး",
           groups: [
             "သောတာပတ္တိမဂ်", "သကဒါဂါမိမဂ်", "အနာဂါမိမဂ်", "အရဟတ္တမဂ်",
             "သောတာပတ္တိဖိုလ်", "သကဒါဂါမိဖိုလ်", "အနာဂါမိဖိုလ်", "အရဟတ္တဖိုလ်"
@@ -2869,14 +2995,6 @@ $("app").onclick = e => {
     st.pop();
     render();
   }
-
-  else if (b.dataset.fs) {
-    if (b.dataset.fs == "+" && FSize < 36) FSize += 2;
-    if (b.dataset.fs == "-" && FSize > 12) FSize -= 2;
-    document.documentElement.style.fontSize = FSize + "px";
-    try { localStorage.setItem("abhi-fs", FSize); } catch (e) {}
-    render();
-  }
 };
 
 
@@ -2958,6 +3076,340 @@ window.addEventListener('DOMContentLoaded', () => {
     subtree: true
   });
 });
+// ===== အဘိဓမ္မာ အဘိဓာန် Search & Filter Logic =====
+const DICT_LETTERS = ["အားလုံး","က","ခ","ဂ","ဃ","င","စ","ဆ","ဇ","ဈ","ည","ဋ","ဌ","ဍ","ဎ","ဏ","တ","ထ","ဒ","ဓ","န","ပ","ဖ","ဗ","ဘ","မ","ယ","ရ","လ","ဝ","သ","ဟ","ဠ","အ"];
+const DICT_ST = { q: "", topic: "အားလုံး", letter: "အားလုံး" };
+let EXTRA_DICT = [];
+
+function getAllDictItems() {
+  const base = GL.map((g, idx) => ({
+    word: g[0],
+    topic: g[1],
+    meaning: g[2],
+    glIndex: idx
+  }));
+  const extra = EXTRA_DICT.map(d => ({
+    word: d.word || "",
+    topic: d.topic || "📖 အဘိဓမ္မာအဘိဓာန်",
+    meaning: d.meaning || "",
+    glIndex: -1
+  }));
+  return [...base, ...extra];
+}
+
+function getDictTopics(items) {
+  const topics = ["အားလုံး"];
+  items.forEach(it => {
+    if (it.topic && !topics.includes(it.topic)) topics.push(it.topic);
+  });
+  return topics;
+}
+
+function getMyanmarFirstConsonant(str) {
+  const s = (str || "").trim();
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i];
+    if (DICT_LETTERS.includes(ch) && ch !== "အားလုံး") return ch;
+  }
+  return "";
+}
+
+function renderDictResults() {
+  const resEl = document.getElementById("gnmResultsList");
+  const topicEl = document.getElementById("gnmTopicTabs");
+  const letterEl = document.getElementById("gnmLetterTabs");
+  if (!resEl || !topicEl || !letterEl) return;
+
+  const all = getAllDictItems();
+  const topics = getDictTopics(all);
+
+  topicEl.innerHTML = topics.map(tp =>
+    `<button type="button" class="dict-chip ${DICT_ST.topic === tp ? "active" : ""}" data-dtopic="${esc(tp)}">${esc(tp)}</button>`
+  ).join("");
+
+  letterEl.innerHTML = DICT_LETTERS.map(lt =>
+    `<button type="button" class="dict-chip ${DICT_ST.letter === lt ? "active" : ""}" data-dletter="${lt}">${lt}</button>`
+  ).join("");
+
+  const kw = DICT_ST.q.trim().toLowerCase();
+  const filtered = all.filter(it => {
+    if (DICT_ST.topic !== "အားလုံး" && it.topic !== DICT_ST.topic) return false;
+    if (DICT_ST.letter !== "အားလုံး" && getMyanmarFirstConsonant(it.word) !== DICT_ST.letter) return false;
+    if (kw && !it.word.toLowerCase().includes(kw) && !it.meaning.toLowerCase().includes(kw)) return false;
+    return true;
+  });
+
+  if (!filtered.length) {
+    resEl.innerHTML = `<div class="note">ကိုက်ညီသော စကားလုံး မတွေ့ပါ။</div>`;
+    return;
+  }
+
+  const shown = filtered.slice(0, 80);
+  resEl.innerHTML = `<div class="note" style="margin:0">တွေ့ရှိမှု - ${filtered.length} ပုဒ် ${filtered.length > 80 ? "(ပထမ ၈၀ ပုဒ်သာ ပြထားသည်)" : ""}</div>` +
+    shown.map(it => `
+      <div class="dict-item-card" ${it.glIndex >= 0 ? `data-gi="${it.glIndex}" style="cursor:pointer"` : ""}>
+        <div class="dict-item-head">
+          <span class="dict-item-word">${esc(it.word)}</span>
+          <span class="dict-item-tag">${esc(it.topic)}</span>
+        </div>
+        <div class="dict-item-meaning">${esc(it.meaning)}</div>
+      </div>
+    `).join("");
+}
+
+function bindDictEvents() {
+  const searchInput = document.getElementById("gnmSearchInput");
+  const clearBtn = document.getElementById("gnmClearBtn");
+  const topicEl = document.getElementById("gnmTopicTabs");
+  const letterEl = document.getElementById("gnmLetterTabs");
+  const resEl = document.getElementById("gnmResultsList");
+
+  if (searchInput && !searchInput.dataset.bound) {
+    searchInput.dataset.bound = "1";
+    searchInput.value = DICT_ST.q || "";
+    searchInput.addEventListener("input", (e) => {
+      DICT_ST.q = e.target.value || "";
+      renderDictResults();
+    });
+  }
+
+  if (clearBtn && !clearBtn.dataset.bound) {
+    clearBtn.dataset.bound = "1";
+    clearBtn.addEventListener("click", () => {
+      DICT_ST.q = "";
+      DICT_ST.topic = "အားလုံး";
+      DICT_ST.letter = "အားလုံး";
+      if (searchInput) searchInput.value = "";
+      renderDictResults();
+    });
+  }
+
+  if (topicEl && !topicEl.dataset.bound) {
+    topicEl.dataset.bound = "1";
+    topicEl.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-dtopic]");
+      if (!btn) return;
+      DICT_ST.topic = btn.dataset.dtopic || "အားလုံး";
+      renderDictResults();
+    });
+  }
+
+  if (letterEl && !letterEl.dataset.bound) {
+    letterEl.dataset.bound = "1";
+    letterEl.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-dletter]");
+      if (!btn) return;
+      DICT_ST.letter = btn.dataset.dletter || "အားလုံး";
+      renderDictResults();
+    });
+  }
+
+  if (resEl && !resEl.dataset.bound) {
+    resEl.dataset.bound = "1";
+    resEl.addEventListener("click", (e) => {
+      const card = e.target.closest("[data-gi]");
+      if (!card) return;
+      const gi = Number(card.dataset.gi);
+      if (!Number.isNaN(gi) && typeof openGlossaryItem === "function") {
+        openGlossaryItem(gi);
+      }
+    });
+  }
+}
+
+
+$("app").addEventListener("input", e => {
+  if (e.target.id === "gnmSearchInput") {
+    DICT_ST.q = e.target.value;
+    renderDictResults();
+  }
+});
+
+$("app").addEventListener("click", e => {
+  if (e.target.id === "gnmClearBtn") {
+    DICT_ST.q = "";
+    DICT_ST.topic = "အားလုံး";
+    DICT_ST.letter = "အားလုံး";
+    const inp = document.getElementById("gnmSearchInput");
+    if (inp) inp.value = "";
+    renderDictResults();
+    return;
+  }
+  const tpBtn = e.target.closest("[data-dtopic]");
+  if (tpBtn) {
+    DICT_ST.topic = tpBtn.dataset.dtopic;
+    renderDictResults();
+    return;
+  }
+  const ltBtn = e.target.closest("[data-dletter]");
+  if (ltBtn) {
+    DICT_ST.letter = ltBtn.dataset.dletter;
+    renderDictResults();
+  }
+});
+render();
+(function () {
+  const DICT_URL = encodeURI("dhamma_dictionary (1).json");
+  const MYANMAR_LETTERS = [
+    "အားလုံး", "က", "ခ", "ဂ", "ဃ", "င",
+    "စ", "ဆ", "ဇ", "ဈ", "ည",
+    "ဋ", "ဌ", "ဍ", "ဎ", "ဏ",
+    "တ", "ထ", "ဒ", "ဓ", "န",
+    "ပ", "ဖ", "ဗ", "ဘ", "မ",
+    "ယ", "ရ", "လ", "ဝ", "သ", "ဟ", "ဠ", "အ"
+  ];
+
+  let dictItems = [];
+  let selectedTopic = "အားလုံး";
+  let selectedLetter = "အားလုံး";
+
+  function escHtml(str = "") {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function detectTopic(word = "", meaning = "") {
+    const text = `${word} ${meaning}`;
+    if (text.includes("စိတ်") || text.includes("ဝိညာဏ်")) return "စိတ်";
+    if (text.includes("စေတသိက်")) return "စေတသိက်";
+    if (text.includes("ရုပ်")) return "ရုပ်";
+    if (text.includes("နိဗ္ဗာန်")) return "နိဗ္ဗာန်";
+    return "အခြား";
+  }
+
+  function initGnmDict() {
+    const searchInput = document.getElementById("gnmSearchInput");
+    const clearBtn = document.getElementById("gnmClearBtn");
+    const topicTabs = document.getElementById("gnmTopicTabs");
+    const letterTabs = document.getElementById("gnmLetterTabs");
+    const resultsList = document.getElementById("gnmResultsList");
+
+    if (!resultsList) return;
+
+    function renderLetterTabs() {
+      if (!letterTabs) return;
+      letterTabs.innerHTML = MYANMAR_LETTERS.map(
+        (ch) =>
+          `<button type="button" class="dict-chip ${selectedLetter === ch ? "active" : ""}" data-letter="${escHtml(ch)}">${escHtml(ch)}</button>`
+      ).join("");
+    }
+
+    function renderTopicTabs() {
+      if (!topicTabs) return;
+      const topics = ["အားလုံး", ...new Set(dictItems.map((x) => x._topic))];
+      topicTabs.innerHTML = topics
+        .map(
+          (tp) =>
+            `<button type="button" class="dict-chip ${selectedTopic === tp ? "active" : ""}" data-topic="${escHtml(tp)}">${escHtml(tp)}</button>`
+        )
+        .join("");
+    }
+
+    function renderResults() {
+      const q = (searchInput ? searchInput.value : "").trim().toLowerCase();
+
+      const filtered = dictItems.filter((item) => {
+        const w = item.word.trim();
+        const m = item.meaning.trim();
+        if (!w && !m) return false;
+
+        if (selectedTopic !== "အားလုံး" && item._topic !== selectedTopic) return false;
+        if (selectedLetter !== "အားလုံး" && !w.startsWith(selectedLetter)) return false;
+
+        if (!q) return true;
+        return w.toLowerCase().includes(q) || m.toLowerCase().includes(q);
+      });
+
+      if (!filtered.length) {
+        resultsList.innerHTML = `<div class="dict-item-card">ကိုက်ညီသော စကားလုံး သို့မဟုတ် အဓိပ္ပာယ် မတွေ့ပါ။</div>`;
+        return;
+      }
+
+      resultsList.innerHTML = filtered
+        .map(
+          (item) => `
+          <div class="dict-item-card">
+            <div class="dict-word">${escHtml(item.word)}</div>
+            <div class="dict-meaning">${escHtml(item.meaning)}</div>
+          </div>
+        `
+        )
+        .join("");
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener("input", renderResults);
+    }
+
+    if (clearBtn && searchInput) {
+      clearBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        selectedTopic = "အားလုံး";
+        selectedLetter = "အားလုံး";
+        renderTopicTabs();
+        renderLetterTabs();
+        renderResults();
+        searchInput.focus();
+      });
+    }
+
+    if (topicTabs) {
+      topicTabs.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-topic]");
+        if (!btn) return;
+        selectedTopic = btn.dataset.topic;
+        renderTopicTabs();
+        renderResults();
+      });
+    }
+
+    if (letterTabs) {
+      letterTabs.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-letter]");
+        if (!btn) return;
+        selectedLetter = btn.dataset.letter;
+        renderLetterTabs();
+        renderResults();
+      });
+    }
+
+    renderLetterTabs();
+
+    fetch(DICT_URL)
+      .then((res) => {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then((data) => {
+        const arr = Array.isArray(data) ? data : [];
+        dictItems = arr.map((item) => {
+          const word = String(item.word || "");
+          const meaning = String(item.meaning || "");
+          return {
+            word,
+            meaning,
+            _topic: detectTopic(word, meaning)
+          };
+        });
+        renderTopicTabs();
+        renderResults();
+      })
+      .catch((err) => {
+        console.error("gnmDict error:", err);
+        resultsList.innerHTML = `<div class="dict-item-card">JSON ဖိုင်ကို ဖတ်မရပါ (Server မှ ဖွင့်ကြည့်ပါ)။</div>`;
+      });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initGnmDict);
+  } else {
+    initGnmDict();
+  }
+})();
+
 </script>
 </body>
 </html>
