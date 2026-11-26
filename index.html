@@ -2997,7 +2997,6 @@ $("app").onclick = e => {
   }
 };
 
-
 $("app").oninput = e => {
   if (e.target.id == "gnote" && GCUR != null) {
     GN[GCUR] = e.target.value;
@@ -3114,28 +3113,49 @@ function getMyanmarFirstConsonant(str) {
   return "";
 }
 
+let EXTERNAL_DICT_ITEMS = [];
+
+function detectGnmTopic(word = "", meaning = "") {
+  const text = `${word} ${meaning}`;
+  if (text.includes("စိတ်") || text.includes("ဝိညာဏ်")) return "စိတ်";
+  if (text.includes("စေတသိက်")) return "စေတသိက်";
+  if (text.includes("ရုပ်")) return "ရုပ်";
+  if (text.includes("နိဗ္ဗာန်")) return "နိဗ္ဗာန်";
+  return "အခြား";
+}
+
 function renderDictResults() {
   const resEl = document.getElementById("gnmResultsList");
   const topicEl = document.getElementById("gnmTopicTabs");
   const letterEl = document.getElementById("gnmLetterTabs");
   if (!resEl || !topicEl || !letterEl) return;
 
-  const all = getAllDictItems();
-  const topics = getDictTopics(all);
+  const baseAll = typeof getAllDictItems === "function" ? getAllDictItems() : [];
+  const all = [...baseAll, ...EXTERNAL_DICT_ITEMS];
+  const topics = typeof getDictTopics === "function"
+    ? getDictTopics(all)
+    : ["အားလုံး", ...new Set(all.map(x => x.topic).filter(Boolean))];
 
   topicEl.innerHTML = topics.map(tp =>
     `<button type="button" class="dict-chip ${DICT_ST.topic === tp ? "active" : ""}" data-dtopic="${esc(tp)}">${esc(tp)}</button>`
   ).join("");
 
   letterEl.innerHTML = DICT_LETTERS.map(lt =>
-    `<button type="button" class="dict-chip ${DICT_ST.letter === lt ? "active" : ""}" data-dletter="${lt}">${lt}</button>`
+    `<button type="button" class="dict-chip ${DICT_ST.letter === lt ? "active" : ""}" data-dletter="${esc(lt)}">${esc(lt)}</button>`
   ).join("");
 
-  const kw = DICT_ST.q.trim().toLowerCase();
+  const kw = (DICT_ST.q || "").trim().toLowerCase();
   const filtered = all.filter(it => {
-    if (DICT_ST.topic !== "အားလုံး" && it.topic !== DICT_ST.topic) return false;
-    if (DICT_ST.letter !== "အားလုံး" && getMyanmarFirstConsonant(it.word) !== DICT_ST.letter) return false;
-    if (kw && !it.word.toLowerCase().includes(kw) && !it.meaning.toLowerCase().includes(kw)) return false;
+    const word = String(it.word || "");
+    const meaning = String(it.meaning || "");
+    const topic = String(it.topic || "အခြား");
+    const firstCh = typeof getMyanmarFirstConsonant === "function"
+      ? getMyanmarFirstConsonant(word)
+      : word.trim().charAt(0);
+
+    if (DICT_ST.topic !== "အားလုံး" && topic !== DICT_ST.topic) return false;
+    if (DICT_ST.letter !== "အားလုံး" && firstCh !== DICT_ST.letter) return false;
+    if (kw && !word.toLowerCase().includes(kw) && !meaning.toLowerCase().includes(kw)) return false;
     return true;
   });
 
@@ -3145,271 +3165,105 @@ function renderDictResults() {
   }
 
   const shown = filtered.slice(0, 80);
-  resEl.innerHTML = `<div class="note" style="margin:0">တွေ့ရှိမှု - ${filtered.length} ပုဒ် ${filtered.length > 80 ? "(ပထမ ၈၀ ပုဒ်သာ ပြထားသည်)" : ""}</div>` +
+  resEl.innerHTML =
+    `<div class="note" style="margin:0">တွေ့ရှိမှု - ${filtered.length} ပုဒ် ${filtered.length > 80 ? "(ပထမ ၈၀ ပုဒ်သာ ပြထားသည်)" : ""}</div>` +
     shown.map(it => `
-      <div class="dict-item-card" ${it.glIndex >= 0 ? `data-gi="${it.glIndex}" style="cursor:pointer"` : ""}>
+      <div class="dict-item-card" ${typeof it.glIndex === "number" && it.glIndex >= 0 ? `data-gi="${it.glIndex}" style="cursor:pointer"` : ""}>
         <div class="dict-item-head">
-          <span class="dict-item-word">${esc(it.word)}</span>
-          <span class="dict-item-tag">${esc(it.topic)}</span>
+          <span class="dict-item-word">${esc(it.word || "")}</span>
+          <span class="dict-item-tag">${esc(it.topic || "အခြား")}</span>
         </div>
-        <div class="dict-item-meaning">${esc(it.meaning)}</div>
+        <div class="dict-item-meaning">${esc(it.meaning || "")}</div>
       </div>
     `).join("");
 }
 
-function bindDictEvents() {
-  const searchInput = document.getElementById("gnmSearchInput");
-  const clearBtn = document.getElementById("gnmClearBtn");
-  const topicEl = document.getElementById("gnmTopicTabs");
-  const letterEl = document.getElementById("gnmLetterTabs");
-  const resEl = document.getElementById("gnmResultsList");
+function bindDictEventsOnce() {
+  const appEl = document.getElementById("app") || document;
+  if (appEl.dataset.gnmDictBound === "1") return;
+  appEl.dataset.gnmDictBound = "1";
 
-  if (searchInput && !searchInput.dataset.bound) {
-    searchInput.dataset.bound = "1";
-    searchInput.value = DICT_ST.q || "";
-    searchInput.addEventListener("input", (e) => {
+  appEl.addEventListener("input", (e) => {
+    if (e.target && e.target.id === "gnmSearchInput") {
       DICT_ST.q = e.target.value || "";
       renderDictResults();
-    });
-  }
+    }
+  });
 
-  if (clearBtn && !clearBtn.dataset.bound) {
-    clearBtn.dataset.bound = "1";
-    clearBtn.addEventListener("click", () => {
+  appEl.addEventListener("click", (e) => {
+    const clearBtn = e.target.closest("#gnmClearBtn");
+    if (clearBtn) {
       DICT_ST.q = "";
       DICT_ST.topic = "အားလုံး";
       DICT_ST.letter = "အားလုံး";
-      if (searchInput) searchInput.value = "";
+      const inp = document.getElementById("gnmSearchInput");
+      if (inp) inp.value = "";
       renderDictResults();
-    });
-  }
+      return;
+    }
 
-  if (topicEl && !topicEl.dataset.bound) {
-    topicEl.dataset.bound = "1";
-    topicEl.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-dtopic]");
-      if (!btn) return;
-      DICT_ST.topic = btn.dataset.dtopic || "အားလုံး";
+    const tpBtn = e.target.closest("[data-dtopic]");
+    if (tpBtn) {
+      DICT_ST.topic = tpBtn.dataset.dtopic || "အားလုံး";
       renderDictResults();
-    });
-  }
+      return;
+    }
 
-  if (letterEl && !letterEl.dataset.bound) {
-    letterEl.dataset.bound = "1";
-    letterEl.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-dletter]");
-      if (!btn) return;
-      DICT_ST.letter = btn.dataset.dletter || "အားလုံး";
+    const ltBtn = e.target.closest("[data-dletter]");
+    if (ltBtn) {
+      DICT_ST.letter = ltBtn.dataset.dletter || "အားလုံး";
       renderDictResults();
-    });
-  }
+      return;
+    }
 
-  if (resEl && !resEl.dataset.bound) {
-    resEl.dataset.bound = "1";
-    resEl.addEventListener("click", (e) => {
-      const card = e.target.closest("[data-gi]");
-      if (!card) return;
+    const card = e.target.closest("#gnmResultsList [data-gi]");
+    if (card) {
       const gi = Number(card.dataset.gi);
       if (!Number.isNaN(gi) && typeof openGlossaryItem === "function") {
         openGlossaryItem(gi);
       }
-    });
-  }
+    }
+  });
 }
 
+async function loadExternalDhammaDict() {
+  const dictUrl = encodeURI("./dhamma_dictionary.json");
+  const excludedWords = new Set([
+    "ကျွန်ုပ်တို့အကြောင်း",
+    "အကြောင်းအရာ",
+    "ဆက်သွယ်ရန်"
+  ]);
 
-$("app").addEventListener("input", e => {
-  if (e.target.id === "gnmSearchInput") {
-    DICT_ST.q = e.target.value;
-    renderDictResults();
-  }
-});
-
-$("app").addEventListener("click", e => {
-  if (e.target.id === "gnmClearBtn") {
-    DICT_ST.q = "";
-    DICT_ST.topic = "အားလုံး";
-    DICT_ST.letter = "အားလုံး";
-    const inp = document.getElementById("gnmSearchInput");
-    if (inp) inp.value = "";
-    renderDictResults();
-    return;
-  }
-  const tpBtn = e.target.closest("[data-dtopic]");
-  if (tpBtn) {
-    DICT_ST.topic = tpBtn.dataset.dtopic;
-    renderDictResults();
-    return;
-  }
-  const ltBtn = e.target.closest("[data-dletter]");
-  if (ltBtn) {
-    DICT_ST.letter = ltBtn.dataset.dletter;
-    renderDictResults();
-  }
-});
-render();
-(function () {
-  const DICT_URL = encodeURI("dhamma_dictionary (1).json");
-  const MYANMAR_LETTERS = [
-    "အားလုံး", "က", "ခ", "ဂ", "ဃ", "င",
-    "စ", "ဆ", "ဇ", "ဈ", "ည",
-    "ဋ", "ဌ", "ဍ", "ဎ", "ဏ",
-    "တ", "ထ", "ဒ", "ဓ", "န",
-    "ပ", "ဖ", "ဗ", "ဘ", "မ",
-    "ယ", "ရ", "လ", "ဝ", "သ", "ဟ", "ဠ", "အ"
-  ];
-
-  let dictItems = [];
-  let selectedTopic = "အားလုံး";
-  let selectedLetter = "အားလုံး";
-
-  function escHtml(str = "") {
-    return String(str)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
-  }
-
-  function detectTopic(word = "", meaning = "") {
-    const text = `${word} ${meaning}`;
-    if (text.includes("စိတ်") || text.includes("ဝိညာဏ်")) return "စိတ်";
-    if (text.includes("စေတသိက်")) return "စေတသိက်";
-    if (text.includes("ရုပ်")) return "ရုပ်";
-    if (text.includes("နိဗ္ဗာန်")) return "နိဗ္ဗာန်";
-    return "အခြား";
-  }
-
-  function initGnmDict() {
-    const searchInput = document.getElementById("gnmSearchInput");
-    const clearBtn = document.getElementById("gnmClearBtn");
-    const topicTabs = document.getElementById("gnmTopicTabs");
-    const letterTabs = document.getElementById("gnmLetterTabs");
-    const resultsList = document.getElementById("gnmResultsList");
-
-    if (!resultsList) return;
-
-    function renderLetterTabs() {
-      if (!letterTabs) return;
-      letterTabs.innerHTML = MYANMAR_LETTERS.map(
-        (ch) =>
-          `<button type="button" class="dict-chip ${selectedLetter === ch ? "active" : ""}" data-letter="${escHtml(ch)}">${escHtml(ch)}</button>`
-      ).join("");
-    }
-
-    function renderTopicTabs() {
-      if (!topicTabs) return;
-      const topics = ["အားလုံး", ...new Set(dictItems.map((x) => x._topic))];
-      topicTabs.innerHTML = topics
-        .map(
-          (tp) =>
-            `<button type="button" class="dict-chip ${selectedTopic === tp ? "active" : ""}" data-topic="${escHtml(tp)}">${escHtml(tp)}</button>`
-        )
-        .join("");
-    }
-
-    function renderResults() {
-      const q = (searchInput ? searchInput.value : "").trim().toLowerCase();
-
-      const filtered = dictItems.filter((item) => {
-        const w = item.word.trim();
-        const m = item.meaning.trim();
-        if (!w && !m) return false;
-
-        if (selectedTopic !== "အားလုံး" && item._topic !== selectedTopic) return false;
-        if (selectedLetter !== "အားလုံး" && !w.startsWith(selectedLetter)) return false;
-
-        if (!q) return true;
-        return w.toLowerCase().includes(q) || m.toLowerCase().includes(q);
-      });
-
-      if (!filtered.length) {
-        resultsList.innerHTML = `<div class="dict-item-card">ကိုက်ညီသော စကားလုံး သို့မဟုတ် အဓိပ္ပာယ် မတွေ့ပါ။</div>`;
-        return;
-      }
-
-      resultsList.innerHTML = filtered
-        .map(
-          (item) => `
-          <div class="dict-item-card">
-            <div class="dict-word">${escHtml(item.word)}</div>
-            <div class="dict-meaning">${escHtml(item.meaning)}</div>
-          </div>
-        `
-        )
-        .join("");
-    }
-
-    if (searchInput) {
-      searchInput.addEventListener("input", renderResults);
-    }
-
-    if (clearBtn && searchInput) {
-      clearBtn.addEventListener("click", () => {
-        searchInput.value = "";
-        selectedTopic = "အားလုံး";
-        selectedLetter = "အားလုံး";
-        renderTopicTabs();
-        renderLetterTabs();
-        renderResults();
-        searchInput.focus();
-      });
-    }
-
-    if (topicTabs) {
-      topicTabs.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-topic]");
-        if (!btn) return;
-        selectedTopic = btn.dataset.topic;
-        renderTopicTabs();
-        renderResults();
-      });
-    }
-
-    if (letterTabs) {
-      letterTabs.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-letter]");
-        if (!btn) return;
-        selectedLetter = btn.dataset.letter;
-        renderLetterTabs();
-        renderResults();
-      });
-    }
-
-    renderLetterTabs();
-
-    fetch(DICT_URL)
-      .then((res) => {
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return res.json();
-      })
-      .then((data) => {
-        const arr = Array.isArray(data) ? data : [];
-        dictItems = arr.map((item) => {
-          const word = String(item.word || "");
-          const meaning = String(item.meaning || "");
+  try {
+    const res = await fetch(dictUrl);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    if (Array.isArray(data)) {
+      EXTERNAL_DICT_ITEMS = data
+        .map(item => {
+          const word = String(item.word || item.term || "").trim();
+          const meaning = String(item.meaning || "").trim();
+          if (!meaning) return null;
+          if (excludedWords.has(word)) return null;
           return {
             word,
             meaning,
-            _topic: detectTopic(word, meaning)
+            topic: String(item.topic || item.category || detectGnmTopic(word, meaning)).trim(),
+            glIndex: -1
           };
-        });
-        renderTopicTabs();
-        renderResults();
-      })
-      .catch((err) => {
-        console.error("gnmDict error:", err);
-        resultsList.innerHTML = `<div class="dict-item-card">JSON ဖိုင်ကို ဖတ်မရပါ (Server မှ ဖွင့်ကြည့်ပါ)။</div>`;
-      });
+        })
+        .filter(Boolean);
+      renderDictResults();
+    }
+  } catch (err) {
+    console.error("dhamma_dictionary load error:", err);
   }
+}
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initGnmDict);
-  } else {
-    initGnmDict();
-  }
-})();
-
+bindDictEventsOnce();
+if (typeof render === "function") render();
+renderDictResults();
+loadExternalDhammaDict();
 </script>
 </body>
 </html>
